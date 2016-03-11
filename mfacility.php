@@ -18,7 +18,7 @@
                 $facName = $_POST['txtFacName'];
                 $facAddress = $_POST['txtFacAddress'];
 
-                $query = "insert into facility values ('$facID', '$facName' ,'$facCAte' , '$facAddress', 'active')";
+                $query = "insert into facility values ('$facID', '$facCAte', '$facName', '$facAddress', 'active')";
 
                
 
@@ -37,8 +37,8 @@
         else if(isset($_POST['btnSubmitEdit']))
         {
                 $facID = $_POST['EtxtFacID'];
-                $facName = $_POST['EtxtFacName'];
                 $facCAte = $_POST['EtxtFacCate'];
+                $facName = $_POST['EtxtFacName'];
                 $facAddress = $_POST['EtxtFacAddress'];
 
                 

@@ -258,16 +258,16 @@
                                     <table id="example" class="table table-striped responsive-utilities jambo_table" style="font-size:12px">
                                         <?php
                                             require("connection.php");
-                                            $q = mysqli_query($con, "select PersonnelID, Position, Status, personnel.ResidentID, LastName, FirstName, MidName from resident_personaldata, personnel where resident_personaldata.ResidentID = personnel.ResidentID and Status != 'inactive';");
+                                            $q = mysqli_query($con, "select PersonnelID, Category, Position, Status, personnel.ResidentID, LastName, FirstName, MidName from resident_personaldata, personnel where resident_personaldata.ResidentID = personnel.ResidentID and Status != 'inactive';");
                                             echo '
                                         <thead>
                                             <tr class="headings">
                                                 
-                                                <th>OfficialID</th>
-                                                <th>ResidentID </th>
+                                                <th>Personnel ID</th>
                                                 <th>Name</th>
+                                                <th>Category</th>
                                                 <th>Position </th>
-                                                <th>edit</th>
+                                                <th>Action</th>
                                                 <th></th>   
                                             </tr>
                                         </thead>
@@ -279,6 +279,7 @@
                                             {
                                                 $oid = $row['PersonnelID'];
                                                 $rid = $row['ResidentID'];
+                                                $cate = $row['Category'];
                                                 $lname = $row['LastName'];
                                                 $fname = $row['FirstName'];
                                                 $mname = $row['MidName'];
@@ -291,8 +292,8 @@
                                                 
                                                 
                                                 <td >$oid</td>
-                                                <td >$rid</td>
                                                 <td >$name</td>
+                                                <td >$cate</td>
                                                 <td >$pos</td>
                                                 <td>
                                                     <Button class='btn btn-success' name='btnEdit' id='btnEdit' value = '$oid' data-target=#officialsEdit data-toggle=modal onclick ='valueModal(this);'>  Edit </button>
@@ -302,8 +303,8 @@
 
                                                 <td>
                                                     <input type = 'hidden' value = '$oid' id = 'hidden_oid_$oid'>
-                                                    <input type = 'hidden' value = '$rid' id = 'hidden_rid_$oid'>
                                                     <input type = 'hidden' value = '$name' id = 'hidden_name_$oid'>
+                                                    <input type = 'hidden' value = '$cate' id = 'hidden_pos_$oid'>
                                                     <input type = 'hidden' value = '$pos' id = 'hidden_pos_$oid'>
 
 
@@ -363,48 +364,78 @@
     <!-- Modal -->
     <form method = POST action = mofficials.php>
   <div class="modal fade" id="officials" role="dialog">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog modal-sm">
     
-      <!-- Modal content-->
+       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Official</h4>
+          <h4 class="modal-title">Personnel</h4>
         </div>
         <div class="modal-body">
-		<center>
-					 <div class="form-inline">
-							<label for="surname" style="margin-left: 20px;">Official ID:</label> 
-                            <input type="text" class="form-control" id="surname" name = "txtOID" placeholder="ID" style="margin-right: 10px;">
-					</div> <br>
-					
-					 <div class="form-inline">
-							<label for="givenname">Resident ID:</label>	
-                            <input type="text" class="form-control" id="givenname" name = "txtRID" placeholder="ID" style="margin-right: 10px;">
-					</div> <br>
-                   
-					
-					<div class="form-inline">
-							<label for="givenname">Position</label>	
-                            <input type="text" class="form-control" id="givenname" name = "txtPosition" placeholder="Position" style="margin-right: 10px;">
-					</div> <br>
-					
-					
-		</center>
-		
-			  <div class="modal-footer">
-          <button type="reset" class="btn btn-default">Cancel</button>
-        <button type="submit" class="btn btn-primary" name = btnSubmit>Submit</button>
+          <div class="form-inline">
+                        <div style = "float:right">
+                        <label class="control-label"> Personnel ID:</label> 
+                            <input  type="text" 
+                                style="margin-left:50px; width:70px"
+                                class="form-control"
+                                name="txtOID"
+                                required="required" 
+                               
+                                >
+                        </div>   
+                    </div>
+                    <br>
+                    <br>
+                    <br>
+                    
+                    <div class="form-inline">
+                        <label class="control-label"> Resident ID:</label> 
+                            <input type="text" 
+                                style="margin-left:20px"
+                                class="form-control"
+                                name= "txtRID"
+                                required="required">
+                    </div>
+                    <br>
+
+                    <br>
+
+                    <div class="form-inline">
+                        <label class="control-label"> Category:</label> 
+                            <select  
+                                style="margin-left:32px;width:180px"
+                                class="form-control"
+                                name="txtCategory"
+                                required="required"> 
+                                    <option>Council</option>
+                                    <option>Appointee</option>
+                            </select>
+                    </div>
+                    <br>
+
+                    <div class="form-inline">
+                        <label class="control-label"> Position:</label> 
+                            <input type="text" 
+                                style="margin-left:36px"
+                                class="form-control"
+                                name="txtPosition"
+                                required="required">
+                    </div>
+                    <br>
         </div>
-		
+              <div class="modal-footer">
+        <button type="submit" name= "btnSubmit" class="btn btn-primary">Submit</button>
+        </div>
+        
+        
       </div>
-	  
+      
     </div>
 
-	
+    
         </div>
       </div>
-
   </form>
       
 

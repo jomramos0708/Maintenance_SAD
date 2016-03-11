@@ -106,52 +106,25 @@
                                 </li>
                                 <li><a><i class="fa fa-gears"></i> Maintenance <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu" style="display: none">
-                                        <li><a href="maintenance_household.php">Household</a>
+                                         <li><a href="maintenance_household.html">Household</a>
                                         </li>
-                                        <li><a href="maintenance_family.php">Family</a>
+                                        <li><a href="maintenance_family.html">Family</a>
                                         </li>
-                                         <li><a href="maintenance_resident.php">Resident</a>
+                                         <li><a href="maintenance_resident.html">Resident</a>
                                         </li>
-                                        <li><a href="maintenance_official.php">Barangay Personnel</a>
+                                        <li><a href="maintenance_official.html">Barangay Personnel</a>
                                         </li> 
-                                        <li><a href="maintenance_event.php">Event</a>
+                                        <li><a href="maintenance_event.html">Event</a>
                                         </li>
-                                        <li><a href="maintenance_docu.php">Document</a>
+                                        <li><a href="maintenance_docu.html">Document</a>
                                         </li>
-                                        <li><a href="maintenance_items.php">Item</a>
+                                        <li><a href="maintenance_items.html">Item</a>
                                         </li>
-                                        <li><a href="maintenance_facility.php">Facility</a>
+                                        <li><a href="maintenance_facility.html">Facility</a>
                                         </li>
                                     </ul>
                                 </li>
                                 <li><a><i class="fa fa-desktop"></i> Transaction <span class="fa fa-chevron-down"></span></a>
-                                <ul class="nav child_menu" style="display: none">
-                                        <li><a href="Requests.html">Requests</a>
-                                            <ul class="nav child_menu" style="display: none">
-                                            
-                                            </ul>
-                                        </li>
-                                        <li><a href="Approved Requests.html">Approved Requests</a>
-                                            <ul class="nav child_menu" style="display: none">
-                                                <li><a href="Approved Events.html">Event Requests</a>
-                                                </li>
-                                                <li><a href="Approved Documents.html">Document Requests</a>
-                                                </li>
-                                                <li><a href="Approved Items.html">Item Requests</a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                         <li><a href="Pending Requests.html">Pending/Active Requests</a>
-                                            <ul class="nav child_menu" style="display: none">
-                                                <li><a href="Pending Documents.html">Document Requests</a>
-                                                </li>
-                                                <li><a href="Pending Items.html">Item Requests</a>
-                                                </li>                                       
-                                            </ul>
-                                        </li>
-                                       
-                                    </ul>
-    
                                 </li>
                                 <li><a><i class="fa fa-file-text"></i> Query <span class="fa fa-chevron-down"></span></a>
                                 </li>
@@ -287,10 +260,10 @@
                                                     <button class='btn btn-danger' data-toggle='modal' data-target='#facilityDelete' id = 'btnDelete' name = 'btnDelete' value = '$facID' onclick = 'modalDelete(this)'>Delete</button>
                                                 </td>
                                                 <td>
-                                                    <input type = 'hidden' value = '$facID' id='hidden_facID_$facID'>
-                                                    <input type = 'hidden' value = '$facName' id='hidden_facName_$facID'>
-                                                    <input type = 'hidden' value = '$facCate' id='hidden_facCate_$facID'>
-                                                    <input type = 'hidden' value = '$facAddress' id='hidden_facAddress_$facID'>
+                                                    <input type = 'text' value = '$facID' id='hidden_facID_$facID'>
+                                                    <input type = 'text' value = '$facName' id='hidden_facName_$facID'>
+                                                    <input type = 'text' value = '$facCate' id='hidden_facCate_$facID'>
+                                                    <input type = 'text' value = '$facAddress' id='hidden_facAddress_$facID'>
                                                 
                                                 </td>
                                             </tr>";
@@ -465,7 +438,7 @@
 
                     <div class="form-inline">
                         <label class="control-label"> Category:</label> 
-                            <select
+                            <select 
                                 style="margin-left:12px"
                                 class="form-control"
                                 id="EtxtFacCate"

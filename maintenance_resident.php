@@ -1,3 +1,118 @@
+<script type = text/javascript>
+    function getHeight()
+    {
+        
+        var c =  + (document.getElementById('RtxtWeight').value/(document.getElementById('RtxtHeight').value*document.getElementById('RtxtHeight').value));
+        var n = c.toFixed(2);
+        document.getElementById('RtxtBMI').value = n;
+
+        
+        if(n < 16){
+            document.getElementById('RtxtHealth').value = "Severely Underweight";}
+        else if (n >= 16 && n < 18.5){
+            document.getElementById('RtxtHealth').value = "Underweight";}
+        else if (n >= 18.5 && n < 25){
+            document.getElementById('RtxtHealth').value = "Normal";}
+       else if (n >= 25 && n < 30){
+            document.getElementById('RtxtHealth').value = "Overweight";}
+        else if (n >= 30){
+            document.getElementById('RtxtHealth').value = "Obese";}
+
+        
+
+
+    }
+
+    function getWeight()
+    {
+        var c =  + (document.getElementById('RtxtWeight').value/(document.getElementById('RtxtHeight').value*document.getElementById('RtxtHeight').value));
+        var n = c.toFixed(2);
+        document.getElementById('RtxtBMI').value = n;
+
+
+       
+        
+        if(n < 16){
+            document.getElementById('RtxtHealth').value = "Severely Underweight";}
+        else if (n >= 16 && n < 18.5){
+            document.getElementById('RtxtHealth').value = "Underweight";}
+        else if (n >= 18.5 && n < 25){
+            document.getElementById('RtxtHealth').value = "Normal";}
+       else if (n >= 25 && n < 30){
+            document.getElementById('RtxtHealth').value = "Overweight";}
+        else if (n >= 30){
+            document.getElementById('RtxtHealth').value = "Obese";}
+
+        
+      
+        
+    }
+
+    function haha()
+    {
+        if(document.getElementById('ch4').checked)
+        {
+            document.getElementById('ch1').checked = false;
+            document.getElementById('ch2').checked = false;
+            document.getElementById('ch3').checked = false;
+        }
+    }
+
+    function hehe()
+    {
+        if(document.getElementById('ch1').checked || document.getElementById('ch2').checked || document.getElementById('ch3').checked)
+        {
+            document.getElementById('ch4').checked = false;
+        }
+    }
+
+    function hihi()
+    {
+        if(document.getElementById('ch5').checked || 
+            document.getElementById('ch6').checked || 
+            document.getElementById('ch7').checked || 
+            document.getElementById('ch8').checked || 
+            document.getElementById('ch9').checked || 
+            document.getElementById('ch10').checked || 
+            document.getElementById('ch11').checked || 
+            document.getElementById('ch12').checked || 
+            document.getElementById('ch13').checked || 
+            document.getElementById('ch14').checked || 
+            document.getElementById('ch15').checked)
+        {
+            document.getElementById('ch16').checked = false;
+        }
+    }
+
+    function hoho()
+    {
+        if(document.getElementById('ch16').checked)
+        {
+            document.getElementById('ch5').checked = false;
+            document.getElementById('ch6').checked = false;
+            document.getElementById('ch7').checked = false;
+            document.getElementById('ch8').checked = false;
+            document.getElementById('ch9').checked = false;
+            document.getElementById('ch10').checked = false;
+            document.getElementById('ch11').checked = false;
+            document.getElementById('ch12').checked = false;
+            document.getElementById('ch13').checked = false;
+            document.getElementById('ch14').checked = false;
+            document.getElementById('ch15').checked = false;
+        }
+    }
+
+
+    
+
+
+
+
+
+</script>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -204,7 +319,7 @@
                                     <div class="clearfix"></div>
                                 </div>
                                 <div class="x_content" style="overflow-x:auto">
-                                    <table id="example" class="table table-striped responsive-utilities jambo_table" style="font-size:12px;">
+                                    <table id="example" class="table table-striped responsive-utilities jambo_table" style="font-size:12px">
                                         <thead>
                                             <tr class="headings">
                                                 <th>
@@ -315,7 +430,7 @@
     
     
 			<!-- Modal -->
-			<form method = POST action = "">	
+			<form method = POST action = "" onload = "computeAge()">	
 				<div class="modal fade" id="residents" role="dialog">
 					<div class="modal-dialog modal-lg" style="width: 950px">
 					
@@ -478,28 +593,6 @@
                     					</td>
 			                        </tr>
 
-                                     <!--5th row-->
-
-                                     <tr>
-                                        <td><label class="control-label">Voting Status</label></td>
-                                        <td><select
-                                                class="form-control"
-                                                id="RVote"
-                                                name="RVote">
-                                                    <option>Not Registered</option>
-                                                    <option>Registered in this Barangay</option>
-                                                    <option>Registered in other Barangay</option>
-                                                    <option>Not Applicable</option>
-                                            </select></td>
-
-                                        <td><label for="resperiod">Province*</label> </td>
-                                        <td><input type="text" 
-                                                   class="form-control"
-                                                   maxlength="45"  
-                                                   id="RProvince" 
-                                                   name = "RProvince" 
-                                                   required></td>
-                                    </tr>
 			                        
 								</tbody>
 						    </table>
@@ -514,24 +607,18 @@
 							<table style="border-spacing: 17px;border-collapse: separate;font-size: 12px">
 								<tbody  style="text-align: right">
 									<tr>
-										<td><label for="mobile">Mobile No.</label></td>	
+										<td><label for="mobile">Mobile No.*</label></td>	
 			                            <td><input type="text" 
 			                            		   class="form-control"
 			                            		   maxlength="11" 
 			                            		   id="RtxtMobile" 
-			                            		   name = "RtxtMobile"></td>
-
-                                        <td><label for="mobile">Landline</label></td> 
-                                        <td><input type="text" 
-                                                   class="form-control"
-                                                   maxlength="11" 
-                                                   id="RtxtLandline" 
-                                                   name = "RtxtLandline"></td>
+			                            		   name = "RtxtMobile" 
+			                            		   REQUIRED></td>
 								 
 								
 								   
 										<td><label for="email">Email Address</label></td>
-			                            <td><input type ="email" 
+			                            <td><input type ="text" 
 			                            		   class="form-control"
 			                            		   maxlength="45" 
 			                            		   id="RtxtEmail"  
@@ -559,6 +646,8 @@
 			                            		   maxlength="45" 
 			                            		   id="RtxtHeight"  
 			                            		   name = "RtxtHeight"
+                                                   value = 0
+                                                   onkeyup = "getHeight()"
 			                            		   required></td>
 
 			                            <td><label for="weight">Weight* <i>(in kilograms)</i></label></td>
@@ -567,6 +656,8 @@
 			                            		   maxlength="45" 
 			                            		   id="RtxtWeight"  
 			                            		   name = "RtxtWeight"
+                                                   value = 0
+                                                   onkeyup = "getWeight()"
 			                            		   required></td>
 
 			                            <td><label for="bmi">Body Mass Index</label></td>
@@ -575,6 +666,7 @@
 			                            		   maxlength="45" 
 			                            		   id="RtxtBMI"  
 			                            		   name = "RtxtBMI"
+                                                   value = 0
 			                            		   readonly></td>
 
 			                        </tr>
@@ -590,95 +682,105 @@
 			                            		   maxlength="45" 
 			                            		   id="RtxtHealth"  
 			                            		   name = "RtxtHealth"
+                                                   value = ""
 			                            		   readonly></td>
 
 			                            <td><label class="control-label"> Health Insurance</label></td>
-										<td>       
-											<div style="text-align: left" class="optionBox" id="abcd">
-												
-                                                        <label><input type="checkbox" class="flat" name="RInsurance[]"> PhilHealth</label><br>
-
-                                                        <label><input type="checkbox" class="flat" name="RInsurance[]"> Blue/Yellow Card</label><br>
-                                                
-                                                        <label><input type="checkbox" class="flat" name="RInsurance[]"> Private Health Insurance</label><br>
-                                                
-                                                        <label><input type="checkbox" class="flat" name="RInsurance[]"> None </label><br>
-                                                        <label><input type="checkbox" class="flat" name="none" id="none"> None </label><br>
-            
-                                                        
-                                        </td>
-
-                                        <td><label class="control-label"> Disability</label></td>
-                                        <td>    
-                                            <div style="text-align: left">
-                                                <div class="checkbox">
-                                   </div>
+										<td>    
+											<div style="text-align: left">
+												<div class="checkbox">
+                                                    <label>
+                                                        <input type="checkbox" id = "ch1" onclick="hehe()"> PhilHealth
+                                                    </label>
+                                                </div>
                                                 <div class="checkbox">
                                                     <label>
-                                                        <input type="checkbox" class="flat"> Cripple (Lumpo)
+                                                        <input type="checkbox" id = "ch2" onclick="hehe()"> Blue/Yellow Card
+                                                    </label>
+                                                 <div class="checkbox">
+                                                    <label>
+                                                        <input type="checkbox" id = "ch3" onclick="hehe()"> Private Health Insurance
+                                                    </label>
+                                               	<div class="checkbox">
+                                                    <label>
+                                                        <input type="checkbox" id = "ch4" onclick="haha()"> None
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </td>
+
+
+                                        <td><label class="control-label"> Disability</label></td>
+										<td>    
+											<div style="text-align: left">
+												<div class="checkbox">
+                                                    <label>
+                                                        <input type="checkbox" id = "ch5" onclick = "hihi()"> Blind
+                                                    </label>
+                                                </div>
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <input type="checkbox" id = "ch6" onclick = "hihi()"> Cripple (Lumpo)
                                                     </label>
                                                  </div>
                                                  <div class="checkbox">
                                                     <label>
-                                                        <input type="checkbox" class="flat"> Mute
+                                                        <input type="checkbox" id = "ch7" onclick = "hihi()"> Mute
                                                     </label>
                                                  </div>
                                                	<div class="checkbox">
                                                     <label>
-                                                        <input type="checkbox" class="flat"> Deaf
+                                                        <input type="checkbox" id = "ch8" onclick = "hihi()"> Deaf
                                                     </label>
                                                 </div>
                                                 
 												<div class="checkbox">
                                                     <label>
-                                                        <input type="checkbox" class="flat"> Heart Disease
+                                                        <input type="checkbox" id = "ch9" onclick = "hihi()"> Heart Disease
                                                     </label>
                                                 </div>
 
                                                 <div class="checkbox">
                                                     <label>
-                                                        <input type="checkbox" class="flat"> Asthma
+                                                        <input type="checkbox" id = "ch10" onclick = "hihi()"> Asthma
                                                     </label>
                                                 </div>
 
                                             </div>
                                         <td>
-
-                                      
-
                                         	<div style="text-align: left">
 
                                        
                                                 
                                                 <div class="checkbox">
                                                     <label>
-                                                        <input type="checkbox" class="flat"> Diabetes
+                                                        <input type="checkbox" id = "ch11" onclick = "hihi()"> Diabetes
                                                     </label>
                                                 </div>
                                                 <div class="checkbox">
                                                     <label>
-                                                        <input type="checkbox" class="flat"> Tuberculosis
+                                                        <input type="checkbox" id = "ch12" onclick = "hihi()"> Tuberculosis
                                                     </label>
                                                 </div>
                                                 <div class="checkbox">
                                                     <label>
-                                                        <input type="checkbox" class="flat"> Highblood Pressure
+                                                        <input type="checkbox" id = "ch13" onclick = "hihi()"> Highblood Pressure
                                                     </label>
                                                 </div>
                                                 <div class="checkbox">
                                                     <label>
-                                                        <input type="checkbox" class="flat"> Communcable Diseases
+                                                        <input type="checkbox" id = "ch14" onclick = "hihi()"> Communicable Diseases
                                                     </label>
                                                 </div>
                                                 <div class="checkbox">
                                                     <label>
-                                                        <input type="checkbox" class="flat"> Others
+                                                        <input type="checkbox" id = "ch15" onclick = "hihi()"> Others
                                                     </label>
                                                 </div>
 
                                                 <div class="checkbox">
                                                     <label>
-                                                        <input type="checkbox" class="flat"> None
+                                                        <input type="checkbox" id = "ch16" onclick = "hoho()"> None
                                                     </label>
                                                 </div>
                                             </div>
@@ -798,19 +900,19 @@
 			                </table>
 
 
-			                <!--rooooow-->	
-							<div style="width: 100%; height: 20px; border-bottom: 1px solid #ebebe0; text-align: left">
-									 	<span style="font-size: 12px; padding: 0 10px;">
-									    Economic Status<!--Padding is optional-->
-									  	</span>
-							</div>
+			                <!--rooooow-->   
+                            <div style="width: 100%; height: 20px; border-bottom: 1px solid #ebebe0; text-align: left">
+                                        <span style="font-size: 12px; padding: 0 10px;">
+                                        Economic Status<!--Padding is optional-->
+                                        </span>
+                            </div>
                             <center>
-							<table style="border-spacing: 17px;border-collapse: separate;font-size: 12px">
+                            <table style="border-spacing: 17px;border-collapse: separate;font-size: 12px">
                                 <tbody  style="text-align: right">
                                 
-			                        <tr>
-			                        	<td><label class="control-label">Occupation</label></td>
-				                        <td><input type="text" 
+                                    <tr>
+                                        <td><label class="control-label">Occupation</label></td>
+                                        <td><input type="text" 
                                                    class="form-control"
                                                    maxlength="45"  
                                                    id="ROccupation" 
@@ -831,11 +933,12 @@
                                                     <option>30000-34999</option>
                                                     <option>35000-above</option>
                                             </select></td>
-				                    </tr>
+                                    </tr>
                                 
-				                </tbody>
+                                </tbody>
                             </center> 
-				            </table>
+                            </table>
+
 
 
 						
@@ -874,9 +977,10 @@
         <script src="js/datatables/js/jquery.dataTables.js"></script>
         <script src="js/datatables/tools/js/dataTables.tableTools.js"></script>
         <script>
+            $(document).ready(
+                
 
-  
-            $(document).ready(function () {
+                function () {
                 $('input.tableflat').iCheck({
                     checkboxClass: 'icheckbox_flat-green',
                     radioClass: 'iradio_flat-green'
@@ -944,7 +1048,6 @@
 				});
 
 			});
-      
 		</script>
 </body>
 

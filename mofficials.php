@@ -16,11 +16,12 @@
         else{
                 $oid = $_POST['txtOID'];
                 $rid = $_POST['txtRID'];
+                $cate = $_POST['txtCategory'];
                 $pos = $_POST['txtPosition'];
 
-                $query = "insert into officials values ('$oid', '$rid', '$pos', 'active')";
+                $query = "insert into personnel values ('$oid', '$rid','$cate', '$pos', 'active')";
 
-               //$query = "insert into officials values ('o006', 'r001', 'treasurer', 'active')";
+               //$query = "insert into personnel values ('o006', 'r001', 'treasurer', 'active')";
 
                 $res = mysqli_query($con, $query);
                 if(!$res){
@@ -41,7 +42,7 @@
                 $rid = $_POST['Erid'];
                 $pos = $_POST['Epos'];
 
-                $query = "update officials set ResidentID ='$rid', OfficialPosition = '$pos', OfficialStatus = 'active' where OfficialID = '$oid'";
+                $query = "update personnel set ResidentID ='$rid', OfficialPosition = '$pos', OfficialStatus = 'active' where OfficialID = '$oid'";
 
                 $res = mysqli_query($con, $query);
 
