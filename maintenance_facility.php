@@ -51,7 +51,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Barangay Information System</title>
+    <title>BREMS</title>
 
     <!-- Bootstrap core CSS -->
 
@@ -90,7 +90,7 @@
                 <div class="left_col scroll-view">
 
                     <div class="navbar nav_title" style="border: 0;">
-                        <a href="#" class="site_title"><i class="fa fa-institution"></i> <span style="font-size:13px">Barangay Information System</span></a>
+                        <a href="#" class="site_title"><i class="fa fa-institution"></i> <span style="font-size:13px">BREMS</span></a>
                     </div>
                     <div class="clearfix"></div>
 
@@ -102,29 +102,73 @@
                         <div class="menu_section">
                             <h3>General</h3>
                             <ul class="nav side-menu">
-                                <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
+                                <li><a href="home.html"><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
                                 </li>
-                                <li><a><i class="fa fa-gears"></i> Maintenance <span class="fa fa-chevron-down"></span></a>
+                               <li><a><i class="fa fa-gears"></i> Maintenance <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu" style="display: none">
-                                         <li><a href="maintenance_household.html">Household</a>
+                                        <li><a href="#">Request Monitoring Module</a>
+                                            <ul class="nav child_menu" style="display: none">
+                                                <li><a href="maintenance_official.php">Barangay Personnel</a>
+                                                </li> 
+
+                                                <li><a href="maintenance_docu.php">Document</a>
+                                                </li>
+
+                                                <li><a href="maintenance_items.php">Item</a>
+                                                </li>
+
+                                                <li><a href="maintenance_facility.php">Facility</a>
+                                                </li>
+
+                                             </ul>
                                         </li>
-                                        <li><a href="maintenance_family.html">Family</a>
-                                        </li>
-                                         <li><a href="maintenance_resident.html">Resident</a>
-                                        </li>
-                                        <li><a href="maintenance_official.html">Barangay Personnel</a>
-                                        </li> 
-                                        <li><a href="maintenance_event.html">Event</a>
-                                        </li>
-                                        <li><a href="maintenance_docu.html">Document</a>
-                                        </li>
-                                        <li><a href="maintenance_items.html">Item</a>
-                                        </li>
-                                        <li><a href="maintenance_facility.html">Facility</a>
-                                        </li>
+
+                                         <li><a href="#">Event Monitoring Module</a>
+                                            <ul class="nav child_menu" style="display: none">
+                                                <li><a href="maintenance_resident.php">Resident</a>
+                                                </li>
+
+                                                <li><a href="maintenance_household.php">Household</a>
+                                                </li>
+
+                                                <li><a href="maintenance_family.php">Family</a>
+                                                </li>
+
+                                                 
+                                            </ul>
+                                        </li>    
+                                            
                                     </ul>
+                                        
                                 </li>
-                                <li><a><i class="fa fa-desktop"></i> Transaction <span class="fa fa-chevron-down"></span></a>
+                               <li><a><i class="fa fa-desktop"></i> Transaction <span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu" style="display: none">
+                                        <li><a href="Requests.html">Requests</a>
+                                            <ul class="nav child_menu" style="display: none">
+                                            
+                                            </ul>
+                                        </li>
+                                        <li><a href="Approved Requests.html">Approved Requests</a>
+                                            <ul class="nav child_menu" style="display: none">
+                                                <li><a href="Approved Events.html">Event Requests</a>
+                                                </li>
+                                                <li><a href="Approved Documents.html">Document Requests</a>
+                                                </li>
+                                                <li><a href="Approved Items.html">Item Requests</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                         <li><a href="Pending Requests.html">Pending/Active Requests</a>
+                                            <ul class="nav child_menu" style="display: none">
+                                                <li><a href="Pending Documents.html">Document Requests</a>
+                                                </li>
+                                                <li><a href="Pending Items.html">Item Requests</a>
+                                                </li>                                       
+                                            </ul>
+                                        </li>
+                                       
+                                    </ul>
+    
                                 </li>
                                 <li><a><i class="fa fa-file-text"></i> Query <span class="fa fa-chevron-down"></span></a>
                                 </li>
@@ -216,11 +260,12 @@
                                 <div class="x_title">
                                     <h2>Facility </h2>
                                     
+                                    <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#facility" style="float:right"><span class='glyphicon glyphicon-plus' aria-hidden='true' style="color:white"></span>   Add Facility</button>
                                     <div class="clearfix"></div>
                                 </div>
                                 <div class="x_content">
                                         
-                                    <table id="example" class="table table-striped responsive-utilities jambo_table" style="font-size:12px">
+                                    <table id="example" class="table table-striped responsive-utilities jambo_table" style="font-size:14px; text-align: center">
                                         <?php
                                             require("connection.php");
                                             $q = mysqli_query($con,"Select * from facility where FacilityStatus != 'inactive'");
@@ -256,14 +301,17 @@
                                                 <td >$facCate</td>
                                                 <td >$facAddress</td>
                                                 <td> 
-                                                    <button class='btn btn-success' data-toggle='modal' data-target='#facilityEdit' id = 'btnEdit' name = 'btnEdit' value = '$facID' onclick = 'modalEdit(this)'>Edit</button>
-                                                    <button class='btn btn-danger' data-toggle='modal' data-target='#facilityDelete' id = 'btnDelete' name = 'btnDelete' value = '$facID' onclick = 'modalDelete(this)'>Delete</button>
+                                                
+
+                                                    <span data-toggle='tooltip' title='Edit' data-placement='left'><button class='btn btn-success' data-toggle='modal' data-target='#facilityEdit' id = 'btnEdit' name = 'btnEdit' value = '$facID' onclick = 'modalEdit(this)'><i class='glyphicon glyphicon-pencil' aria-hidden='true'> </i></button></span>
+
+                                                    <span data-toggle='tooltip' title='Delete' data-placement='left'> <button class='btn btn-danger' data-toggle='modal' data-target='#facilityDelete' id = 'btnDelete' name = 'btnDelete' value = '$facID' onclick = 'modalDelete(this)'><i class='glyphicon glyphicon-remove' aria-hidden='true'> </i></button></span>
                                                 </td>
                                                 <td>
-                                                    <input type = 'text' value = '$facID' id='hidden_facID_$facID'>
-                                                    <input type = 'text' value = '$facName' id='hidden_facName_$facID'>
-                                                    <input type = 'text' value = '$facCate' id='hidden_facCate_$facID'>
-                                                    <input type = 'text' value = '$facAddress' id='hidden_facAddress_$facID'>
+                                                    <input type = 'hidden' value = '$facID' id='hidden_facID_$facID'>
+                                                    <input type = 'hidden' value = '$facName' id='hidden_facName_$facID'>
+                                                    <input type = 'hidden' value = '$facCate' id='hidden_facCate_$facID'>
+                                                    <input type = 'hidden' value = '$facAddress' id='hidden_facAddress_$facID'>
                                                 
                                                 </td>
                                             </tr>";
@@ -276,16 +324,7 @@
 
                                     
                                 </div>
-                                <br>  
-                                <center>
-                                    
-                                    <button type="submit" class="btn btn-success" data-toggle="modal" data-target="#facility">Add</button>
-                                
-                                
-                                
-                                </center>
-                                
-                                
+    
                                     
                             </div>
                         </div>
@@ -299,8 +338,8 @@
                     <!-- footer content -->
                 <footer>
                     <div class="">
-                        <p class="pull-right">Developed by PUP 2016 | Gentelella Alela! a Bootstrap 3 template by <a>Kimlabs</a>. |
-                            <span class="lead"> <i class="fa fa-institution"></i> Barangay Information System</span>
+                        <p class="pull-right">Developed by PUP 2016 |
+                            <span class="lead"> <i class="fa fa-institution"></i> Barangay Requesting and Event Monitoring System</span>
                         </p>
                     </div>
                     <div class="clearfix"></div>
@@ -315,7 +354,7 @@
     <!-- Modal -->
     <form method = "POST" action = "mfacility.php">
   <div class="modal fade" id="facility" role="dialog">
-    <div class="modal-dialog modal-sm">
+    <div class="modal-dialog modal-sm" style="width:600px">
     
       <!-- Modal content-->
       <div class="modal-content">
@@ -326,7 +365,7 @@
 		
         <div class="modal-body">
 			<form method="post">
-					<div class="form-inline">
+					<div class="form-inline" hidden="hidden">
                         <div style = "float:right">
                         <label class="control-label"> Facility ID:</label> 
                             <input  type="text" 
@@ -334,28 +373,28 @@
                                 class="form-control"
                                 id="txtFacID"
                                 name = "txtFacID"
+                                readonly 
                                 >
                         </div>   
 					</div>
-                    <br>
-                    <br>
-                    <br>
-					
-					<div class="form-inline">
-						<label class="control-label"> Name:</label> 
-                            <input type="text"
-                                style="margin-left:32px" 
+        <center>
+		 <table  style="border-spacing: 17px;border-collapse: separate;font-size: 14px">
+
+                    <tbody  style="text-align: center">
+                <tr>
+
+					<td>	<label class="control-label"> Name*</label> </td>
+                    <td>       <input type="text"
+                                 
                                 class="form-control"
                                 id="txtFacName"
                                 name="txtFacName"
-                                required="required">
-					</div>
-					<br>
-
-                    <div class="form-inline">
-                        <label class="control-label"> Category:</label> 
-                            <select
-                                style="margin-left:12px"
+                                required="required"> </td>
+                </tr>
+                <tr>
+                    <td>  <label class="control-label"> Category*</label> </td>
+                     <td>       <select
+                                
                                 class="form-control"
                                 id="txtFacCate"
                                 name="txtFacCate"
@@ -364,24 +403,24 @@
                                     <option>Conference/Meeting</option>
                                     <option>Multi-purpose</option>
                                     <option>Sports</option>
-                            </select>
-                    </div>
-                    <br>
+                            </select> </td>
+                </tr>
 
-                    <div class="form-inline">
-                        <label class="control-label"> Address:</label> 
-                            <input type="text" 
-                                style="margin-left:15px"
+                <tr>
+                     <td>   <label class="control-label"> Address*</label> </td>
+                     <td>       <input type="text" 
+                                
                                 class="form-control"
                                 id="txtFacAddress"
                                 name="txtFacAddress"
-                                required="required">
-                    </div>
-                    <br>
+                                required="required"> </td>
+                </tr>
                     
 			</div>		
                     
-
+</tbody>
+</table>
+</center>
         <div class="modal-footer">
 		  <button type="submit" class="btn btn-primary" name = "btnSubmit">Submit</button>
         </div>
@@ -398,7 +437,7 @@
     <!-- Modal -->
     <form method = "POST" action = "mfacility.php">
   <div class="modal fade" id="facilityEdit" role="dialog">
-    <div class="modal-dialog modal-sm">
+    <div class="modal-dialog modal-sm" style="width:600px">
     
       <!-- Modal content-->
       <div class="modal-content">
@@ -409,7 +448,7 @@
         
         <div class="modal-body">
             <form method="post">
-                    <div class="form-inline">
+                    <div class="form-inline" hidden="hidden">
                         <div style = "float:right">
                         <label class="control-label"> Facility ID:</label> 
                             <input  type="text" 
@@ -421,47 +460,51 @@
                                 >
                         </div>   
                     </div>
-                    <br>
-                    <br>
-                    <br>
-                    
-                    <div class="form-inline">
-                        <label class="control-label"> Name:</label> 
-                            <input type="text"
-                                style="margin-left:32px" 
+
+                   <center>
+         <table  style="border-spacing: 17px;border-collapse: separate;font-size: 14px">
+
+                    <tbody  style="text-align: center">
+                <tr>
+
+                    <td>    <label class="control-label"> Name*</label> </td>
+                    <td>       <input type="text"
+                                 
                                 class="form-control"
                                 id="EtxtFacName"
                                 name="EtxtFacName"
-                                required="required">
-                    </div>
-                    <br>
-
-                    <div class="form-inline">
-                        <label class="control-label"> Category:</label> 
-                            <select 
-                                style="margin-left:12px"
+                                required="required"> </td>
+                </tr>
+                <tr>
+                    <td>  <label class="control-label"> Category</label> </td>
+                     <td>       <select
+                                
                                 class="form-control"
                                 id="EtxtFacCate"
                                 name="EtxtFacCate"
-                                required="required">
+                                >
                                     <option>Educational</option>
                                     <option>Conference/Meeting</option>
                                     <option>Multi-purpose</option>
                                     <option>Sports</option>
-                            </select>
-                    </div>
-                    <br>
+                            </select> </td>
+                </tr>
 
-                    <div class="form-inline">
-                        <label class="control-label"> Address:</label> 
-                            <input type="text" 
-                                style="margin-left:15px"
+                <tr>
+                     <td>   <label class="control-label"> Address*</label> </td>
+                     <td>       <input type="text" 
+                                
                                 class="form-control"
                                 id="EtxtFacAddress"
                                 name="EtxtFacAddress"
-                                required="required">
-                    </div>
-                    <br>
+                                required="required"> </td>
+                </tr>
+                    
+            </div>      
+                    
+</tbody>
+</table>
+</center>
                     
             </div>      
                     
@@ -481,7 +524,7 @@
 
     <form method = "POST" action = "mfacility.php">
   <div class="modal fade" id="facilityDelete" role="dialog">
-    <div class="modal-dialog modal-sm">
+    <div class="modal-dialog modal-sm" style="width:600px">
     
       <!-- Modal content-->
       <div class="modal-content">
@@ -492,7 +535,7 @@
         
         <div class="modal-body">
             <form method="post">
-                    <div class="form-inline">
+                    <div class="form-inline" hidden="hidden">
                         <div style = "float:right">
                         <label class="control-label"> Facility ID:</label> 
                             <input  type="text" 
@@ -504,53 +547,53 @@
                                 >
                         </div>   
                     </div>
-                    <br>
-                    <br>
-                    <br>
+               
                     
-                    <div class="form-inline">
-                        <label class="control-label"> Name:</label> 
-                            <input type="text"
-                                style="margin-left:32px" 
+                    <center>
+         <table  style="border-spacing: 17px;border-collapse: separate;font-size: 14px">
+
+                    <tbody  style="text-align: center">
+                <tr>
+
+                    <td>    <label class="control-label"> Name*</label> </td>
+                    <td>       <input type="text"
+                                 
                                 class="form-control"
                                 id="DtxtFacName"
                                 name="DtxtFacName"
-                                required="required"
-                                readonly="readonly";>
-
-                    </div>
-                    <br>
-
-                    <div class="form-inline">
-                        <label class="control-label"> Category:</label> 
-                            <select
-                                style="margin-left:12px"
+                                readonly="readonly"> </td>
+                </tr>
+                <tr>
+                    <td>  <label class="control-label"> Category</label> </td>
+                     <td>       <select
+                                
                                 class="form-control"
                                 id="DtxtFacCate"
                                 name="DtxtFacCate"
-                                required="required"
-                                readonly="readonly";>
+                                readonly
+                                >
                                     <option>Educational</option>
                                     <option>Conference/Meeting</option>
                                     <option>Multi-purpose</option>
                                     <option>Sports</option>
-                            </select>
-                    </div>
-                    <br>
+                            </select> </td>
+                </tr>
 
-                    <div class="form-inline">
-                        <label class="control-label"> Address:</label> 
-                            <input type="text" 
-                                style="margin-left:15px"
+                <tr>
+                     <td>   <label class="control-label"> Address*</label> </td>
+                     <td>       <input type="text" 
+                                
                                 class="form-control"
                                 id="DtxtFacAddress"
                                 name="DtxtFacAddress"
-                                required="required"
-                                readonly="readonly";>
-                    </div>
-                    <br>
+                                readonly="readonly"> </td>
+                </tr>
                     
             </div>      
+                    
+</tbody>
+</table>
+</center>     
                     
 
         <div class="modal-footer">

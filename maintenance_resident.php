@@ -1,3 +1,156 @@
+<SCRIPT LANGUAGE="JavaScript1.2"> <!--
+
+function myAgeValidation() {
+
+    var lre = /^\s*/;
+    var datemsg = "";
+   
+    var inputDate = document.as400samplecode.myDate.value;
+    inputDate = inputDate.replace(lre, "");
+    document.as400samplecode.myDate.value = inputDate;
+    datemsg = isValidDate(inputDate);
+        if (datemsg != "") {
+            document.getElementById('RtxtAge').value = (datemsg);
+            return;
+        }
+        else {
+            //Now find the Age based on the Birth Date
+            getAge(new Date(inputDate));
+        }
+
+}
+
+function getAge(birth) {
+
+    var today = new Date();
+    var nowyear = today.getFullYear();
+    var nowmonth = today.getMonth();
+    var nowday = today.getDate();
+
+    var birthyear = birth.getFullYear();
+    var birthmonth = birth.getMonth();
+    var birthday = birth.getDate();
+
+    document.getElementById('a').value = birthyear + "-" + (birthmonth+1) + "-" + birthday;
+    alert(document.getElementById('a').value);
+
+    var age = nowyear - birthyear;
+    var age_month = nowmonth - birthmonth;
+    var age_day = nowday - birthday;
+   
+    if(age_month < 0 || (age_month == 0 && age_day <0)) {
+            age = parseInt(age) -1;
+        }
+    document.getElementById('RtxtAge').value = (age);
+    if(age < 4)
+    {
+
+        document.getElementById('RCurrentEduc').disabled = true;
+        document.getElementById('RRecentEduc').disabled = true;
+        document.getElementById('RHighestEduc').disabled = true;
+        document.getElementById('RLiterateRead').disabled = true;
+        document.getElementById('RLiterateWrite').disabled = true;
+        document.getElementById('ROccupation').disabled = true;
+        document.getElementById('RIncome').disabled = true;                                        
+                                                
+    }
+    else if (age < 10)
+    {
+        document.getElementById('RCurrentEduc').disabled = false;
+        document.getElementById('RRecentEduc').disabled = false;
+        document.getElementById('RHighestEduc').disabled = true;
+        document.getElementById('RLiterateRead').disabled = true;
+        document.getElementById('RLiterateWrite').disabled = true;
+        document.getElementById('ROccupation').disabled = true;
+        document.getElementById('RIncome').disabled = true; 
+    }
+    else if (age < 18)
+    {
+        document.getElementById('RCurrentEduc').disabled = false;
+        document.getElementById('RRecentEduc').disabled = false;
+        document.getElementById('RHighestEduc').disabled = true;
+        document.getElementById('RLiterateRead').disabled = false;
+        document.getElementById('RLiterateWrite').disabled = false;
+        document.getElementById('ROccupation').disabled = true;
+        document.getElementById('RIncome').disabled = true; 
+    }
+    else
+    {
+        document.getElementById('RCurrentEduc').disabled = false;
+        document.getElementById('RRecentEduc').disabled = false;
+        document.getElementById('RHighestEduc').disabled = true;
+        document.getElementById('RLiterateRead').disabled = false;
+        document.getElementById('RLiterateWrite').disabled = false;
+        document.getElementById('ROccupation').disabled = false;
+        document.getElementById('RIncome').disabled = false; 
+    }
+   
+    if ((age == 18 && age_month <= 0 && age_day <=0) || age < 18) {
+    }
+    
+
+}
+
+function isValidDate(dateStr) {
+
+   
+    var msg = "";
+    // Checks for the following valid date formats:
+    // MM/DD/YY   MM/DD/YYYY   MM-DD-YY   MM-DD-YYYY
+    // Also separates date into month, day, and year variables
+
+    // To require a 2 & 4 digit year entry, use this line instead:
+    //var datePat = /^(\d{1,2})(\/|-)(\d{1,2})\2(\d{2}|\d{4})$/;
+    // To require a 4 digit year entry, use this line instead:
+    var datePat = /^(\d{1,2})(\/|-)(\d{1,2})\2(\d{4})$/;
+
+    var matchArray = dateStr.match(datePat); // is the format ok?
+    if (matchArray == null) {
+        msg = "Date is not in a valid format.";
+        return msg;
+    }
+
+    month = matchArray[1]; // parse date into variables
+    day = matchArray[3];
+    year = matchArray[4];
+
+   
+    if (month < 1 || month > 12) { // check month range
+        msg = "Month must be between 1 and 12.";
+        return msg;
+    }
+
+    if (day < 1 || day > 31) {
+        msg = "Day must be between 1 and 31.";
+        return msg;
+    }
+
+    if ((month==4 || month==6 || month==9 || month==11) && day==31) {
+        msg = "Month "+month+" doesn't have 31 days!";
+        return msg;
+    }
+
+    if (month == 2) { // check for february 29th
+    var isleap = (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0));
+    if (day>29 || (day==29 && !isleap)) {
+        msg = "February " + year + " doesn't have " + day + " days!";
+        return msg;
+    }
+    }
+
+    if (day.charAt(0) == '0') day= day.charAt(1);
+   
+    //Incase you need the value in CCYYMMDD format in your server program
+    //msg = (parseInt(year,10) * 10000) + (parseInt(month,10) * 100) + parseInt(day,10);
+   
+    return msg;  // date is valid
+}
+
+</SCRIPT>
+
+
+
+
 <script type = text/javascript>
     function getHeight()
     {
@@ -60,9 +213,17 @@
 
     function hehe()
     {
-        if(document.getElementById('ch1').checked || document.getElementById('ch2').checked || document.getElementById('ch3').checked)
+        if(document.getElementById('ch1').checked || 
+            document.getElementById('ch2').checked || 
+            document.getElementById('ch3').checked)
         {
             document.getElementById('ch4').checked = false;
+        }
+        else if(document.getElementById('ch4').checked   )
+        {
+            document.getElementById('ch1').checked = false;
+            document.getElementById('ch2').checked = false;
+            document.getElementById('ch3').checked = false;
         }
     }
 
@@ -102,11 +263,150 @@
         }
     }
 
+    function lol()
+    {
+        if(document.getElementById('RCurrentEduc').value == "Yes" )
+        {
+            document.getElementById('RRecentEduc').disabled = false;
+            document.getElementById('RHighestEduc').disabled = true;
+
+        }
+        else if(document.getElementById('RCurrentEduc').value == "No" )
+        {
+            document.getElementById('RRecentEduc').disabled = true;
+            document.getElementById('RHighestEduc').disabled = false;
+
+        }
+        else
+        {
+            document.getElementById('RRecentEduc').disabled = true;
+            document.getElementById('RHighestEduc').disabled = true;
+        }
+    }
+
 
     
+function genM()
+{
+    
+     
+         
+         
+        document.getElementById('gend').value = "Male";
+        document.getElementById('RGenderF').checked = false;
+
+    
+}
+
+function genF(){
+    document.getElementById('gend').value = "Female";
+
+        document.getElementById('RGenderM').checked = false;
+}
+
+function RF()
+{
+    
+     
+         
+         
+        document.getElementById('pin').value = "Filipino";
+        document.getElementById('RCitizenshipN').checked = false;
+
+    
+}
+
+function RN(){
+    document.getElementById('pin').value = "Non-Filipino";
+
+        document.getElementById('RCitizenshipF').checked = false;
+}
 
 
+function modalEdit(x){
 
+    var hidden_id           = "hidden_id_"+x.value;
+    var hidden_ln           = "hidden_ln_"+x.value;
+    var hidden_fn           = "hidden_fn_"+x.value;
+    var hidden_mn           = "hidden_mn_"+x.value;
+    var hidden_bdate        = "hidden_bdate_"+x.value;
+    var hidden_bplace       = "hidden_bplace_"+x.value;
+    var hidden_gender       = "hidden_gender_"+x.value;
+    var hidden_cstatus      = "hidden_cstatus_"+x.value;
+    var hidden_religion     = "hidden_religion_"+x.value;
+    var hidden_dor          = "hidden_dor_"+x.value;
+    var hidden_citizenship  = "hidden_citizenship_"+x.value;
+    var hidden_mob          = "hidden_mob_"+x.value;
+    var hidden_land         = "hidden_land_"+x.value;
+    var hidden_email        = "hidden_email_"+x.value;
+    var hidden_height       = "hidden_height_"+x.value;
+    var hidden_weight       = "hidden_weight_"+x.value;
+    var hidden_hstat        = "hidden_hstat_"+x.value;
+    var hidden_curstudy     = "hidden_curstudy_"+x.value;
+    var hidden_recentgrd    = "hidden_recentgrd_"+x.value;
+    var hidden_highesteduc  = "hidden_highesteduc_"+x.value;
+    var hidden_litread      = "hidden_litread_"+x.value;
+    var hidden_litwrite     = "hidden_litwrite_"+x.value;
+    var hidden_occup        = "hidden_occup_"+x.value;
+    var hidden_income       = "hidden_income_"+x.value;
+
+var id              = document.getElementById(hidden_id).value;                  
+var ln              = document.getElementById(hidden_ln).value;                  
+var fn              = document.getElementById(hidden_fn).value;                   
+var mn              = document.getElementById(hidden_mn).value;                   
+var bdate           = document.getElementById(hidden_bdate).value;                    
+var bplace          = document.getElementById(hidden_bplace).value;                   
+var gender          = document.getElementById(hidden_gender).value;                   
+var cstatus         = document.getElementById(hidden_cstatus).value;                  
+var religion        = document.getElementById(hidden_religion).value;             
+var dor             = document.getElementById(hidden_dor).value;              
+var citizenship     = document.getElementById(hidden_citizenship).value;              
+var mob             = document.getElementById(hidden_mob).value;              
+var land            = document.getElementById(hidden_land).value;             
+var email           = document.getElementById(hidden_email).value;                
+var height          = document.getElementById(hidden_height).value;               
+var weight          = document.getElementById(hidden_weight).value;               
+var hstat           = document.getElementById(hidden_hstat).value;                
+var curstudy        = document.getElementById(hidden_curstudy).value;             
+var recentgrd       = document.getElementById(hidden_recentgrd).value;                
+var highesteduc     = document.getElementById(hidden_highesteduc).value;              
+var litread         = document.getElementById(hidden_litread).value;              
+var litwrite        = document.getElementById(hidden_litwrite).value;             
+var occup           = document.getElementById(hidden_occup).value;                
+var income          = document.getElementById(hidden_income).value;               
+alert(height);
+
+Number(mob);
+
+document.getElementById('EtxtID').value = id;        
+document.getElementById('EtxtSur').value = ln;        
+document.getElementById('EtxtGiven').value = fn;         
+document.getElementById('EtxtMid').value = mn; 
+document.getElementById('EmyDate').value = bdate;      
+document.getElementById('EtxtBPlace').value = bplace;     
+document.getElementById('Egend').value = gender;    
+document.getElementById('Ecivilstatus').value = cstatus;
+document.getElementById('Ereligion').value = religion;       
+document.getElementById('EResDate').value = dor;
+document.getElementById('Epin').value = citizenship;       
+document.getElementById('EtxtMobile').value = mob;   
+document.getElementById('Etxtlandline').value = land;     
+document.getElementById('EtxtEmail').value = email;     
+document.getElementById('EtxtHeight').value = height;      
+document.getElementById('EtxtWeight').value = weight; 
+document.getElementById('EtxtHealth').value = hstat;
+document.getElementById('ECurrentEduc').value = curstudy;    
+document.getElementById('ERecentEduc').value = recentgrd;   
+document.getElementById('EHighestEduc').value = highesteduc;      
+document.getElementById('ELiterateRead').value =litread;
+document.getElementById('ELiterateWrite').value=litwrite;
+document.getElementById('EOccupation').value    = occup;
+document.getElementById('EIncome').value        = income;      
+                                                   
+                                         
+                                                
+                                                   
+}
 
 
 </script>
@@ -315,90 +615,156 @@
                             <div class="x_panel">
                                 <div class="x_title">
                                     <h2>Residents </h2>
-                                    
+                                     
+                                     <button type="submit" class="btn btn-success" data-toggle="modal" data-target="#residents" style="float:right"><span class='glyphicon glyphicon-plus' aria-hidden='true' style="color:white"></span>Add Resident</button>
+
                                     <div class="clearfix"></div>
                                 </div>
                                 <div class="x_content" style="overflow-x:auto">
                                     <table id="example" class="table table-striped responsive-utilities jambo_table" style="font-size:12px">
+                                        <?php
+                                            require("connection.php");
+                                            $q = mysqli_query($con,"Select resident_personaldata.ResidentID, LastName, FirstName, MidName, BirthDate, BirthPlace, Gender, CivilStatus, Religion, DateOfResidency, Citizenship, MobileNo, LandlineNo, EmailAdd, Height, Weight, HealthStatus, resident_education.ResidentID, CurrentEducStat, RecentYear, LiteracyWrite, LiteracyRead, resident_economicstatus.ResidentID, Occupation, IncomePerMonth, HighestAttainment 
+                                                from resident_personaldata left join resident_education on resident_personaldata.ResidentID = resident_education.ResidentID left join resident_economicstatus on resident_personaldata.ResidentID = resident_economicstatus.ResidentID  ");
+                                            echo"
+
                                         <thead>
-                                            <tr class="headings">
-                                                <th>
-                                                    <input type="checkbox" class="tableflat">
-                                                </th>
-                                                <th>ID </th>
-                                                <th>Name </th>
-                                                <th>Address </th>
-                                                <th>Purok No. </th>
-                                                <th>Gender </th>
-                                                <th>Civil Status </th>
-                                                <th>Religion</th>
-                                                <th>Citizenship</th>
+                                            <tr class='headings'>
+                                                <th>Action</th>
+                                                <th>ResidentID </th>
+                                                <th>Surname </th>
+                                                <th>Given Name </th>
+                                                <th>Middle Name</th>
                                                 <th>Birth Date</th>
-                                                <th>Birth Place</th>
-                                                <th>Occupation</th>
+                                                <th>Birth Place </th>
+                                                <th>Gender</th>
+                                                <th>Civil Status</th>
+                                                <th>Religion</th>
+                                                <th>Date of Residency</th>
+                                                <th>Citizenship</th>
+                                                <th>Mobile No.</th>
+                                                <th>LandLine</th>
+                                                <th>Email</th>
                                                 <th>Height</th>
                                                 <th>Weight</th>
-                                                <th>Period of Residency</th>
-                                                <th>Date of Residency</th>
-                                                <th>Educational Attainment</th>
-                                                <th>Language</th>
-                                                <th>Contact No.</th>
-                                                <th>Resident Classification</th>
-                                                <th>Voter</th>
-                                                <th>Renter</th>
-                                                <th>Employed</th>
-                                                <th>Status</th>
-                                                <th>Illness</th>
+                                                <th>Health Status</th>
+                                                <th>Currently Studying</th>
+                                                <th>Recent Grade/Year Level</th>
+                                                <th>Highest Educational Attainment</th>
+                                                <th>Reading Literacy</th>
+                                                <th>Writing Literacy</th>
+                                                <th>Occupation</th>
+                                                <th>Income Per Month</th>
+
                                             </tr>
                                         </thead>
 
-                                        <tbody>
-                                            <tr class="odd pointer">
-                                                <td class="a-center ">
-                                                    <input type="checkbox" class="tableflat">
-                                                </td>
-                                                <td class=" ">000001</td>
-                                                <td class=" ">Ramos, Jomari G.</td>
-                                                <td class=" ">123 Peralta St, Sta. Mesa, Manila</td>
-                                                <td class=" ">10</td>
-                                                <td class=" ">M</td>
-                                                <td class=" ">Single</td>
-                                                <td class=" ">Christian</td>
-                                                <td class=" ">Filipino</td>
-                                                <td class=" ">07/07/1997</td>
-                                                <td class=" ">Manila</td>
-                                                <td class=" ">N/A</td>
-                                                <td class=" ">170</td>
-                                                <td class=" ">79</td>
-                                                <td class=" ">6</td>
-                                                <td class=" ">2013</td>
-                                                <td class=" ">Undergraduate</td>
-                                                <td class=" ">English, Filipino</td>
-                                                <td class=" ">0999919222</td>
-                                                <td class=" ">Student</td>
-                                                <td class=" ">False</td>
-                                                <td class=" ">True</td>
-                                                <td class=" ">False</td>
-                                                <td class=" ">False</td>
-                                                <td class=" ">N/A</td>
-                                               
-                                        </tbody>
+                                        <tbody>";
+                                        while($row = mysqli_fetch_array($q))
+                                        {
+                                            $id = $row[0];
+                                            $ln  = $row['LastName'];
+                                            $fn = $row['FirstName'];
+                                            $mn  = $row['MidName'];
+                                            $bdate = $row['BirthDate'];
+                                            $bplace = $row['BirthPlace'];
+                                            $gender = $row['Gender'];
+                                            $cstatus = $row['CivilStatus'];
+                                            $religion = $row['Religion'];
+                                            $dor = $row['DateOfResidency'];
+                                            $citizenship = $row['Citizenship'];
+                                            $mob = $row['MobileNo'];
+                                            $land = $row['LandlineNo'];
+                                            $email = $row['EmailAdd'];
+                                            $height = $row['Height'];
+                                            $weight = $row['Weight'];
+                                            $hstat = $row['HealthStatus'];
+                                            $curstudy = $row['CurrentEducStat'];
+                                            $recentgrd = $row['RecentYear'];
+                                            $highesteduc = $row['HighestAttainment'];
+                                            $litread = $row['LiteracyRead'];
+                                            $litwrite = $row['LiteracyWrite'];
+                                            $occup = $row['Occupation'];
+                                            $income = $row['IncomePerMonth'];
 
+
+
+                                            echo "
+                                            <tr class='odd pointer'>
+                                                 <td> 
+                                                     <span data-toggle='tooltip' title='Edit' data-placement='right'><button class='btn btn-success' data-toggle='modal' data-target='#residentsEdit' id = 'btnEdit' name = 'btnEdit' value = '$id' onclick = 'modalEdit(this)'><i class='glyphicon glyphicon-pencil' aria-hidden='true'> </i></button></span>
+
+
+                                                    <span data-toggle='tooltip' title='Delete' data-placement='right'><button class='btn btn-danger' data-toggle='modal' data-target='#residentDelete' id = 'btnDelete' name = 'btnDelete' value = '$id' onclick = 'modalDelete(this)'><i class='glyphicon glyphicon-remove' aria-hidden='true'> </i></button></span>
+                                                </td>
+                                                <td >$id</td>
+                                                <td >$ln</td>
+                                                <td >$fn</td>
+                                                <td >$mn</td>
+                                                <td >$bdate</td>
+                                                <td >$bplace</td>
+                                                <td >$gender</td>
+                                                <td >$cstatus</td>
+                                                <td >$religion</td>
+                                                <td >$dor</td>
+                                                <td >$citizenship</td>
+                                                <td >$mob</td>
+                                                <td >$land</td>
+                                                <td >$email</td>
+                                                <td >$height</td>
+                                                <td >$weight</td>
+                                                <td >$hstat</td>
+                                                <td >$curstudy</td>
+                                                <td >$recentgrd</td>
+                                                <td >$highesteduc</td>
+                                                <td >$litread</td>
+                                                <td >$litwrite</td>
+                                                <td >$occup</td>
+                                                <td >$income</td>
+
+
+ 
+                                                <td>
+                                                    <input type = 'hidden' value = '$id' id= 'hidden_id_$id'>
+                                                    <input type = 'hidden' value = '$ln' id= 'hidden_ln_$id'>
+                                                    <input type = 'hidden' value = '$fn' id= 'hidden_fn_$id'>
+                                                    <input type = 'hidden' value = '$mn' id= 'hidden_mn_$id'>
+                                                    <input type = 'hidden' value = '$bdate' id= 'hidden_bdate_$id'>
+                                                    <input type = 'hidden' value = '$bplace' id= 'hidden_bplace_$id'>
+                                                    <input type = 'hidden' value = '$gender' id= 'hidden_gender_$id'>
+                                                    <input type = 'hidden' value = '$cstatus' id= 'hidden_cstatus_$id'>
+                                                    <input type = 'hidden' value = '$religion' id= 'hidden_religion_$id'>
+                                                    <input type = 'hidden' value = '$dor' id= 'hidden_dor_$id'>
+                                                    <input type = 'hidden' value = '$citizenship' id= 'hidden_citizenship_$id'>
+                                                    <input type = 'hidden' value = '$mob' id= 'hidden_mob_$id'>
+                                                    <input type = 'hidden' value = '$land' id= 'hidden_land_$id'>
+                                                    <input type = 'hidden' value = '$email' id= 'hidden_email_$id'>
+                                                    <input type = 'hidden' value = '$height' id= 'hidden_height_$id'>
+                                                    <input type = 'hidden' value = '$weight' id= 'hidden_weight_$id'>
+                                                    <input type = 'hidden' value = '$hstat' id= 'hidden_hstat_$id'>
+                                                    <input type = 'hidden' value = '$curstudy' id= 'hidden_curstudy_$id'>
+                                                    <input type = 'hidden' value = '$recentgrd' id= 'hidden_recentgrd_$id'>
+                                                    <input type = 'hidden' value = '$highesteduc' id= 'hidden_highesteduc_$id'>
+                                                    <input type = 'hidden' value = '$litread' id= 'hidden_litread_$id'>
+                                                    <input type = 'hidden' value = '$litwrite' id= 'hidden_litwrite_$id'>
+                                                    <input type = 'hidden' value = '$occup' id= 'hidden_occup_$id'>
+                                                    <input type = 'hidden' value = '$income' id= 'hidden_income_$id'>
+
+                                                </td>
+
+
+
+                                               </tr>";
+                                        }
+                                        echo"
+                                        </tbody>
+                                        "; ?>
                                     </table>
                                    
                                     
                                 </div>
                                 <br>  
-                                <center>
-                                    
-                                    <button type="submit" class="btn btn-success" data-toggle="modal" data-target="#residents">Add</button>
                                 
-                                    <button type="submit" class="btn btn-success" data-toggle="modal" data-target="#residents">Edit</button>
-                                    
-                                    <button type="submit" class="btn btn-danger" data-toggle="modal" data-target="#">Delete</button>
-                                
-                                
-                                </center>
                                 
                                 
                                     
@@ -429,8 +795,27 @@
         </div>
     
     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 			<!-- Modal -->
-			<form method = POST action = "" onload = "computeAge()">	
+			<form method = POST action = "mresident.php" name = "as400samplecode" >	
 				<div class="modal fade" id="residents" role="dialog">
 					<div class="modal-dialog modal-lg" style="width: 950px">
 					
@@ -444,7 +829,7 @@
 						<div class="modal-body" style="overflow-y:auto">
 								<div class="form-inline" style="float:right">
 										<label for="id">ID:</label>
-			                            <input type="text" class="form-control" id="RtxtID" name = "RtxtID" Readonly>
+			                            <input type="text" class="form-control" id="RtxtID" name = "RtxtID" >
 			                    </div><br><br>
 
 							<table  style="border-spacing: 17px;border-collapse: separate;font-size: 12px">
@@ -483,21 +868,32 @@
 			                        <!--2nd row-->
 			                         <tr>
 										<td><label for="birthdate">Birth Date</label></td>	
-			                            <td><input type="date" 
+			                            <td><input type="text" 
 			                            		   class="form-control"
-			                            		   id="RBirthDate"
-			                            		   name = "RBirthDate" 
-			                            		   REQUIRED></td>
+			                            		   id="myDate"
+			                            		   name = "myDate" 
+                                                   onkeyup="Javascript:myAgeValidation()"
+			                            		   REQUIRED>
+
+
+                                                   <input type = hidden id = "a" name = "a">
+
+                                                </td>
 								 
 								
 								   
 										<td><label for="age">Age</label></td>
-			                            <td><input type ="text" 
+			                            <td><textarea rows = "2"
+                                                    column = "50" 
 			                            		   class="form-control"
 			                            		   maxlength="45" 
 			                            		   id="RtxtAge" 
 			                            		   name = "RtxtAge" 
-			                            		   readonly></td>
+			                            		   readonly>
+
+                                                </textarea>
+                                                <input type = hidden id = "age" name = "age">
+                                            </td>
 		
 								
 										<td><label for="birthplace">Birthplace*</label>	</td>
@@ -514,14 +910,18 @@
 										<td><label for="Gender">Gender</label></td>	
 			                            <td><div class="radio" style="text-align: left">
 				                                <label>
-				                                    <input type="radio" class="flat" checked id="RGender" name="RGender"> Male
+				                                    <input type="radio"  id="RGenderM" name="RGenderM" value = "Male" onclick = "genM()"> Male
 				                                </label>
                                             
                                            
                                                 <label>
-                                                  	<input type="radio" class="flat" id="RGender"name="RGender"> Female
+                                                  	<input type="radio"  id="RGenderF"name="RGenderF" value = "Female"  onclick = "genF()"> Female
                                               	</label>
                                             </div>
+
+
+
+                                            <input type = hidden id = "gend" name = "gend">
                     					</td>
 								 
 								
@@ -543,7 +943,7 @@
 				                        <td><select
 				                                class="form-control"
 				                                id="Rreligion"
-				                                name="Rcivilstatus"
+				                                name="Rreligion"
 				                                required>
 				                                    <option>Roman Catholic</option>
 				                                    <option>Born Again (Christian)</option>
@@ -582,13 +982,15 @@
 			                            <td><label for="Citizenship">Citizenship</label></td>	
 			                            <td><div class="radio" style="text-align: left">
 				                                <label>
-				                                    <input type="radio" class="flat" checked id="RCitizenship" name="RCitizenship"> Filipino
+				                                    <input type="radio"  id="RCitizenshipF" name="RCitizenshipF" onclick="RF()"> Filipino
 				                                </label>
                                             
                                            
                                                 <label>
-                                                  	<input type="radio" class="flat" id="RCitizenship"name="RCitizenship"> Non-Filipino
+                                                  	<input type="radio"  id="RCitizenshipN"name="RCitizenshipN" onclick="RN()"> Non-Filipino
                                               	</label>
+
+                                                <input type = hidden id = "pin" name = "pin">
                                             </div>
                     					</td>
 			                        </tr>
@@ -613,9 +1015,16 @@
 			                            		   maxlength="11" 
 			                            		   id="RtxtMobile" 
 			                            		   name = "RtxtMobile" 
-			                            		   REQUIRED></td>
+			                            		   ></td>
 								 
-								
+								<td><label for="landline">Landline*</label></td>    
+                                        <td><input type="text" 
+                                                   class="form-control"
+                                                   maxlength="11" 
+                                                   id="Rtxtlandline" 
+                                                   name = "Rtxtlandline" 
+                                                   ></td>
+                                 
 								   
 										<td><label for="email">Email Address</label></td>
 			                            <td><input type ="text" 
@@ -636,45 +1045,51 @@
 									    Health Information <!--Padding is optional-->
 									  	</span>
 							</div>
-
+                            <center>
 							<table style="border-spacing: 17px;border-collapse: separate;font-size: 12px">
 								<tbody  style="text-align: right">
 									<tr>
-										<td><label for="height">Height* <i>(in centimeters)</i></label></td>
-			                            <td><input type ="text" 
+										<td><label for="height">Height* <i>(in meters)</i></label></td>
+			                            <td><input type ="number" 
 			                            		   class="form-control"
 			                            		   maxlength="45" 
 			                            		   id="RtxtHeight"  
 			                            		   name = "RtxtHeight"
                                                    value = 0
                                                    onkeyup = "getHeight()"
+                                                   step="any"
 			                            		   required></td>
 
 			                            <td><label for="weight">Weight* <i>(in kilograms)</i></label></td>
-			                            <td><input type ="text" 
+			                            <td><input type ="number" 
 			                            		   class="form-control"
 			                            		   maxlength="45" 
 			                            		   id="RtxtWeight"  
 			                            		   name = "RtxtWeight"
                                                    value = 0
                                                    onkeyup = "getWeight()"
+                                                   step = "any"
 			                            		   required></td>
 
-			                            <td><label for="bmi">Body Mass Index</label></td>
-			                            <td><input type ="text" 
-			                            		   class="form-control"
-			                            		   maxlength="45" 
-			                            		   id="RtxtBMI"  
-			                            		   name = "RtxtBMI"
-                                                   value = 0
-			                            		   readonly></td>
+			                            
 
 			                        </tr>
 			                    </tbody>
 			                </table>
+                        </center>
+                            <center>
 			                <table style="border-spacing: 17px;border-collapse: separate;font-size: 12px">
 								<tbody  style="text-align: right">
-			                        <tr>
+                                    <tr>
+                                        <td><label for="bmi">Body Mass Index</label></td>
+                                        <td><input type ="text" 
+                                                   class="form-control"
+                                                   maxlength="45" 
+                                                   id="RtxtBMI"  
+                                                   name = "RtxtBMI"
+                                                   value = 0
+                                                   readonly></td>
+                                   
 
 			                        	<td><label for="healthstat">Health Status</label></td>
 			                            <td><input type ="text" 
@@ -684,110 +1099,6 @@
 			                            		   name = "RtxtHealth"
                                                    value = ""
 			                            		   readonly></td>
-
-			                            <td><label class="control-label"> Health Insurance</label></td>
-										<td>    
-											<div style="text-align: left">
-												<div class="checkbox">
-                                                    <label>
-                                                        <input type="checkbox" id = "ch1" onclick="hehe()"> PhilHealth
-                                                    </label>
-                                                </div>
-                                                <div class="checkbox">
-                                                    <label>
-                                                        <input type="checkbox" id = "ch2" onclick="hehe()"> Blue/Yellow Card
-                                                    </label>
-                                                 <div class="checkbox">
-                                                    <label>
-                                                        <input type="checkbox" id = "ch3" onclick="hehe()"> Private Health Insurance
-                                                    </label>
-                                               	<div class="checkbox">
-                                                    <label>
-                                                        <input type="checkbox" id = "ch4" onclick="haha()"> None
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </td>
-
-
-                                        <td><label class="control-label"> Disability</label></td>
-										<td>    
-											<div style="text-align: left">
-												<div class="checkbox">
-                                                    <label>
-                                                        <input type="checkbox" id = "ch5" onclick = "hihi()"> Blind
-                                                    </label>
-                                                </div>
-                                                <div class="checkbox">
-                                                    <label>
-                                                        <input type="checkbox" id = "ch6" onclick = "hihi()"> Cripple (Lumpo)
-                                                    </label>
-                                                 </div>
-                                                 <div class="checkbox">
-                                                    <label>
-                                                        <input type="checkbox" id = "ch7" onclick = "hihi()"> Mute
-                                                    </label>
-                                                 </div>
-                                               	<div class="checkbox">
-                                                    <label>
-                                                        <input type="checkbox" id = "ch8" onclick = "hihi()"> Deaf
-                                                    </label>
-                                                </div>
-                                                
-												<div class="checkbox">
-                                                    <label>
-                                                        <input type="checkbox" id = "ch9" onclick = "hihi()"> Heart Disease
-                                                    </label>
-                                                </div>
-
-                                                <div class="checkbox">
-                                                    <label>
-                                                        <input type="checkbox" id = "ch10" onclick = "hihi()"> Asthma
-                                                    </label>
-                                                </div>
-
-                                            </div>
-                                        <td>
-                                        	<div style="text-align: left">
-
-                                       
-                                                
-                                                <div class="checkbox">
-                                                    <label>
-                                                        <input type="checkbox" id = "ch11" onclick = "hihi()"> Diabetes
-                                                    </label>
-                                                </div>
-                                                <div class="checkbox">
-                                                    <label>
-                                                        <input type="checkbox" id = "ch12" onclick = "hihi()"> Tuberculosis
-                                                    </label>
-                                                </div>
-                                                <div class="checkbox">
-                                                    <label>
-                                                        <input type="checkbox" id = "ch13" onclick = "hihi()"> Highblood Pressure
-                                                    </label>
-                                                </div>
-                                                <div class="checkbox">
-                                                    <label>
-                                                        <input type="checkbox" id = "ch14" onclick = "hihi()"> Communicable Diseases
-                                                    </label>
-                                                </div>
-                                                <div class="checkbox">
-                                                    <label>
-                                                        <input type="checkbox" id = "ch15" onclick = "hihi()"> Others
-                                                    </label>
-                                                </div>
-
-                                                <div class="checkbox">
-                                                    <label>
-                                                        <input type="checkbox" id = "ch16" onclick = "hoho()"> None
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </td>
-
-                                            </div>
-                                        </td>
 
 
 			                        </tr>
@@ -802,7 +1113,7 @@
 									    Education and Literacy<!--Padding is optional-->
 									  	</span>
 							</div>
-							<table style="border-spacing: 17px;border-collapse: separate;font-size: 12px">
+							<table style="border-spacing: 17px;border-collapse: separate;font-size: 12px" >
 								<tbody  style="text-align: right">
 			                        <tr>
 			                        	<td><label class="control-label">Currently Studying?</label></td>
@@ -810,6 +1121,7 @@
 				                                class="form-control"
 				                                id="RCurrentEduc"
 				                                name="RCurrentEduc"
+                                                onclick = "lol()"
 				                                required>
 				                                    <option>Yes</option>
 				                                    <option>No</option>
@@ -823,7 +1135,9 @@
 				                                class="form-control"
 				                                id="RRecentEduc"
 				                                name="RRecentEduc"
-				                                required>
+				                                required 
+                                                >
+                                                <option></option>
 				                                    <option>Pre-school/Day Care/Kinder</option>
 				                                    <option>Grade 1</option>
 				                                    <option>Grade 2</option>
@@ -851,8 +1165,10 @@
 				                        <td><select
 				                                class="form-control"
 				                                id="RHighestEduc"
-				                                name="RHighesttEduc"
-				                                required>
+				                                name="RHighestEduc"
+				                                required 
+                                                disabled>
+                                                <option></option>
 				                                    <option>Has never been in school</option>
 				                                    <option>Elementary Level</option>
 				                                    <option>Elementary Graduate</option>
@@ -877,6 +1193,7 @@
 									<tr>
 										 <td><label class="control-label">Can read simple messages in any language or dialect?</label></td>
 				                        <td><select
+
 				                                class="form-control"
 				                                id="RLiterateRead"
 				                                name="RLiterateRead"
@@ -944,7 +1261,7 @@
 						
 						</div>
 						<div class="modal-footer">
-				        	<button type="submit" class="btn btn-primary">Submit</button>
+				        	<button type="submit" class="btn btn-primary" name = btnSubmit>Submit</button>
 				        </div>
 					</div>
 				  </div>
@@ -952,6 +1269,483 @@
 			</form>
       
    		<!--end of modals-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Modal -->
+            <form method = POST action = "mresident.php" > 
+                <div class="modal fade" id="residentsEdit" role="dialog">
+                    <div class="modal-dialog modal-lg" style="width: 950px">
+                    
+                      <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal">&times;</button>
+                          <h4 class="modal-title">Resident</h4>
+                        </div>
+                        
+                        <div class="modal-body" style="overflow-y:auto">
+                                <div class="form-inline" style="float:right">
+                                        <label for="id">ID:</label>
+                                        <input type="text" class="form-control" id="EtxtID" name = "EtxtID" >
+                                </div><br><br>
+
+                            <table  style="border-spacing: 17px;border-collapse: separate;font-size: 12px">
+                                <tbody  style="text-align: right">
+                                    <!--1st row-->
+                                    <tr>
+                                        <td><label for="lastname">Surname*</label></td> 
+                                        <td><input type="text" 
+                                                   class="form-control"
+                                                   maxlength="45" 
+                                                   id="EtxtSur" 
+                                                   placeholder="Surname" 
+                                                   name = "EtxtSur" 
+                                                   REQUIRED></td>
+                                 
+                                
+                                   
+                                        <td><label for="firstname">Given Name*</label></td>
+                                        <td><input type ="text" 
+                                                   class="form-control"
+                                                   maxlength="45" 
+                                                   id="EtxtGiven" 
+                                                   placeholder="Given Name" 
+                                                   name = "EtxtGiven" 
+                                                   REQUIRED></td>
+        
+                                
+                                        <td><label for="midname">Middle Name*</label>   </td>
+                                        <td><input type="text" 
+                                                   class="form-control"
+                                                   maxlength="45"  
+                                                   id="EtxtMid" 
+                                                   placeholder="Middle Name" 
+                                                   name = "EtxtMid" REQUIRED></td>
+                                    </tr>
+                                    <!--2nd row-->
+                                     <tr>
+                                        <td><label for="birthdate">Birth Date</label></td>  
+                                        <td><input type="text" 
+                                                   class="form-control"
+                                                   id="EmyDate"
+                                                   name = "EmyDate" 
+                                                   onkeyup="Javascript:myAgeValidation()"
+                                                   REQUIRED>
+
+
+                                                   <input type = hidden id = "Ea" name = "Ea">
+
+                                                </td>
+                                 
+                                
+                                   
+                                        <td><label for="age">Age</label></td>
+                                        <td><textarea rows = "2"
+                                                    column = "50" 
+                                                   class="form-control"
+                                                   maxlength="45" 
+                                                   id="EtxtAge" 
+                                                   name = "EtxtAge" 
+                                                   readonly>
+
+                                                </textarea>
+                                                <input type = hidden id = "Eage" name = "Eage">
+                                            </td>
+        
+                                
+                                        <td><label for="birthplace">Birthplace*</label> </td>
+                                        <td><input type="text" 
+                                                   class="form-control"
+                                                   maxlength="45"  
+                                                   id="EtxtBPlace" 
+                                                   placeholder="Birth Place" 
+                                                   name = "EtxtBPlace" REQUIRED></td>
+                                    </tr>
+
+                                    <!--3rd row-->
+                                     <tr>
+                                        <td><label for="Gender">Gender</label></td> 
+                                        <td><div class="radio" style="text-align: left">
+                                                <label>
+                                                    <input type="radio"  id="EGenderM" name="EGenderM" value = "Male" onclick = "genM()"> Male
+                                                </label>
+                                            
+                                           
+                                                <label>
+                                                    <input type="radio"  id="EGenderF"name="EGenderF" value = "Female"  onclick = "genF()"> Female
+                                                </label>
+                                            </div>
+
+
+
+                                            <input type = hidden id = "Egend" name = "Egend">
+                                        </td>
+                                 
+                                
+                                        <td><label class="control-label"> Civil Status</label></td>
+                                        <td><select
+                                                class="form-control"
+                                                id="Ecivilstatus"
+                                                name="Ecivilstatus"
+                                                required>
+                                                    <option>Single</option>
+                                                    <option>Married</option>
+                                                    <option>Divorced</option>
+                                                    <option>Widowed</option>
+                                                    <option>Separated</option>
+                                            </select></td>
+        
+                                
+                                        <td><label class="control-label"> Religion</label></td>
+                                        <td><select
+                                                class="form-control"
+                                                id="Ereligion"
+                                                name="Ereligion"
+                                                required>
+                                                    <option>Roman Catholic</option>
+                                                    <option>Christian</option>
+                                                    <option>Iglesia Ni Cristo</option>
+                                                    <option>Jehovah's Witness</option>
+                                                    <option>Aglipay</option>
+                                                    <option>Muslim</option>
+                                                    <option>Buddhists</option>
+                                                    <option>Daoist/Taoist</option>
+                                                    <option>Protestant</option>
+                                                    <option>None</option>
+                                                    <option>Don't know</option>
+                                                    <option>Others</option>
+                                            </select></td>
+        
+                                    </tr>
+
+
+                                    <!--4th row-->
+                                     <tr>
+                                        <td><label for="resdate">Date of Residency</label></td> 
+                                        <td><input type="date" 
+                                                   class="form-control"
+                                                   id="EResDate"
+                                                   name = "EResDate" 
+                                                   REQUIRED></td>
+                                
+                                        <td><label for="resperiod">Residency Period</label> </td>
+                                        <td><input type="text" 
+                                                   class="form-control"
+                                                   maxlength="45"  
+                                                   id="EResPeriod" 
+                                                   name = "EResPeriod" 
+                                                   readonly></td>
+
+                                        <td><label for="Citizenship">Citizenship</label></td>   
+                                        <td><div class="radio" style="text-align: left">
+                                                <label>
+                                                    <input type="radio"  id="ECitizenshipF" name="ECitizenshipF" onclick="RF()"> Filipino
+                                                </label>
+                                            
+                                           
+                                                <label>
+                                                    <input type="radio"  id="ECitizenshipN"name="ECitizenshipN" onclick="RN()"> Non-Filipino
+                                                </label>
+
+                                                <input type = hidden id = "Epin
+                                                " name = "Epin">
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    
+                                </tbody>
+                            </table>
+                            
+                            <!--rooooow-->  
+                            <div style="width: 100%; height: 20px; border-bottom: 1px solid #ebebe0; text-align: left">
+                                        <span style="font-size: 12px; padding: 0 10px;">
+                                        Contact Details <i> (if not applicable, please indicate the contact details of the guardian)</i><!--Padding is optional-->
+                                        </span>
+                            </div> 
+                            <center>
+                            <table style="border-spacing: 17px;border-collapse: separate;font-size: 12px">
+                                <tbody  style="text-align: right">
+                                    <tr>
+                                        <td><label for="mobile">Mobile No.*</label></td>    
+                                        <td><input type="number" 
+                                                   class="form-control"
+                                                   maxlength="11" 
+                                                   id="EtxtMobile" 
+                                                   name="EtxtMobile" 
+                                                   ></td>
+                                 
+                                <td><label for="landline">Landline*</label></td>    
+                                        <td><input type="number" 
+                                                   class="form-control"
+                                                   maxlength="11" 
+                                                   id="Etxtlandline" 
+                                                   name="Etxtlandline" 
+                                                   ></td>
+                                 
+                                   
+                                        <td><label for="email">Email Address</label></td>
+                                        <td><input type ="text" 
+                                                   class="form-control"
+                                                   maxlength="45" 
+                                                   id="EtxtEmail"  
+                                                   name="EtxtEmail"></td>
+
+
+                                    </tr>
+                                </tbody>
+                            </table>
+                            </center>
+
+                            <!--rooooow-->  
+                            <div style="width: 100%; height: 20px; border-bottom: 1px solid #ebebe0; text-align: left">
+                                        <span style="font-size: 12px; padding: 0 10px;">
+                                        Health Information <!--Padding is optional-->
+                                        </span>
+                            </div>
+                            <center>
+                            <table style="border-spacing: 17px;border-collapse: separate;font-size: 12px">
+                                <tbody  style="text-align: right">
+                                    <tr>
+                                        <td><label for="height">Height* <i>(in meters)</i></label></td>
+                                        <td><input type ="number" 
+                                                   class="form-control"
+                                                   maxlength="45" 
+                                                   id="EtxtHeight"  
+                                                   name="EtxtHeight"
+                                                   value=0
+                                                   onkeyup="getHeight()"
+                                                   step="any"
+                                                   required></td>
+
+                                        <td><label for="weight">Weight* <i>(in kilograms)</i></label></td>
+                                        <td><input type ="number" 
+                                                   class="form-control"
+                                                   maxlength="45" 
+                                                   id="EtxtWeight"  
+                                                   name="EtxtWeight"
+                                                   value=0
+                                                   onkeyup="getWeight()"
+                                                   step="any"
+                                                   required></td>
+
+                                        
+
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </center>
+                            <center>
+                            <table style="border-spacing: 17px;border-collapse: separate;font-size: 12px">
+                                <tbody  style="text-align: right">
+                                    <tr>
+                                        <td><label for="bmi">Body Mass Index</label></td>
+                                        <td><input type ="text" 
+                                                   class="form-control"
+                                                   maxlength="45" 
+                                                   id="EtxtBMI"  
+                                                   name="EtxtBMI"
+                                                   value=0
+                                                   readonly></td>
+                                   
+
+                                        <td><label for="healthstat">Health Status</label></td>
+                                        <td><input type ="text" 
+                                                   class="form-control"
+                                                   maxlength="45" 
+                                                   id="EtxtHealth"  
+                                                   name="EtxtHealth"
+                                                   value=""
+                                                   readonly></td>
+
+
+                                    </tr>
+                                </tbody>
+                            </table>
+                            </center>
+
+
+                            <!--rooooow-->  
+                            <div style="width: 100%; height: 20px; border-bottom: 1px solid #ebebe0; text-align: left">
+                                        <span style="font-size: 12px; padding: 0 10px;">
+                                        Education and Literacy<!--Padding is optional-->
+                                        </span>
+                            </div>
+                            <table style="border-spacing: 17px;border-collapse: separate;font-size: 12px" >
+                                <tbody  style="text-align: right">
+                                    <tr>
+                                        <td><label class="control-label">Currently Studying?</label></td>
+                                        <td><select
+                                                class="form-control"
+                                                id="ECurrentEduc"
+                                                name="ECurrentEduc"
+                                                onclick = "lol()"
+                                                required>
+                                                    <option>Yes</option>
+                                                    <option>No</option>
+                                                    <option>Not Applicable</option>
+                                            </select></td>
+
+
+
+                                        <td><label class="control-label">Recent Grade/Year Level</label></td>
+                                        <td><select
+                                                class="form-control"
+                                                id="ERecentEduc"
+                                                name="ERecentEduc"
+                                                required 
+                                                >
+                                                <option></option>
+                                                    <option>Pre-school/Day Care/Kinder</option>
+                                                    <option>Grade 1</option>
+                                                    <option>Grade 2</option>
+                                                    <option>Grade 3</option>
+                                                    <option>Grade 4</option>
+                                                    <option>Grade 5</option>
+                                                    <option>Grade 6</option>
+                                                    <option>Grade 7/1st Year Highschool</option>
+                                                    <option>Grade 8/2nd Year Highschool</option>
+                                                    <option>Grade 9/3rd Year Highschool</option>
+                                                    <option>Grade 10/4th Year Highschool</option>
+                                                    <option>Grade 11</option>
+                                                    <option>Grade 12</option>
+                                                    <option>Vocational Course</option>
+                                                    <option>1st Year College</option>
+                                                    <option>2nd Year College</option>
+                                                    <option>3rd Year College</option>
+                                                    <option>4th Year College</option>
+                                                    <option>5th Year College or beyond</option>
+                                                    <option>Masters-Post Graduate</option>
+                                                    <option>Doctoral-Post Graduate</option>
+                                            </select></td>
+
+                                        <td><label class="control-label">Highest Educational Attainment</label></td>
+                                        <td><select
+                                                class="form-control"
+                                                id="EHighestEduc"
+                                                name="EHighestEduc"
+                                                required 
+                                                disabled>
+                                                <option></option>
+                                                    <option>Has never been in school</option>
+                                                    <option>Elementary Level</option>
+                                                    <option>Elementary Graduate</option>
+                                                    <option>Highschool Level</option>
+                                                    <option>Highschool Graduate</option>
+                                                    <option>Post Secondary Level</option>
+                                                    <option>Post Secondary qualification</option>
+                                                    <option>College Level</option>
+                                                    <option>College Graduate</option>
+                                                    <option>Post-graduate Level</option>
+                                                    <option>Post-graduate Master</option>
+                                                    <option>Graduate Doctoral</option>
+                                                    <option>Not Applicable</option>
+                                            </select></td>
+
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <table style="border-spacing: 17px;border-collapse: separate;font-size: 12px">
+                                <tbody  style="text-align: right">
+                                    <tr>
+                                         <td><label class="control-label">Can read simple messages in any language or dialect?</label></td>
+                                        <td><select
+
+                                                class="form-control"
+                                                id="ELiterateRead"
+                                                name="ELiterateRead"
+                                                required>
+                                                    <option>Yes</option>
+                                                    <option>No</option>
+                                                    <option>Not applicable</option>
+                                            </select></td>
+                                        <td><label class="control-label">Can write in any language or dialect?</label></td>
+                                        <td><select
+                                                class="form-control"
+                                                id="ELiterateWrite"
+                                                name="ELiterateWrite"
+                                                required>
+                                                    <option>Yes</option>
+                                                    <option>No</option>
+                                                    <option>Not applicable</option>
+                                            </select></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+
+                            <!--rooooow-->   
+                            <div style="width: 100%; height: 20px; border-bottom: 1px solid #ebebe0; text-align: left">
+                                        <span style="font-size: 12px; padding: 0 10px;">
+                                        Economic Status<!--Padding is optional-->
+                                        </span>
+                            </div>
+                            <center>
+                            <table style="border-spacing: 17px;border-collapse: separate;font-size: 12px">
+                                <tbody  style="text-align: right">
+                                
+                                    <tr>
+                                        <td><label class="control-label">Occupation</label></td>
+                                        <td><input type="text" 
+                                                   class="form-control"
+                                                   maxlength="45"  
+                                                   id="EOccupation" 
+                                                   name = "EOccupation"></td>
+
+                                         <td><label class="control-label">Income Per Month</label></td>
+                                        <td><select
+                                                class="form-control"
+                                                id="EIncome"
+                                                name="EIncome"
+                                                required>
+                                                    <option>0-4999</option>
+                                                    <option>5000-9999</option>
+                                                    <option>10000-14999</option>
+                                                    <option>15000-19999</option>
+                                                    <option>20000-24999</option>
+                                                    <option>25000-29999</option>
+                                                    <option>30000-34999</option>
+                                                    <option>35000-above</option>
+                                            </select></td>
+                                    </tr>
+                                
+                                </tbody>
+                            </center> 
+                            </table>
+
+
+
+                        
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary" name = btnSubmitEdit>Submit</button>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+            </form>
+      
+        <!--end of modals-->
+
 
         <div id="custom_notifications" class="custom-notifications dsp_none">
             <ul class="list-unstyled notifications clearfix" data-tabbed_notifications="notif-group">

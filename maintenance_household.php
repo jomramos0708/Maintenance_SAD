@@ -1,3 +1,71 @@
+<script type = text/javascript>
+    function modalEdit(x)
+    {
+
+        var hidden_houseID = "hidden_houseID_" + x.value;
+        var hidden_Owner = "hidden_Owner_" + x.value;
+        var hidden_ohouseno = "hidden_ohouseno_" + x.value;
+        var hidden_ostreet = "hidden_ostreet_" + x.value;  
+        var hidden_opurok = "hidden_opurok_" + x.value;
+        var hidden_nhouseno = "hidden_nhouseno_" + x.value;
+        var hidden_nstreet = "hidden_nstreet_" + x.value;
+        var hidden_npurok = "hidden_npurok_" + x.value;
+
+        var houseID = document.getElementById(hidden_houseID).value;
+        var Owner = document.getElementById(hidden_Owner).value;
+        var ohouseno = document.getElementById(hidden_ohouseno).value;
+        var ostreet = document.getElementById(hidden_ostreet).value;
+        var opurok = document.getElementById(hidden_opurok).value;
+        var nhouseno = document.getElementById(hidden_nhouseno).value;
+        var nstreet = document.getElementById(hidden_nstreet).value;
+        var npurok = document.getElementById(hidden_npurok).value;
+
+        document.getElementById('EtxtHouseholdID').value = houseID;
+        document.getElementById('EtxtOwner').value = Owner;
+        document.getElementById('EtxtOHouseNo').value = ohouseno;
+        document.getElementById('EtxtOStreet').value = ostreet;
+        document.getElementById('EtxtOPurokNo').value = opurok;
+        document.getElementById('EtxtNHouseNo').value = nhouseno;
+        document.getElementById('EtxtNStreet').value = nstreet;
+        document.getElementById('EtxtNPurokNo').value = npurok;
+    }
+
+    function modalDelete(x)
+    {
+
+       
+        var hidden_houseID = "hidden_houseID_" + x.value;
+        var hidden_Owner = "hidden_Owner_" + x.value;
+        var hidden_ohouseno = "hidden_ohouseno_" + x.value;
+        var hidden_ostreet = "hidden_ostreet_" + x.value;  
+        var hidden_opurok = "hidden_opurok_" + x.value;
+        var hidden_nhouseno = "hidden_nhouseno_" + x.value;
+        var hidden_nstreet = "hidden_nstreet_" + x.value;
+        var hidden_npurok = "hidden_npurok_" + x.value;
+
+        var houseID = document.getElementById(hidden_houseID).value;
+        var Owner = document.getElementById(hidden_Owner).value;
+        var ohouseno = document.getElementById(hidden_ohouseno).value;
+        var ostreet = document.getElementById(hidden_ostreet).value;
+        var opurok = document.getElementById(hidden_opurok).value;
+        var nhouseno = document.getElementById(hidden_nhouseno).value;
+        var nstreet = document.getElementById(hidden_nstreet).value;
+        var npurok = document.getElementById(hidden_npurok).value;
+
+        document.getElementById('DtxtHouseholdID').value = houseID;
+        document.getElementById('DtxtOwner').value = Owner;
+        document.getElementById('DtxtOHouseNo').value = ohouseno;
+        document.getElementById('DtxtOStreet').value = ostreet;
+        document.getElementById('DtxtOPurokNo').value = opurok;
+        document.getElementById('DtxtNHouseNo').value = nhouseno;
+        document.getElementById('DtxtNStreet').value = nstreet;
+        document.getElementById('DtxtNPurokNo').value = npurok;
+    }
+                                                    
+
+</script>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,7 +76,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Barangay Information System</title>
+    <title>BREMS</title>
 
     <!-- Bootstrap core CSS -->
 
@@ -48,7 +116,7 @@
                 <div class="left_col scroll-view">
 
                     <div class="navbar nav_title" style="border: 0;">
-                        <a href="#" class="site_title"><i class="fa fa-institution"></i> <span style="font-size:13px">Barangay Information System</span></a>
+                        <a href="#" class="site_title"><i class="fa fa-institution"></i> <span style="font-size:13px">BREMS</span></a>
                     </div>
                     <div class="clearfix"></div>
 
@@ -60,27 +128,44 @@
                         <div class="menu_section">
                             <h3>General</h3>
                             <ul class="nav side-menu">
-                                <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
+                                <li><a href="home.html"><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
                                 </li>
                                 <li><a><i class="fa fa-gears"></i> Maintenance <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu" style="display: none">
-                                        <li><a href="maintenance_household.php">Household</a>
+                                        <li><a href="#">Request Monitoring Module</a>
+                                            <ul class="nav child_menu" style="display: none">
+                                                <li><a href="maintenance_official.php">Barangay Personnel</a>
+                                                </li> 
+
+                                                <li><a href="maintenance_docu.php">Document</a>
+                                                </li>
+
+                                                <li><a href="maintenance_items.php">Item</a>
+                                                </li>
+
+                                                <li><a href="maintenance_facility.php">Facility</a>
+                                                </li>
+
+                                             </ul>
                                         </li>
-                                        <li><a href="maintenance_family.php">Family</a>
-                                        </li>
-                                         <li><a href="maintenance_resident.php">Resident</a>
-                                        </li>
-                                        <li><a href="maintenance_official.php">Barangay Personnel</a>
-                                        </li> 
-                                        <li><a href="maintenance_event.php">Event</a>
-                                        </li>
-                                        <li><a href="maintenance_docu.php">Document</a>
-                                        </li>
-                                        <li><a href="maintenance_items.php">Item</a>
-                                        </li>
-                                        <li><a href="maintenance_facility.php">Facility</a>
-                                        </li>
+
+                                         <li><a href="#">Event Monitoring Module</a>
+                                            <ul class="nav child_menu" style="display: none">
+                                                <li><a href="maintenance_resident.php">Resident</a>
+                                                </li>
+
+                                                <li><a href="maintenance_household.php">Household</a>
+                                                </li>
+
+                                                <li><a href="maintenance_family.php">Family</a>
+                                                </li>
+
+                                                 
+                                            </ul>
+                                        </li>    
+                                            
                                     </ul>
+                                        
                                 </li>
                                 <li><a><i class="fa fa-desktop"></i> Transaction <span class="fa fa-chevron-down"></span></a>
                                 </li>
@@ -173,60 +258,86 @@
                             <div class="x_panel">
                                 <div class="x_title">
                                     <h2>Household </h2>
-                                    
+                                    <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#household" style="float:right"><span class='glyphicon glyphicon-plus' aria-hidden='true' style="color:white"></span>   Add Household</button>
                                     <div class="clearfix"></div>
                                 </div>
                                 <div class="x_content">
-                                    <table id="example" class="table table-striped responsive-utilities jambo_table" style="font-size:12px">
-                                        <thead>
-                                            <tr class="headings">
-                                                <th>
-                                                    <input type="checkbox" class="tableflat">
-                                                </th>
+                                     <table id="example" class="table table-striped responsive-utilities jambo_table" style="font-size:12px">
+                                        <?php
+                                            require("connection.php");
+                                            $q = mysqli_query($con,"select HouseholdID, HouseOwner, HouseholdStat, Old_HouseNo, New_HouseNo, Old_Street, New_Street, Old_PurokNo, New_PurokNo from household where HouseholdStat != 'inactive'");
+
+
+                                        echo "<thead>
+                                            <tr class='headings'>
+                                                
                                                 <th>ID</th>
-                                                <th>Household Type</th>
-                                                <th>Owner</th>
-                                                <th>Old Address</th>
-                                                <th>New Address</th>
-                                                <th>Members</th>
+                                                <th>House Owner</th>
+                                                <th>Old Address</th> 
+                                                <th>New Address</th> 
+                                            
                                                 <th>Action</th>
-												
+                                                <th></th>
+                                               
+                                                
                                             </tr>
                                         </thead>
 
-                                        <tbody>
-                                            <tr class="odd pointer">
-                                                <td class="a-center ">
-                                                    <input type="checkbox" class="tableflat">
+                                        <tbody>" ;
+
+                                        while($row = mysqli_fetch_array($q))
+                                            {
+                                                $HouseID = $row['HouseholdID'];
+                                                $Owner = $row['HouseOwner'];
+                                                $ohouseno = $row['Old_HouseNo'];
+                                                $ostreet = $row['Old_Street'];
+                                                $opurok = $row['Old_PurokNo'];
+                                                $nhouseno = $row['New_HouseNo'];
+                                                $nstreet = $row['New_Street'];
+                                                $npurok = $row['New_PurokNo'];
+
+                                                $oldadd = $ohouseno . ', ' . $ostreet . ", Purok # " . $opurok;
+                                                $newadd = $nhouseno . ', ' . $nstreet . ", Purok # " . $npurok;
+
+                                            echo"
+                                            <tr class='odd pointer'>
+                                                
+
+                                                <td>$HouseID</td>
+                                                <td>$Owner</td>
+                                                <td>$oldadd</td>  
+                                                <td>$newadd</td>  
+                                                
+                                                <td>
+                                                    <Button class='btn btn-success' name='btnEdit' id='btnEdit' value = '$HouseID' data-target=#EditItems data-toggle=modal onclick = 'modalEdit(this);' >  Edit </button>
+                                                    <Button class='btn btn-danger' name='btnDelete' id='btnDelete' value = '$HouseID' data-target=#DeleteItems data-toggle=modal onclick = 'modalDelete(this);' >  Delete </button>
+                                                
                                                 </td>
 
-                                                <td class=" ">0001</td>
-                                                <td class=" ">Family Household</td>
-                                                <td class=" ">Jomari Ramos</td>
-                                                <td class=" ">4730-D Old Sta. Mesa</td>
-                                                <td class=" ">4730-D Old Sta. Mesa</td>
-                                                
+                                                <td>
+                                                    <input type = 'hidden' value = '$HouseID' id = 'hidden_houseID_$HouseID'>
+                                                    <input type = 'hidden' value = '$Owner' id = 'hidden_Owner_$HouseID'>
+                                                    <input type = 'hidden' value = '$ohouseno' id = 'hidden_ohouseno_$HouseID'>
+                                                    <input type = 'hidden' value = '$ostreet' id = 'hidden_ostreet_$HouseID'>
+                                                    <input type = 'hidden' value = '$opurok' id = 'hidden_opurok_$HouseID'>
+                                                    <input type = 'hidden' value = '$nhouseno' id = 'hidden_nhouseno_$HouseID'>
+                                                    <input type = 'hidden' value = '$nstreet' id = 'hidden_nstreet_$HouseID'>
+                                                    <input type = 'hidden' value = '$npurok' id = 'hidden_npurok_$HouseID'>
+
+                                                </td>
+                                                </tr>
+
+                                                ";
+                                            }
+                                            echo"
                                                
-                                                
-                                               
-                                        </tbody>
+                                        </tbody>" ; 
+                                        ?>
 
                                     </table>
                                    
                                     
                                 </div>
-                                <br>  
-                                <center>
-                                    
-                                    <button type="submit" class="btn btn-success" data-toggle="modal" data-target="#items">Add</button>
-                                
-                                    <button type="submit" class="btn btn-success" data-toggle="modal" data-target="#items">Edit</button>
-                                    
-                                    <button type="submit" class="btn btn-danger" data-toggle="modal" data-target="#">Delete</button>
-                                
-                                
-                                </center>
-                                
        
                             </div>
                         </div>
@@ -240,8 +351,8 @@
                     <!-- footer content -->
                 <footer>
                     <div class="">
-                        <p class="pull-right">Developed by PUP 2016 | Gentelella Alela! a Bootstrap 3 template by <a>Kimlabs</a>. |
-                            <span class="lead"> <i class="fa fa-institution"></i> Barangay Information System</span>
+                        <p class="pull-right">Developed by PUP 2016 |
+                            <span class="lead"> <i class="fa fa-institution"></i> Barangay Requesting and Event Monitoring System</span>
                         </p>
                     </div>
                     <div class="clearfix"></div>
@@ -256,6 +367,7 @@
     
     
    <!-- Modal -->
+   <form method="post" action = "mhousehold.php">
   <div class="modal fade" id="items" role="dialog">
     <div class="modal-dialog modal-sm" style="width:350px">
     
@@ -267,14 +379,15 @@
         </div>
         <div class="modal-body">
             <form method="post">
-		            <div class="form-inline">
+		            <div class="form-inline" hidden="hidden">
                         <div style = "float:right">
                         <label class="control-label"> Household ID:</label> 
                             <input  type="text" 
                                 style="margin-left:10px; width:70px"
                                 class="form-control"
-                                id="surname"
-                                readonly="readonly"
+                                id="txtHouseholdID"
+                                name="txtHouseholdID"
+                                
                                 >
                         </div>   
                     </div>
@@ -282,60 +395,326 @@
                     <br>
                     <br>
                     
-                    <div class="form-inline">
-                        <label class="control-label"> Household Type: </label> 
-                            <div class="radio">
-                                <label>
-                                    <input type="radio" class="flat" checked name="iCheck"> Family
-                                </label>
-                                                </div>
-                                                <div class="radio">
-                                                    <label>
-                                                        <input type="radio" class="flat" name="iCheck"> Non-family
-                                                    </label>
-                                                </div>
-                    </div>
-                    <br>
-                    <hr>
+        
 
-                    <div class="form-inline">
-                        <label class="control-label"> Resident ID:</label> 
-                            <input type="text" 
-                                style="margin-left:27px"
-                                class="form-control"
-                                id="surname"
-                                required="required">
-                    </div><br>
                     <div class="form-inline">
                         
                         <label class="control-label"> Owner Name:</label> 
                             <input  type="text" 
                                 style="margin-left:20px"
                                 class="form-control"
-                                id="surname"
-                                readonly="readonly">
+                                id="txtOwner"
+                                name="txtOwner"
+                                >
                     </div> 
-                    <hr>
+
+
+                     <div class="form-inline">
+                        <label class="control-label"> Old Address:</label> 
+                            <input type="text" 
+                                style="margin-left:27px"
+                                class="form-control"
+                                id="txtOHouseNo"
+                                name="txtOHouseNo"
+                                placeholder="House No." 
+                                required="required">
+
+                            <input type="text" 
+                                style="margin-left:27px"
+                                class="form-control"
+                                id="txtOStreet"
+                                name="txtOStreet"
+                                placeholder="Street" 
+                                required="required">
+
+                            <input type="text" 
+                                style="margin-left:27px"
+                                class="form-control"
+                                id="txtOPurokNo"
+                                name="txtOPurokNo"
+                                placeholder="Purok"
+                                required="required">
+                    </div><br>
+
+                    <div class="form-inline">
+                        <label class="control-label"> New Address:</label> 
+                            <input type="text" 
+                                style="margin-left:27px"
+                                class="form-control"
+                                id="txtNHouseNo"
+                                name="txtNHouseNo"
+                                placeholder="House No." 
+                                required="required">
+
+                            <input type="text" 
+                                style="margin-left:27px"
+                                class="form-control"
+                                id="txtNStreet"
+                                name="txtNStreet"
+                                placeholder="Street" 
+                                required="required">
+
+                            <input type="text" 
+                                style="margin-left:27px"
+                                class="form-control"
+                                id="txtNPurokNo"
+                                name="txtNPurokNo"
+                                placeholder="Purok"
+                                required="required">
+                    </div><br>
 
                     <br>
             </div>
 		
 			  <div class="modal-footer">
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary" name="btnSubmit" id="btnSubmit">Submit</button>
         </div>
 
-        </form>
-		
+       
       </div>
 	  
     </div>
 
 	
         </div>
+     
+  </form>
+
+
+  <!-- Modal -->
+   <form method="post" action = "mhousehold.php">
+  <div class="modal fade" id="EditItems" role="dialog">
+    <div class="modal-dialog modal-sm" style="width:350px">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Household</h4>
+        </div>
+        <div class="modal-body">
+            <form method="post">
+                    <div class="form-inline">
+                        <div style = "float:right">
+                        <label class="control-label"> Household ID:</label> 
+                            <input  type="text" 
+                                style="margin-left:10px; width:70px"
+                                class="form-control"
+                                id="EtxtHouseholdID"
+                                name="EtxtHouseholdID"
+                                readonly="readonly" 
+                                >
+                        </div>   
+                    </div>
+                    <br>
+                    <br>
+                    <br>
+                    
+        
+
+                    <div class="form-inline">
+                        
+                        <label class="control-label"> Owner Name:</label> 
+                            <input  type="text" 
+                                style="margin-left:20px"
+                                class="form-control"
+                                id="EtxtOwner"
+                                name="EtxtOwner"
+                                >
+                    </div> 
+
+
+                     <div class="form-inline">
+                        <label class="control-label"> Old Address:</label> 
+                            <input type="text" 
+                                style="margin-left:27px"
+                                class="form-control"
+                                id="EtxtOHouseNo"
+                                name="EtxtOHouseNo"
+                                placeholder="House No." 
+                                required="required">
+
+                            <input type="text" 
+                                style="margin-left:27px"
+                                class="form-control"
+                                id="EtxtOStreet"
+                                name="EtxtOStreet"
+                                placeholder="Street" 
+                                required="required">
+
+                            <input type="text" 
+                                style="margin-left:27px"
+                                class="form-control"
+                                id="EtxtOPurokNo"
+                                name="EtxtOPurokNo"
+                                placeholder="Purok"
+                                required="required">
+                    </div><br>
+
+                    <div class="form-inline">
+                        <label class="control-label"> New Address:</label> 
+                            <input type="text" 
+                                style="margin-left:27px"
+                                class="form-control"
+                                id="EtxtNHouseNo"
+                                name="EtxtNHouseNo"
+                                placeholder="House No." 
+                                required="required">
+
+                            <input type="text" 
+                                style="margin-left:27px"
+                                class="form-control"
+                                id="EtxtNStreet"
+                                name="EtxtNStreet"
+                                placeholder="Street" 
+                                required="required">
+
+                            <input type="text" 
+                                style="margin-left:27px"
+                                class="form-control"
+                                id="EtxtNPurokNo"
+                                name="EtxtNPurokNo"
+                                placeholder="Purok"
+                                required="required">
+                    </div><br>
+
+                    <br>
+            </div>
+        
+              <div class="modal-footer">
+        <button type="submit" class="btn btn-primary" id="btnSubmitEdit" name="btnSubmitEdit">Submit</button>
+        </div>
+
+       
       </div>
       
     </div>
-  </div>
+
+    
+        </div>
+     
+  </form>
+
+  <!-- Modal -->
+   <form method="post" action = "mhousehold.php">
+  <div class="modal fade" id="DeleteItems" role="dialog">
+    <div class="modal-dialog modal-sm" style="width:350px">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Household</h4>
+        </div>
+        <div class="modal-body">
+            <form method="post">
+                    <div class="form-inline">
+                        <div style = "float:right">
+                        <label class="control-label"> Household ID:</label> 
+                            <input  type="text" 
+                                style="margin-left:10px; width:70px"
+                                class="form-control"
+                                id="DtxtHouseholdID"
+                                name="DtxtHouseholdID"
+                                readonly="readonly" 
+                                >
+                        </div>   
+                    </div>
+                    <br>
+                    <br>
+                    <br>
+                    
+        
+
+                    <div class="form-inline">
+                        
+                        <label class="control-label"> Owner Name:</label> 
+                            <input  type="text" 
+                                style="margin-left:20px"
+                                class="form-control"
+                                id="DtxtOwner"
+                                name="DtxtOwner"
+                                readonly="readonly" 
+                                >
+                    </div> 
+
+
+                     <div class="form-inline">
+                        <label class="control-label"> Old Address:</label> 
+                            <input type="text" 
+                                style="margin-left:27px"
+                                class="form-control"
+                                id="DtxtOHouseNo"
+                                name="DtxtOHouseNo"
+                                placeholder="House No." 
+                                readonly="readonly" 
+                                required="required">
+
+                            <input type="text" 
+                                style="margin-left:27px"
+                                class="form-control"
+                                id="DtxtOStreet"
+                                name="DtxtOStreet"
+                                placeholder="Street"
+                                readonly="readonly"  
+                                required="required">
+
+                            <input type="text" 
+                                style="margin-left:27px"
+                                class="form-control"
+                                id="DtxtOPurokNo"
+                                name="DtxtOPurokNo"
+                                placeholder="Purok"
+                                readonly="readonly" 
+                                required="required">
+                    </div><br>
+
+                    <div class="form-inline">
+                        <label class="control-label"> New Address:</label> 
+                            <input type="text" 
+                                style="margin-left:27px"
+                                class="form-control"
+                                id="DtxtNHouseNo"
+                                name="DtxtNHouseNo"
+                                readonly="readonly" 
+                                placeholder="House No." 
+                                required="required">
+
+                            <input type="text" 
+                                style="margin-left:27px"
+                                class="form-control"
+                                id="DtxtNStreet"
+                                name="DtxtNStreet"
+                                placeholder="Street"
+                                readonly="readonly"  
+                                required="required">
+
+                            <input type="text" 
+                                style="margin-left:27px"
+                                class="form-control"
+                                id="DtxtNPurokNo"
+                                name="DtxtNPurokNo"
+                                placeholder="Purok"
+                                readonly="readonly" 
+                                required="required">
+                    </div><br>
+
+                    <br>
+            </div>
+        
+              <div class="modal-footer">
+        <button type="submit" class="btn btn-primary" name = btnSubmitDelete>Submit</button>
+        </div>
+
+       
+      </div>
+      
+    </div>
+
+    
+        </div>
+     
+  </form>
 
         <div id="custom_notifications" class="custom-notifications dsp_none">
             <ul class="list-unstyled notifications clearfix" data-tabbed_notifications="notif-group">

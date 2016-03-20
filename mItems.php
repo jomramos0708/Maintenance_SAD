@@ -3,23 +3,14 @@
 
             if(isset($_POST['btnSubmit']))
             {
-                if(empty($_POST['txtItemID']) || empty($_POST['txtItemDescription']) || empty($_POST['txtQuantity'])|| empty($_POST['txtStock']))
-        {
-?>
-
-        <script> alert ("Fill in the textfields");
-        </script>
-<?php
-
-        }
-        else{
                 $itemID = $_POST['txtItemID'];
                 $itemDesc = $_POST['txtItemDescription'];
                 $quantity = $_POST['txtQuantity'];
                 $stock = $_POST['txtStock'];
 
-                $query = "insert into item_inventory values ('$itemID', '$itemDesc', '$quantity', '$stock', 'active')";
+                //$query = "insert into item_inventory (ItemDesc, ItemQuantity, ItemAvailableQty, ItemStatus) values ('$itemDesc', '0', '0', 'active')";
 
+                $query = "INSERT INTO bremsdb.item_inventory (ItemID, ItemDesc, ItemQuantity, ItemAvailableQty, ItemStatus) VALUES (NULL, '$itemDesc', '0', '0', 'active');";
                
 
                 $res = mysqli_query($con, $query);
@@ -29,7 +20,7 @@
                 else{
                     echo "data updated";
                 }
-            }
+            
         }
         
 

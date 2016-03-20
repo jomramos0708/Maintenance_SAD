@@ -3,16 +3,7 @@
 
             if(isset($_POST['btnSubmit']))
             {
-                if(empty($_POST['txtFacID']) || empty($_POST['txtFacCate']) || empty($_POST['txtFacName'])|| empty($_POST['txtFacAddress']))
-        {
-?>
-
-        <script> alert ("Fill in the textfields");
-        </script>
-<?php
-
-        }
-        else{
+               
                 $facID = $_POST['txtFacID'];
                 $facCAte = $_POST['txtFacCate'];
                 $facName = $_POST['txtFacName'];
@@ -29,7 +20,7 @@
                 else{
                     echo "data updated";
                 }
-            }
+       
         }
         
 

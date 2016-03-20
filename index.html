@@ -1,343 +1,969 @@
-<!DOCTYPE html>
-<html lang="en">
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>  
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Barangay 599 ZONE 59</title>
+    <!-- BOOTSTRAP CORE STYLE CSS -->
+    <link href="assets/css/bootstrap.css" rel="stylesheet" />
+    <!-- FONT AWESOME CSS -->
+<link href="assets/css/font-awesome.min.css" rel="stylesheet" />
+     <!-- FLEXSLIDER CSS -->
+<link href="assets/css/flexslider.css" rel="stylesheet" />
+    <!-- CUSTOM STYLE CSS -->
+    <link href="assets/css/style.css" rel="stylesheet" />    
+  <!-- Google	Fonts -->
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css' />
+	<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css' />
+	<link href='https://fonts.googleapis.com/css?family=Slabo+27px' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Kreon' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Jura' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Glegoo' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+	
+	<!-- EFFECTS -->
+	
+	<meta name="description" content="A set of modern text styles and hover effects for your inspiration" />
+	<meta name="keywords" content="text style, link style, link hover, effect, animation, inspiration, web design" />
+	<meta name="author" content="Codrops" />
+	<link rel="shortcut icon" href="favicon.ico">
+	<link rel="stylesheet" type="text/css" href="css/normalize.css" />
+	<link rel="stylesheet" type="text/css" href="css/demo.css" />
+	<link rel="stylesheet" type="text/css" href="css/linkstyles.css" />
+	
+<!-- JQUERY -->
 
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <!-- Meta, title, CSS, favicons, etc. -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 
-    <title>Barangay Information System</title>
 
-    <!-- Bootstrap core CSS -->
 
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+<script src="jquery.js"></script>
+<script src="typed.js"></script>
+<script>
+  $(function(){
+      $(".element").typed({
+        strings: ["First sentence.", "Second sentence."],
+        typeSpeed: 0
+      });
+  });
+</script>
 
-    <link href="fonts/css/font-awesome.min.css" rel="stylesheet">
-    <link href="css/animate.min.css" rel="stylesheet">
+<script>
+$(document).load(function(){
+$(i).slideDown();
+}
 
-    <!-- Custom styling plus plugins -->
-    <link href="css/custom.css" rel="stylesheet">
-    <link href="css/icheck/flat/green.css" rel="stylesheet">
-    <link href="css/datatables/tools/css/dataTables.tableTools.css" rel="stylesheet">
+<script>
+$(document).ready(function(){
+$("hr").animate({width: '300px'}, "slow");
+	});
+</script>
 
-    <script src="js/jquery.min.js"></script>
-
-    <!--[if lt IE 9]>
-        <script src="../assets/js/ie8-responsive-file-warning.js"></script>
-        <![endif]-->
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-          <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-        <![endif]-->
 
 </head>
+<style>
 
+#log{
+	text-indent: 10%;
+}
 
-<body class="nav-md">
+#log a{
+	text-decoration: none;
+	color: white;
+}
 
-    <div class="container body">
-
-
-        <div class="main_container">
-
-            <div class="col-md-3 left_col">
-                <div class="left_col scroll-view">
-
-                    <div class="navbar nav_title" style="border: 0;">
-                        <a href="#" class="site_title"><i class="fa fa-institution"></i> <span style="font-size:13px">Barangay Information System</span></a>
-                    </div>
-                    <div class="clearfix"></div>
-
-                    <br />
-
-                    <!-- sidebar menu -->
-                    <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
-
-                        <div class="menu_section">
-                            <h3>General</h3>
-                            <ul class="nav side-menu">
-                                <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
-                                </li>
-                               <li><a><i class="fa fa-gears"></i> Maintenance <span class="fa fa-chevron-down"></span></a>
-                                    <ul class="nav child_menu" style="display: none">
-                                        <li><a href="maintenance_household.php">Household</a>
-                                        </li>
-                                        <li><a href="maintenance_family.php">Family</a>
-                                        </li>
-                                         <li><a href="maintenance_resident.php">Resident</a>
-                                        </li>
-                                        <li><a href="maintenance_official.php">Barangay Personnel</a>
-                                        </li> 
-                                        <li><a href="maintenance_event.php">Event</a>
-                                        </li>
-                                        <li><a href="maintenance_docu.php">Document</a>
-                                        </li>
-                                        <li><a href="maintenance_items.php">Item</a>
-                                        </li>
-                                        <li><a href="maintenance_facility.php">Facility</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li><a><i class="fa fa-desktop"></i> Transaction <span class="fa fa-chevron-down"></span></a>
-                                </li>
-                                <li><a><i class="fa fa-file-text"></i> Query <span class="fa fa-chevron-down"></span></a>
-                                </li>
-                                <li><a><i class="fa fa-bar-chart-o"></i> Report<span class="fa fa-chevron-down"></span></a>
-                                </li>
-                            </ul>
-                        </div>
-
-                    </div>
-                    <!-- /sidebar menu -->
-
-                    <!-- /menu footer buttons -->
-                    <div class="sidebar-footer hidden-small">
-                        <a data-toggle="tooltip" data-placement="top" title="Settings">
-                            <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-                        </a>
-                        <a data-toggle="tooltip" data-placement="top" title="FullScreen">
-                            <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
-                        </a>
-                        <a data-toggle="tooltip" data-placement="top" title="Lock">
-                            <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
-                        </a>
-                        <a data-toggle="tooltip" data-placement="top" title="Logout">
-                            <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
-                        </a>
-                    </div>
-                    <!-- /menu footer buttons -->
-                </div>
+</style>
+<body >
+ 
+ 
+ 
+ <div class="navbar navbar-inverse navbar-fixed-top " id="menu">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                 <a class="navbar-brand" href="#"> BARANGAY 599 ZONE 59</a>
             </div>
-
-            <!-- top navigation -->
-            <div class="top_nav">
-
-                <div class="nav_menu">
-                    <nav class="" role="navigation">
-                        <div class="nav toggle">
-                            <a id="menu_toggle"><i class="fa fa-bars"></i></a>
-                        </div>
-
-                        <ul class="nav navbar-nav navbar-right">
-                            <li class="">
-                                <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-									<i class="fa fa-user"></i>  Admin
-                                    <span class=" fa fa-angle-down"></span>
-                                </a>
-                                <ul class="dropdown-menu dropdown-usermenu animated fadeInDown">
-									<li><a href="javascript:;"><i class="fa fa-cog"></i> Profile</a>
-									</li>
-                                    <li><a href="login.html"><i class="fa fa-sign-out"></i> Log Out</a>
-                                    </li>
-                                </ul>
-                            </li>
-
-                        </ul>
-                    </nav>
-                </div>
-
+            <div class="navbar-collapse collapse move-me">
+                <ul class="nav navbar-nav navbar-right">
+                    <li ><a href="#home">HOME</a></li>
+                    <li><a href="#features-sec">SERVICES</a></li>
+					<li role="presentation" class="dropdown">
+        		<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><font color="white">  ABOUT
+        		</font><span class="caret"></span></a>
+       	 		<ul class="dropdown-menu">
+					<li><a href="#faculty-sec">Mission & Vision</a></li>
+          			<li><a href="official.html">Officials</a></li>
+                    <li><a href="profile.html">Profile</a></li>
+                    <li><a href="service.html">Services</a></li>
+                    <li><a href="org.html">Organizations</a></li>
+                    <li><a href="login.html"> LOG-IN </a></li>
+        		</ul>
+      		</li>
+                     <li><a href="maps.html">MAPS</a></li>
+                     <li><a href="contact.html">CONTACT</a></li>
+                </ul>
             </div>
-            <!-- /top navigation -->
-
-            <div class="right_col" role="main">
-
-                <!-- top tiles -->
-                <div class="row tile_count">
-                    <div class="animated flipInY col-md-2 col-sm-4 col-xs-4 tile_stats_count">
-                        <div class="left"></div>
-                        <div class="right">
-                            <span class="count_top"><i class="fa fa-user"></i> Total Household</span>
-                            <div class="count">1,023</div>
-                            <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i></i> As of 2015</span>
-                        </div>
-                    </div>
-                    <div class="animated flipInY col-md-2 col-sm-4 col-xs-4 tile_stats_count">
-                        <div class="left"></div>
-                        <div class="right">
-                            <span class="count_top"><i class="fa fa-user"></i> Total Population</span>
-                            <div class="count green">5,600</div>
-                            <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i></i> As of 2015</span>
-                        </div>
-                    </div>
-                    <div class="animated flipInY col-md-2 col-sm-4 col-xs-4 tile_stats_count">
-                        <div class="left"></div>
-                        <div class="right">
-                            <span class="count_top"><i class="fa fa-user"></i> Total Males</span>
-                            <div class="count">3,000</div>
-                             <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i></i> As of 2015</span>
-                        </div>
-                    </div>
-                    <div class="animated flipInY col-md-2 col-sm-4 col-xs-4 tile_stats_count">
-                        <div class="left"></div>
-                        <div class="right">
-                            <span class="count_top"><i class="fa fa-user"></i> Total Females</span>
-                            <div class="count">3,600</div>
-                            <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i></i> As of 2015</span>
-                        </div>
-                    </div>
-                    <div class="animated flipInY col-md-2 col-sm-4 col-xs-4 tile_stats_count">
-                        <div class="left"></div>
-                        <div class="right">
-                            <span class="count_top"><i class="fa fa-user"></i> Total Registered Voters</span>
-                            <div class="count">1,516</div>
-                            <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i></i> As of 2013</span>
-                        </div>
-                    </div>
-                    <div class="animated flipInY col-md-2 col-sm-4 col-xs-4 tile_stats_count">
-                        <div class="left"></div>
-                        <div class="right">
-                            <span class="count_top"><i class="fa fa-user"></i> Total No. of Businesses</span>
-                            <div class="count">123</div>
-                           <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i></i> As of 2015</span>
-                        </div>
-                    </div>
-
-                </div>
-       
-	     <!-- Start to do list -->
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                <div class="x_panel">
-                                    <div class="x_title">
-                                        <h2>To Do List</h2>
-                                        <ul class="nav navbar-right panel_toolbox">
-                                            <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                                            </li>
-                                            <li class="dropdown">
-                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                                                <ul class="dropdown-menu" role="menu">
-                                                    <li><a href="#">Settings 1</a>
-                                                    </li>
-                                                    <li><a href="#">Settings 2</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li><a class="close-link"><i class="fa fa-close"></i></a>
-                                            </li>
-                                        </ul>
-                                        <div class="clearfix"></div>
-                                    </div>
-                                    <div class="x_content">
-
-                                        <div class="">
-                                            <ul class="to_do">
-                                                <li>
-                                                    <p>
-                                                        <input type="checkbox" class="flat"> Meeting with the Councilors</p>
-                                                </li>
-                                                <li>
-                                                    <p>
-                                                        <input type="checkbox" class="flat"> Ribbon cutting of Basketball Court</p>
-                                                </li>
-                                                <li>
-                                                    <p>
-                                                        <input type="checkbox" class="flat"> Fedding program with PUP</p>
-                                                </li>
-                                                <li>
-                                                    <p>
-                                                        <input type="checkbox" class="flat"> Implementation of online document requesting</p>
-                                                </li>
-                                                <li>
-                                                    <p>
-                                                        <input type="checkbox" class="flat"> Buy 3 printers</p>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End to do list -->
-							
-							
-							 <!-- bar chart -->
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                            <div class="x_panel">
-                                <div class="x_title">
-                                    <h2>Bar Charts <small>Sessions</small></h2>
-                                    <ul class="nav navbar-right panel_toolbox">
-                                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                                        </li>
-                                        <li class="dropdown">
-                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                                            <ul class="dropdown-menu" role="menu">
-                                                <li><a href="#">Settings 1</a>
-                                                </li>
-                                                <li><a href="#">Settings 2</a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li><a class="close-link"><i class="fa fa-close"></i></a>
-                                        </li>
-                                    </ul>
-                                    <div class="clearfix"></div>
-                                </div>
-                                <div class="x_content">
-                                    <div id="graph_bar" style="width:100%; height:280px;"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /bar charts -->
-
-
-                         <!-- pie chart -->
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                            <div class="x_panel">
-                                <div class="x_title">
-                                    <h2>Pie Chart <small>Sessions</small></h2>
-                                    <ul class="nav navbar-right panel_toolbox">
-                                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                                        </li>
-                                        <li class="dropdown">
-                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                                            <ul class="dropdown-menu" role="menu">
-                                                <li><a href="#">Settings 1</a>
-                                                </li>
-                                                <li><a href="#">Settings 2</a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li><a class="close-link"><i class="fa fa-close"></i></a>
-                                        </li>
-                                    </ul>
-                                    <div class="clearfix"></div>
-                                </div>
-                                <div class="x_content2">
-                                    <div id="graph_donut" style="width:100%; height:300px;"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /Pie chart -->
-							
-							
-
-        <div id="custom_notifications" class="custom-notifications dsp_none">
-            <ul class="list-unstyled notifications clearfix" data-tabbed_notifications="notif-group">
-            </ul>
-            <div class="clearfix"></div>
-            <div id="notif-group" class="tabbed_notifications"></div>
+           
         </div>
+    </div>
+	
+      <!--NAVBAR SECTION END-->
+       <div class="home-sec" id="home" style="background-image: url('images/1.jpeg')">
+           <div class="overlay">
+ <div class="container">
+           <div class="row text-center " >
+           
+               <div class="col-lg-12  col-md-12 col-sm-12">
+               
+                <div class="flexslider set-flexi" id="main-section" >
+                    <ul class="slides move-me">
+                        <!-- Slider 01 -->
+                        <li>
+                             <h3 style="font-family: Raleway; color: white;">WELCOME TO BARANGAY 599 ZONE 59</h3>
+                           <h1 style="color: white;">STA. MESA, MANILA</h1>
+                            <a href="#features-sec"><i class="fa fa-angle-double-down fa-4x icon-round-border" ></i></a>
+                        </li>
+                        <!-- End Slider 01 -->
+                        
+                        <!-- Slider 02 -->
+                        <li>
+                            <h3 style="font-family: Raleway; color: white;">WELCOME TO BARANGAY 599 ZONE 59</h3>
+                           <h1 style="color: white;">OFFICIAL WEBSITE</h1>
+                             <a href="#features-sec"><i class="fa fa-angle-double-down fa-4x icon-round-border" ></i></a>
+                        </li>
+                        <!-- End Slider 02 -->
+                        
+                        <!-- Slider 03 -->
+                        <li>
+                            <h3 style="font-family: Raleway; color: white;">WELCOME TO BARANGAY 599 ZONE 59</h3>
+                           <h1 style="color: white;">ENJOY YOUR STAY</h1>
+                             <a href="#features-sec"><i class="fa fa-angle-double-down fa-4x icon-round-border" ></i></a>
+                        </li>
+                        <!-- End Slider 03 -->
+                    </ul>
+                </div>
+                   
+     
+              
+            
+			</div>
+            </div>
+                
+              
+                </div>
+           </div>
+           
+       </div>
+       <!--HOME SECTION END-->   
+    <div  class="tag-line" >
+         <div class="container">
+           <div class="row  text-center" >
+           
+               <div class="col-lg-12  col-md-12 col-sm-12">
+               
 
-        <script src="js/bootstrap.min.js"></script>
-
-        <!-- chart js -->
-        <script src="js/chartjs/chart.min.js"></script>
-        <!-- bootstrap progress js -->
-        <script src="js/progressbar/bootstrap-progressbar.min.js"></script>
-        <script src="js/nicescroll/jquery.nicescroll.min.js"></script>
-        <!-- icheck -->
-        <script src="js/icheck/icheck.min.js"></script>
-
-        <script src="js/custom.js"></script>
-		
-		 <!-- moris js -->
-		<script src="js/moris/raphael-min.js"></script>
-		<script src="js/moris/morris.js"></script>
-		<script src="js/moris/example.js"></script>
-
+                   </div>
+               </div>
+             </div>
         
-</body>
+    </div>
+    <!--HOME SECTION TAG LINE END-->   
+         <div id="features-sec" class="container-fluid set-pad" style="border-top-style: solid; border-color: gold; border-width: 3px; background-image: url('images/bg.png')">
+             <div class="row text-center">
+                 <div class="col-lg-8 col-lg-offset-2 col-md-8 col-sm-8 col-md-offset-2 col-sm-offset-2">
+				 
+				 <div class="grid__item color-2">
+				<a class="link link--surinami" href="service.html"><span>SERVICES</span></a>
+			</div>
+				 
+				 <!--
+                     <h1 data-scroll-reveal="enter from the bottom after 0.2s"  class="header-line">SERVICES</h1>
+					 -->
+                     <p data-scroll-reveal="enter from the bottom after 0.3s" style="font-family: Glegoo;">
+                      Encourage and support the development of appropriate and self-reliant scientific and technological
+					  capabilities, improve public morals, enhance economic prosperity and social justice, promote full employment
+					  among their residents, maintain peace and order, and preserve the comfort and convenience of their inhabitants. 
+					  Provides that barangays should provide basic services that include: 
+                         </p>
+                 </div>
 
+             </div>
+             <!--/.HEADER LINE END-->
+
+
+           <div class="row" >
+           <div class="service">
+               
+                  
+				   
+                   <div class="col-lg-4  col-md-4 col-sm-4" data-scroll-reveal="enter from the bottom after 0.5s" style="margin-left: 20px;">
+                     <div class="about-div">
+                     <i class="fa fa-print fa-4x icon-round-border" ></i>
+                   <a data-toggle="modal" data-target="#items"><h3 >DOC REQUEST</h3></a>
+                 <hr />
+                       <hr />
+                   <p >
+                      Request different types of documents in the barangay. Included in the document request are
+					  Barangay Clearance, Business Clearance, Certificate of Indigency, Job Recommendation, 
+					  Special Certifications, ect.
+                       
+                   </p>
+               <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#docrequest" style="font-size: 14px; font-family: Montserrat;">FORM</button>
+               <button type="button" class="btn btn-info btn-lg" style="font-size: 14px; font-family: Montserrat;"><a href="dforms/1.pdf" style="color: white;">Downloadable Form</a></button>
+			   <!-- <object width="400" height="400" data="docrequest.pdf"></object> -->
+                </div>
+                   </div>
+				   
+				   <!-- DOCUMENT REQUEST MODAL -->
+				   
+				    <!-- Modal -->
+  <div class="modal fade" id="docrequest" role="dialog"  style="font-family: Times New Roman;">
+    <div class="modal-dialog modal-lg">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title" style="font-family: Montserrat;">Document Request</h4>
+        </div>
+		
+        <div class="modal-body">
+					
+					 <div class="form-inline">
+							<label for="residentID" style="margin-left: 20px;">Resident ID:</label> 
+                            <input type="text" class="form-control" id="residentID" placeholder="ID" style="margin-right: 10px;" disabled>
+    
+                            <label for="givenname">Name:</label>	
+                            <input type="text" class="form-control" id="name" placeholder="Name" style="margin-right: 10px;">
+					
+							<label for="givenname">Date of Birth:</label>	
+                            <input type="text" class="form-control" id="bday" placeholder="MM / DD / YYYY" style="margin-right: 10px;">
+							
+					</div> <br>
+					
+					 <div class="form-inline">
+							
+							<label for="address" style="margin-left: 50px;">Address:</label>	
+                            <input type="text" class="form-control" id="address" placeholder="Address" style="margin-right: 10px;">
+		
+							
+							<label for="civilstatus">Civil Status:</label>	
+                            <select style="margin-left:5px" class="form-control" placeholder="Status" position =right>
+								<option>Single</option>
+								<option>Married</option>
+								<option>Separated</option>
+								<option>Widowed</option>
+							</select>
+												
+					</div>
+		</center><br>
+		
+					 <div class="form-inline">
+					 
+							<label for="docreq" style="margin-left: 25px;"> Request for: </label>
+                            <input type="checkbox" name="bc" value="" style="margin-left: 20px;"> Barangay Clearance / Certification
+                            <input type="checkbox" name="ci" value="" style="margin-left: 20px;"> Certificate of Indigency
+                            <input type="checkbox" name="cfa" value="" style="margin-left: 20px;"> Certificate to File Action<br>
+                            <input type="checkbox" name="ff" value="" style="margin-left: 45px;"> Filling Fee
+                            <input type="checkbox" name="bi" value="" style="margin-left: 15px;"> Barangay ID
+                            <input type="checkbox" name="ma" value="" style="margin-left: 15px;"> Medical Assistance/ Senior Citizen
+                            <input type="checkbox" name="rr" value="" style="margin-left: 15px;"> Referral Recommendation<br>
+                            
+						<br>
+				</div>
+				
+					<div class="form-inline">
+							
+							<label style="margin-left: 10%;"> Business Clearance: </label>
+							<input type="checkbox" name="1" value="" style="margin-left: 15px;"> for capital 10,000 Php below
+							<input type="checkbox" name="2" value="" style="margin-left: 15px;"> for capital 10,000 - 100,000 Php 
+							<input type="checkbox" name="3" value="" style="margin-left: 15px;"> for capital 100,000 - above
+							
+							<br>
+							<center>
+							<label for="address" style="margin-left: 50px;">Business Name:</label>	
+                            <input type="text" class="form-control" id="bname" placeholder="Business Name" style="margin-right: 10px;">
+							
+							<br><br>
+							<label for="address" style="margin-left: 50px;">TOTAL PRICE:</label>	
+                            <input type="text" class="form-control" id="total" placeholder="Total Price" style="margin-right: 10px;" disabled>
+					<br>
+							
+			</div>
+					
+        </div>
+		
+        <div class="modal-footer">
+          <button type="reset" class="btn btn-default">Cancel</button>
+		  <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+		</div>
+		</div>
+		</div>
+				   
+                 <div class="col-lg-4  col-md-4 col-sm-4" data-scroll-reveal="enter from the bottom after 0.6s">
+                     <div class="about-div">
+                     <i class="fa fa-magic fa-4x icon-round-border" ></i>
+                   <a data-toggle="modal" data-target="#items"><h3 >ITEMS</h3></a>
+                 <hr />
+                       <hr />
+                   <p >
+                       There are items in the barangay that you can borrow. 
+					   Example chairs , tables, tents , even facilities like basketball court , day care centers, etc.  
+                       
+                   </p>
+				   
+               <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#items" style="font-size: 14px; font-family: Montserrat;">FORM</button>
+			   <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#docrequest" style="font-size: 14px; font-family: Montserrat;"><a href="dforms/2.pdf" style="color: white;">Downloadable Form</a></button>
+                </div>
+                   </div>
+				   
+				   <!--ITEMS MODAL -->
+				   
+				   <!-- Modal -->
+  <div class="modal fade" id="items" role="dialog"  style="font-family: Times New Roman;">
+    <div class="modal-dialog modal-lg">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title" style="font-family: Montserrat;">ITEMS</h4>
+        </div>
+		
+        <div class="modal-body">
+					
+					 <div class="form-inline">
+							<label for="residentID" style="margin-left: 20px;">Resident ID:</label> 
+                            <input type="text" class="form-control" id="residentID" placeholder="ID" style="margin-right: 10px;" disabled>
+    
+                            <label for="givenname">Name:</label>	
+                            <input type="text" class="form-control" id="name" placeholder="Name" style="margin-right: 10px;">
+					
+							<label for="givenname">Date of Birth:</label>	
+                            <input type="text" class="form-control" id="bday" placeholder="MM / DD / YYYY" style="margin-right: 10px;">
+							
+					</div> <br>
+					
+					 <div class="form-inline">
+							
+							<label for="address" style="margin-left: 20px;">Address:</label>	
+                            <input type="text" class="form-control" id="address" placeholder="Address" style="margin-right: 10px;">
+							
+							<label for="givenname">Time from Needed:</label>	
+                            <input type="text" class="form-control" id="time" placeholder="HH:MM" style="margin-right: 10px;">
+							
+							<label for="givenname">Time to Needed:</label>	
+                            <input type="text" class="form-control" id="time" placeholder="HH:MM" style="margin-right: 10px;">
+							
+							<br><br>
+					</div>
+		</center>
+		
+					 <div class="form-inline">
+                            <label for="surname" style="margin-left: 20px;">Date Needed:</label> 
+                            <input type="text" class="form-control" id="date" placeholder="MM / DD / YYYY" style="margin-right: 10px;">
+							
+							<label for="poe" style="margin-left: 20px;">Places of Event:</label> 
+                            <input type="text" class="form-control" id="date" placeholder="Place" style="margin-right: 10px;">
+							
+							<label for="purpose" style="margin-left: 20px;">Purpose:</label> 
+                            <input type="text" class="form-control" id="date" placeholder="Purpose" style="margin-right: 10px;">
+							
+							<br><br>
+							
+							<label for="docreq" style="margin-left: 25px;"> Items: </label>
+                            <input type="checkbox" name="bc" value="" style="margin-left: 20px;"> Chairs <input type="text" class="form-control" size="5" id="chairsq" placeholder="Quantity" style="margin-right: 10px;" disabled>
+                            <input type="checkbox" name="ci" value="" style="margin-left: 20px;"> Tables <input type="text" class="form-control" size="5" id="tablesq" placeholder="Quantity" style="margin-right: 10px;" disabled>
+                            <input type="checkbox" name="cfa" value="" style="margin-left: 20px;"> Tents <input type="text" class="form-control" size="5" id="tentsq" placeholder="Quantity" style="margin-right: 10px;" disabled>
+                            <input type="checkbox" name="ff" value="" style="margin-left: 20px;"> Nebulizer <input type="text" class="form-control" size="5" id="nebulizerq" placeholder="Quantity" style="margin-right: 10px;" disabled><br><br>
+                            <center><input type="checkbox" name="ff" value="" style="margin-left: 10px;"> Basketball <input type="text" class="form-control" size="5" id="basketballq" placeholder="Quantity" style="margin-right: 10px;" disabled>
+                            <input type="checkbox" name="ff" value="" style="margin-left: 10px;"> Volleyball <input type="text" class="form-control" size="5" id="volleyballq" placeholder="Quantity" style="margin-right: 10px;" disabled>
+                            <input type="checkbox" name="ff" value="" style="margin-left: 10px;"> Badminton Racket <input type="text" class="form-control" size="5" id="brq" placeholder="Quantity" style="margin-right: 10px;" disabled>
+							
+							<br><br>
+        
+				</div>
+				
+					<div class="form-inline">
+					<center>
+				
+							
+			</div>
+					
+        </div>
+		
+        <div class="modal-footer">
+          <button type="reset" class="btn btn-default">Cancel</button>
+		  <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+		</div>
+		</div>
+		</div></div>
+                 
+				  <div class="col-lg-3  col-md-3 col-sm-3" data-scroll-reveal="enter from the bottom after 0.6s">
+                     <div class="about-div">
+                     <i class="fa fa-institution fa-3x icon-round-border" ></i>
+                   <a data-toggle="modal" data-target="#items"><h3 style="font-family: Montserrat; color: black; text-decoration: none;">VENUES</h3></a>
+                 <hr />
+                       <hr />
+                   <p ><b>
+                      Rent different venues from the barangay, like basketball court, daycare, and conference room.
+                       
+                   </b></p>				   
+               <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#facilities" style="font-size: 14px; font-family: Montserrat; margin-left: -40px;">FORM</button>
+			   <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#docrequest" style="font-size: 14px; font-family: Montserrat;"><a href="dforms/3.pdf" style="color: white;">Downloadable Form</a></button>
+                </div>
+                   </div>
+                 
+				  <!--FACILITIES MODAL -->
+				 
+				 <!-- Modal -->
+  <div class="modal fade" id="facilities" role="dialog"  style="font-family: Times New Roman;">
+    <div class="modal-dialog modal-lg">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title" style="font-family: Montserrat;">VENUES</h4>
+        </div>
+		
+        <div class="modal-body">
+					
+					 <div class="form-inline">
+							<label for="residentID" style="margin-left: 20px;">Resident ID:</label> 
+                            <input type="text" class="form-control" id="residentID" placeholder="ID" style="margin-right: 10px;" disabled>
+    
+                            <label for="givenname">Name:</label>	
+                            <input type="text" class="form-control" id="name" placeholder="Name" style="margin-right: 10px;">
+					
+							<label for="givenname">Facility:</label>	
+                            <input type="text" class="form-control" id="bday" placeholder="Facility" style="margin-right: 10px;">
+														
+					</div> <br>
+					
+					<center>
+					 <div class="form-inline">
+							<label for="givenname">Time from Needed:</label>	
+                            <input type="text" class="form-control" id="time" placeholder="HH:MM" style="margin-right: 30px;">
+							
+							<label for="givenname">Time to Needed:</label>	
+                            <input type="text" class="form-control" id="time" placeholder="HH:MM" style="margin-right: 10px;">
+							
+							
+							<br><br>
+							
+					</div>
+		</center>
+		<center>
+					<center>
+					 <div class="form-inline">
+							<label for="surname" style="margin-left: 20px;">Date Needed:</label> 
+                            <input type="text" class="form-control" id="date" placeholder="MM / DD / YYYY" style="margin-right: 10px;">
+					 
+                            <label for="purpose" style="margin-left: 20px;">Purpose:</label> 
+                            <input type="text" class="form-control" id="date" placeholder="Purpose" style="margin-right: 10px;">
+							
+							<br><br>
+        
+				</div>
+				</center>
+				
+					<div class="form-inline">
+					<center>
+					<center>
+					<br>
+							
+			</div>
+					
+        </div>
+		
+        <div class="modal-footer">
+          <button type="reset" class="btn btn-default">Cancel</button>
+		  <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+		</div>
+	
+        </div>
+      </div>
+				 
+               </div>
+			   </div>
+             </div>
+   <!-- FEATURES SECTION END-->
+   
+    <div id="faculty-sec"  style="background-image: url('images/sku.jpg'); background-size: cover; opacity: 0.6;">
+    <div class="container set-pad">
+             <div class="row text-center">
+                 <div class="col-lg-8 col-lg-offset-2 col-md-8 col-sm-8 col-md-offset-2 col-sm-offset-2">
+					<div class="grid__item color-2"><span>
+                     <a class="link link--surinami" href="#"><h1 data-scroll-reveal="enter from the bottom after 0.1s" class="header-line" style="font-family: Montserrat;">MISSION </h1></a></span></div>
+                     <p data-scroll-reveal="enter from the bottom after 0.3s" style="font-family: Kreon;">
+                      Tugunan ang pangangailangan ng mga nasasakupan lalo na ang mga kabataan upang
+					  maisa-alang-alang sa mga programa at proyektong barangay and kanilang kinabukasan.
+                         </p>
+						 
+					<h1 data-scroll-reveal="enter from the bottom after 0.1s" class="header-line" style="font-family: Montserrat;">VISION </h1>
+                     <p data-scroll-reveal="enter from the bottom after 0.3s" style="margin-bottom: 100px; font-family: Kreon;" >
+                      Isang barangay na may kumpletong pasilidad upang maibigay lahat ng serbisyo para sa 
+					  isang mapayapa at masayang komunidad. Isang barangay kung saan and lahat ay nagtutulung-tulong 
+					  upsang masigurong matulungan ang kalusugan, edukasyon, proteksyon at partisipasyon ng mga kabataan.
+                         </p>
+                 </div>
+
+             </div>
+	</div>
+	</div>
+             <!--/.HEADER LINE END-->
+
+      <div id="course-sec" class="container-fluid text center" style="background-image: url('images/bg.png')">
+             <div class="row text-center">
+                 <div class="col-lg-8 col-lg-offset-2 col-md-8 col-sm-8 col-md-offset-2 col-sm-offset-2">
+                     <h1 data-scroll-reveal="enter from the bottom after 0.1s" class="header-line"><a href="news.html"> NEWS and EVENTS >> </a></h1>
+                     <p data-scroll-reveal="enter from the bottom after 0.3s">
+                      
+                         </p>
+                 </div>
+
+             </div>
+             <!--/.HEADER LINE END-->
+
+		<!-- NEWS -->
+			
+          <div class="recent-places" style="margin-bottom: 5%;">
+		  <div class="container-fluid text-center">
+				<div class="clearfix"> </div>
+				
+			     <div class="list_vertical" style="float: center;">
+		         	 	<section class="accordation_menu" >
+						  <div>
+						    <input id="label-1" name="lida" type="radio" checked="">
+						   <label for="label-1" id="item1" style="font-family: Roboto Slab;"><i class="ferme"> </i>ANNOUNCEMENTS<i class="icon-plus-sign i-right1"></i><i class="icon-minus-sign i-right2"></i></label>
+						    <div class="content" id="a1">
+						    	<div class="scrollbar" id="style-2">
+								 <div class="force-overflow">
+									<div class="popular-post-grids">
+										<div class="popular-post-grid">
+											<div class="post-img">
+												<a href="single.html"><img src="images/rice_news.jpg" alt=""></a>
+											</div>
+											<div class="post-text">
+												<a class="pp-title" href="single.html"> Barangay 599 held its "Annual Gift-Giving" 2015</a>
+												<p>September 30, 2015 <a class="span_link" href="#"> &nbsp; <span class="fa fa-comment"></span>3 </a><a class="span_link" href="#"> &nbsp; <span class="fa fa-eye"></span>56 </a></p>
+											</div>
+											<div class="clearfix"></div>
+										</div>
+										<div class="popular-post-grid">
+											<div class="post-img">
+												<a href="single.html"><img src="images/items.jpg" alt=""></a>
+											</div>
+											<div class="post-text">
+												<a class="pp-title" href="single.html">New equipments for better public service</a>
+												<p>September 30,2015 <a class="span_link" href="#"> &nbsp; <span class="fa fa-comment"></span>2 </a><a class="span_link" href="#"> &nbsp; <span class="fa fa-eye"></span>56 </a></p>
+											</div>
+											<div class="clearfix"></div>
+										</div>
+										<div class="popular-post-grid">
+											<div class="post-img">
+												<a href="single.html"><img src="images/general.jpg" alt=""></a>
+											</div>
+											<div class="post-text">
+												<a class="pp-title" href="single.html">Barangay General Assembly</a>
+												<p>March 28, 2015 <a class="span_link" href="#"> &nbsp; <span class="fa fa-comment"></span>0 </a><a class="span_link" href="#"> &nbsp; <span class="fa fa-eye"></span>56 </a></p>
+											</div>
+											<div class="clearfix"></div>
+										</div>
+										<div class="popular-post-grid">
+											<div class="post-img">
+												<a href="single.html"><img src="images/items_news.jpg" alt=""></a>
+											</div>
+											<div class="post-text">
+												<a class="pp-title" href="single.html">Unboxing of new equipments for fast and reliable transactions</a>
+												<p>September 30,2015 <a class="span_link" href="#"> &nbsp; <span class="fa fa-comment"></span>1 </a><a class="span_link" href="#"> &nbsp; <span class="fa fa-eye"></span>56 </a></p>
+											</div>
+											<div class="clearfix"></div>
+										</div>
+									</div>
+									</div>
+                                </div>
+                              </div>
+						  </div>
+						  <div>
+						    <input id="label-2" name="lida" type="radio">
+						    <label for="label-2" id="item2" style="font-family: Roboto Slab;"><i class="icon-leaf" id="i2"></i>Upcoming Events<i class="icon-plus-sign i-right1"></i><i class="icon-minus-sign i-right2"></i></label>
+						    <div class="content" id="a2">
+						       <div class="scrollbar" id="style-2">
+								   <div class="force-overflow">
+									<div class="popular-post-grids">
+											<div class="popular-post-grid">
+												<div class="post-img">
+													<a href="single.html"><img src="images/food.png" alt=""></a>
+												</div>
+												<div class="post-text">
+													<a class="pp-title" href="single.html">Feeding Program</a>
+													<p>April 25, 2016 <a class="span_link" href="#"><span class="glyphicon glyphicon-comment"></span>3 </a><a class="span_link" href="#"><span class="glyphicon glyphicon-eye-open"></span>56 </a></p>
+												</div>
+												<div class="clearfix"></div>
+											</div>
+											<div class="popular-post-grid">
+												<div class="post-img">
+													<a href="single.html"><img src="images/food2.png" alt=""></a>
+												</div>
+												<div class="post-text">
+													<a class="pp-title" href="single.html"> Foods and Donations</a>
+													<p>Every Sunday <a class="span_link" href="#"><span class="glyphicon glyphicon-comment"></span>2 </a><a class="span_link" href="#"><span class="glyphicon glyphicon-eye-open"></span>56 </a></p>
+												</div>
+												<div class="clearfix"></div>
+											</div>
+											<div class="popular-post-grid">
+												<div class="post-img">
+													<a href="single.html"><img src="images/Games.png" alt=""></a>
+												</div>
+												<div class="post-text">
+													<a class="pp-title" href="single.html">Paliga ng Barangay 2016</a>
+													<p>May 2015<a class="span_link" href="#"><span class="glyphicon glyphicon-comment"></span>0 </a><a class="span_link" href="#"><span class="glyphicon glyphicon-eye-open"></span>56 </a></p>
+												</div>
+												<div class="clearfix"></div>
+											</div>
+											<div class="popular-post-grid">
+												<div class="post-img">
+													<a href="single.html"><img src="images/599youth.jpg" alt=""></a>
+												</div>
+												<div class="post-text">
+													<a class="pp-title" href="single.html">Meeting all youth of barangay 599</a>
+													<p>April 25, 2015 <a class="span_link" href="#"><span class="glyphicon glyphicon-comment"></span>1 </a><a class="span_link" href="#"><span class="glyphicon glyphicon-eye-open"></span>56 </a></p>
+												</div>
+												<div class="clearfix"></div>
+											</div>
+										</div>
+									</div>
+								</div>
+						    </div>
+						  </div>
+						  <div>
+						    <input id="label-3" name="lida" type="radio">
+						    <label for="label-3" id="item3" style="font-family: Roboto Slab;"><i class="icon-trophy" id="i3"></i>Comments and Suggestions<i class="icon-plus-sign i-right1"></i><i class="icon-minus-sign i-right2"></i></label>
+						    <div class="content" id="a3">
+						       <div class="scrollbar" id="style-2">
+							    <div class="force-overflow">
+								 <div class="response">
+						<div class="media response-info">
+							<div class="media-left response-text-left">
+								<a href="#">
+									<img class="media-object" src="images1/icon1.png" alt="">
+								</a>
+								<h5><a href="#">User</a></h5>
+							</div>
+							<div class="media-body response-text-right">
+								<p>Nakakatuwa ang Barangay 599 dahil hindi nila pinapabayaan ang kanilang mga residente. God Bless Barangay 599! Keep up the Good work!! :).</p>
+								<ul>
+									<li>MARCH 21, 2015</li>
+									<li><a href="single.html">Reply</a></li>
+								</ul>
+							</div>
+							<div class="clearfix"> </div>
+						</div>
+						<div class="media response-info">
+							<div class="media-left response-text-left">
+								<a href="#">
+									<img class="media-object" src="images1/icon1.png" alt="">
+								</a>
+								<h5><a href="#">User</a></h5>
+							</div>
+							<div class="media-body response-text-right">
+								<p>Keep up the good work! :D</p>
+								<ul>
+									<li>MARCH 26, 2015</li>
+									<li><a href="single.html">Reply</a></li>
+								</ul>		
+							</div>
+							<div class="clearfix"> </div>
+						</div>
+						<div class="media response-info">
+							<div class="media-left response-text-left">
+								<a href="#">
+									<img class="media-object" src="images1/icon1.png" alt="">
+								</a>
+								<h5><a href="#">User</a></h5>
+							</div>
+							<div class="media-body response-text-right">
+								<p>Very Lucky na dito ako nakatira sa barangay na sobra sobra ang pagmamahal at pagmamalasakit sa knilang nasasakupan.</p>
+								<ul>
+									<li>MAY 25, 2015</li>
+									<li><a href="single.html">Reply</a></li>
+								</ul>		
+							</div>
+							<div class="clearfix"> </div>
+						</div>
+						<div class="media response-info">
+							<div class="media-left response-text-left">
+								<a href="#">
+									<img class="media-object" src="images1/icon1.png" alt="">
+								</a>
+								<h5><a href="#">User</a></h5>
+							</div>
+							<div class="media-body response-text-right">
+								<p>Suggest lang po Kap!! Magkaroon po tayo ng livelihood program para sa mga walang trabaho. Salamat po!</p>
+								<ul>
+									<li>FEB 13, 2015</li>
+									<li><a href="single.html">Reply</a></li>
+								</ul>		
+							</div>
+							<div class="clearfix"> </div>
+						</div>
+						<div class="media response-info">
+							<div class="media-left response-text-left">
+								<a href="#">
+									<img class="media-object" src="images1/icon1.png" alt="">
+								</a>
+								<h5><a href="#">User</a></h5>
+							</div>
+							<div class="media-body response-text-right">
+								<p>Marami po akong nakikitang mgakabataan na tumigil na sa pag-aaral, Isang "balik-eskwela" program naman po jan! Thanks</p>
+								<ul>
+									<li>JAN 28, 2015</li>
+									<li><a href="single.html">Reply</a></li>
+								</ul>		
+							</div>
+							<div class="clearfix"> </div>
+						</div>
+						<div class="media response-info">
+							<div class="media-left response-text-left">
+								<a href="#">
+									<img class="media-object" src="images1/icon1.png" alt="">
+								</a>
+								<h5><a href="#">User</a></h5>
+							</div>
+							<div class="media-body response-text-right">
+								<p>Binata na po ako, Salamat sa libreng tuli barangay 599.</p>
+								<ul>
+									<li>APR 18, 2015</li>
+									<li><a href="single.html">Reply</a></li>
+								</ul>		
+							</div>
+							<div class="clearfix"> </div>
+						</div>
+						<div class="media response-info">
+							<div class="media-left response-text-left">
+								<a href="#">
+									<img class="media-object" src="images1/icon1.png" alt="">
+								</a>
+								<h5><a href="#">User</a></h5>
+							</div>
+							<div class="media-body response-text-right">
+								<p>Libreng eyeglasses para sa mga senior citizen. Salamat po!</p>
+								<ul>
+									<li>DEC 25, 2014</li>
+									<li><a href="single.html">Reply</a></li>
+								</ul>		
+							</div>
+							<div class="clearfix"> </div>
+						</div>
+					</div>
+					</div>
+                      </div>
+				</div>
+				</div>
+			</section>
+		 </div>    
+					
+			
+				<script>
+				var myVar=setInterval(function(){myTimer()},1000);
+
+				function myTimer() {
+					var d = new Date();
+					document.getElementById("demo").innerHTML = d.toLocaleTimeString();
+				}
+				</script>
+		   </div>
+			</div>
+		<!--//soccer-inner-->
+		
+			    </div>
+                </div>
+                <div class="clearfix"> </div>
+			</div>
+		</div>
+	</div>
+      <!-- COURSES SECTION END-->
+    <div id="contact-sec" style="background-image: url('images/D.png'); background-repeat: no-repeat; background-size: cover; opacity: 0.6;"  >
+           <div class="overlay">
+ <div class="container set-pad">
+      <div class="row text-center">
+                 <div class="col-lg-8 col-lg-offset-2 col-md-8 col-sm-8 col-md-offset-2 col-sm-offset-2">
+                     <h1 data-scroll-reveal="enter from the bottom after 0.1s" class="header-line" >CONTACT US  </h1>
+                     <p data-scroll-reveal="enter from the bottom after 0.3s">
+                      Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+                        Aenean commodo.
+                         Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+                        Aenean commodo.
+                         </p>
+                 </div>
+
+             </div>
+             <!--/.HEADER LINE END-->
+           <div class="row set-row-pad"  data-scroll-reveal="enter from the bottom after 0.5s" >
+           
+               
+                 <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+                    <form>
+                        <div class="form-group">
+                            <input type="text" class="form-control "  required="required" placeholder="Your Name" />
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control " required="required"  placeholder="Address" />
+                        </div>
+                        <div class="form-group">
+                            <textarea name="message" required="required" class="form-control" style="min-height: 150px;" placeholder="Message"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-info btn-block btn-lg">SUBMIT</button>
+                        </div>
+
+                    </form>
+                </div>
+
+                   
+     
+              
+              
+                
+               </div>
+                </div>
+          </div> 
+       </div>
+     <div class="container">
+             <div class="row set-row-pad"  >
+    <div class="col-lg-4 col-md-4 col-sm-4   col-lg-offset-1 col-md-offset-1 col-sm-offset-1 " data-scroll-reveal="enter from the bottom after 0.4s">
+
+                    <h2 style="font-family: Montserrat;"><strong>Our Location </strong></h2>
+        <hr />
+                    <div class="location-info">
+                        <h4>Brgy. 599 Zone 59,Sta. Mesa,</h4>
+                        <h4>Manila, Philippines.</h4>
+                        <h4><strong>Call:</strong> (02)632-5251</h4>
+                        <h4><strong>Email: </strong>brgy599zone59@gmail.com</h4>
+                    </div>
+
+
+                </div>
+                 <div class="col-lg-4 col-md-4 col-sm-4   col-lg-offset-1 col-md-offset-1 col-sm-offset-1" data-scroll-reveal="enter from the bottom after 0.4s" id="bottom">
+
+                    <h2 style="font-family: Montserrat;"><strong>Social Connectivity </strong></h2>
+        <hr />
+                    <div class="location-info">
+                        <a href="#">  <img src="assets/img/Social/facebook.png" style="height: 40px; width: 40px;" alt="" /> </a>
+                     <a href="#"> <img src="assets/img/Social/google-plus.png" style="height: 40px; width: 40px;" alt="" /></a>
+                     <a href="#"> <img src="assets/img/Social/twitter.png" style="height: 40px; width: 40px;" alt="" /></a>
+                    </div>
+                    </div>
+
+
+                </div>
+                 </div>
+     <!-- CONTACT SECTION END-->
+	 
+   <!--/start-footer-section-->
+			<div class="footer-section">
+			   <div class="container">
+					<div class="footer-grids">
+						<div class="col-md-4 footer-grid">
+						<h4><span>LATEST</span> PICKS</h4>
+						  <div class="editor-pics">
+							 <div class="col-md-3 item-pic">
+							   <img src="images/f1.jpg" class="img-responsive" alt=""/>
+
+							   </div>
+					   	        <div class="col-md-9 item-details">
+							    	<h5 class="inner"><a href="#">More Than 120 ER Visits Linked To Synthetic WordPress In NYC...</a></h5>
+								      <div class="td-post-date">Feb 22, 2015</div>
+							     </div>
+								<div class="clearfix"></div>
+							</div>
+							 <div class="editor-pics">
+							 <div class="col-md-3 item-pic">
+							   <img src="images/f2.jpg" class="img-responsive" alt=""/>
+
+							   </div>
+					   	        <div class="col-md-9 item-details">
+							    	<h5 class="inner"><a href="#">More Than 120 ER Visits Linked To Synthetic WordPress In NYC...</a></h5>
+								      <div class="td-post-date">Feb 22, 2015</div>
+							     </div>
+								<div class="clearfix"></div>
+							</div>
+		
+						</div>
+						<div class="col-md-4 footer-grid">
+							<h4><span>POPULAR</span> POSTS</h4>
+								<div class="editor-pics">
+										 <div class="col-md-3 item-pic">
+										   <img src="images/f4.jpg" class="img-responsive" alt=""/>
+
+										   </div>
+											<div class="col-md-9 item-details">
+												<h5 class="inner"><a href="#">More Than 120 ER Visits Linked To Synthetic WordPress In NYC...</a></h5>
+												  <div class="td-post-date">Feb 22, 2015</div>
+											 </div>
+											<div class="clearfix"></div>
+										</div>
+										<div class="editor-pics">
+							 <div class="col-md-3 item-pic">
+							   <img src="images/f3.jpg" class="img-responsive" alt=""/>
+
+							   </div>
+					   	        <div class="col-md-9 item-details">
+							    	<h5 class="inner"><a href="#">More Than 120 ER Visits Linked To Synthetic WordPress In NYC...</a></h5>
+								      <div class="td-post-date">Feb 22, 2015</div>
+							     </div>
+								<div class="clearfix"></div>
+							</div>
+
+						</div>
+						<div class="col-md-4 footer-grid third">
+								<h4><span>News</span>Letter</h4>
+							       <div class="sign_up">
+										<p class="sign">Sign up to receive our free newsletters!</p>
+										<form>
+											<input type="text" class="text" value="Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name';}">
+											<input type="text" class="text" value="Email Address" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email Address';}">
+											<input type="submit" value="submit">
+										</form>
+									</div>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+				</div>
+			</div>
+	<!--//end-footer-section-->
+	
+	<!-- FOOTER SECTION START -->
+    <div id="footer" style="background-color: #00cc66;">
+          &copy 2016 barangay599.com | All Rights Reserved |  <a href="http://binarytheme.com" style="color: #fff" target="_blank">Design by : SADSquad</a>
+    </div>
+     <!-- FOOTER SECTION END-->
+   
+    <!--  Jquery Core Script -->
+    <script src="assets/js/jquery-1.10.2.js"></script>
+    <!--  Core Bootstrap Script -->
+    <script src="assets/js/bootstrap.js"></script>
+    <!--  Flexslider Scripts --> 
+         <script src="assets/js/jquery.flexslider.js"></script>
+     <!--  Scrolling Reveal Script -->
+    <script src="assets/js/scrollReveal.js"></script>
+    <!--  Scroll Scripts --> 
+    <script src="assets/js/jquery.easing.min.js"></script>
+    <!--  Custom Scripts --> 
+    <script src="assets/js/custom.js"></script>
+
+	
+</body>
 </html>

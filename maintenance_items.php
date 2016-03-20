@@ -81,7 +81,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Barangay Information System</title>
+    <title>BREMS</title>
 
     <!-- Bootstrap core CSS -->
 
@@ -121,7 +121,7 @@
                 <div class="left_col scroll-view">
 
                     <div class="navbar nav_title" style="border: 0;">
-                        <a href="#" class="site_title"><i class="fa fa-institution"></i> <span style="font-size:13px">Barangay Information System</span></a>
+                        <a href="#" class="site_title"><i class="fa fa-institution"></i> <span style="font-size:13px">BREMS</span></a>
                     </div>
                     <div class="clearfix"></div>
 
@@ -133,27 +133,44 @@
                         <div class="menu_section">
                             <h3>General</h3>
                             <ul class="nav side-menu">
-                                <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
+                                <li><a href="home.html"><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
                                 </li>
                                 <li><a><i class="fa fa-gears"></i> Maintenance <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu" style="display: none">
-                                        <li><a href="maintenance_household.php">Household</a>
+                                        <li><a href="#">Request Monitoring Module</a>
+                                            <ul class="nav child_menu" style="display: none">
+                                                <li><a href="maintenance_official.php">Barangay Personnel</a>
+                                                </li> 
+
+                                                <li><a href="maintenance_docu.php">Document</a>
+                                                </li>
+
+                                                <li><a href="maintenance_items.php">Item</a>
+                                                </li>
+
+                                                <li><a href="maintenance_facility.php">Facility</a>
+                                                </li>
+
+                                             </ul>
                                         </li>
-                                        <li><a href="maintenance_family.php">Family</a>
-                                        </li>
-                                         <li><a href="maintenance_resident.php">Resident</a>
-                                        </li>
-                                        <li><a href="maintenance_official.php">Barangay Personnel</a>
-                                        </li> 
-                                        <li><a href="maintenance_event.php">Event</a>
-                                        </li>
-                                        <li><a href="maintenance_docu.php">Document</a>
-                                        </li>
-                                        <li><a href="maintenance_items.php">Item</a>
-                                        </li>
-                                        <li><a href="maintenance_facility.php">Facility</a>
-                                        </li>
+
+                                         <li><a href="#">Event Monitoring Module</a>
+                                            <ul class="nav child_menu" style="display: none">
+                                                <li><a href="maintenance_resident.php">Resident</a>
+                                                </li>
+
+                                                <li><a href="maintenance_household.php">Household</a>
+                                                </li>
+
+                                                <li><a href="maintenance_family.php">Family</a>
+                                                </li>
+
+                                                 
+                                            </ul>
+                                        </li>    
+                                            
                                     </ul>
+                                        
                                 </li>
                                <li><a><i class="fa fa-desktop"></i> Transaction <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu" style="display: none">
@@ -272,13 +289,16 @@
                         <div class="col-md-12 col-sm-12 col-xs-12">
                             <div class="x_panel">
                                 <div class="x_title">
-                                    <h2>Residents </h2>
+                                    <h2>Items </h2>
+
+                                    <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#items" style="float:right"><span class='glyphicon glyphicon-plus' aria-hidden='true' style="color:white"></span>   Add Items</button>
+                                    
                                     
                                     <div class="clearfix"></div>
                                 </div>
                                 <div class="x_content">
                                     
-                                    <table id="example" class="table table-striped responsive-utilities jambo_table" style="font-size:12px">
+                                    <table id="example" class="table table-striped responsive-utilities jambo_table" style="font-size:14px;text-align: center">
                                         <?php
                                             require("connection.php");
                                             $q = mysqli_query($con,"Select * from item_inventory where ItemStatus != 'inactive'");
@@ -290,7 +310,7 @@
                                                 <th>Description </th>
                                                 <th>Quantity</th>
                                                 <th>Available Stock</th>
-                                                <th>edit</th>
+                                                <th>Action</th>
                                                 <th></th>
 												
                                             </tr>
@@ -319,8 +339,9 @@
                                                     <td>$quantity</td>
                                                     <td>$avail</td>
                                                     <td>
-                                                            <Button class='btn btn-success' name='btnEdit' id='btnEdit' value = '$id' data-target=#itemEdit data-toggle=modal onclick ='valueModal(this);'>  Edit </button>
-                                                            <button class='btn btn-danger' data-toggle='modal' data-target='#itemDelete' value = '$id' name = 'btnDelete' onclick='deleteValue(this)'>Delete</button>
+                                                            <span data-toggle='tooltip' title='Edit' data-placement='left'><Button class='btn btn-success' name='btnEdit' id='btnEdit' value = '$id' data-target=#itemEdit data-toggle=modal onclick ='valueModal(this);'><i class='glyphicon glyphicon-pencil' aria-hidden='true'> </i></button></span>
+
+                                                            <span data-toggle='tooltip' title='Delete' data-placement='left'><button class='btn btn-danger' data-toggle='modal' data-target='#itemDelete' value = '$id' name = 'btnDelete' onclick='deleteValue(this)'><i class='glyphicon glyphicon-remove' aria-hidden='true'> </i></button></spin>
                                                     </td>
 
                                                     <td>
@@ -352,15 +373,6 @@
                                    
                                    <!-- </form> -->
                                 </div>
-                                <br>  
-                                <center>
-                                    
-                                    <button type="submit" class="btn btn-success" data-toggle="modal" data-target="#items">Add</button>
-                                
-                                
-                                </center>
-                                
-                                
                                     
                             </div>
                         </div>
@@ -374,8 +386,8 @@
                     <!-- footer content -->
                 <footer>
                     <div class="">
-                        <p class="pull-right">Developed by PUP 2016 | Gentelella Alela! a Bootstrap 3 template by <a>Kimlabs</a>. |
-                            <span class="lead"> <i class="fa fa-institution"></i> Barangay Information System</span>
+                        <p class="pull-right">Developed by PUP 2016 |
+                            <span class="lead"> <i class="fa fa-institution"></i>Barangay Requesting and Event Monitoring System</span>
                         </p>
                     </div>
                     <div class="clearfix"></div>
@@ -392,7 +404,7 @@
    <!-- Modal -->
    <form method = POST action = "mItems.php" onsubmit="return myFunction1(this)">
   <div class="modal fade" id="items" role="dialog">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog modal-sm" style="width:600px">
     
       <!-- Modal content-->
 
@@ -403,28 +415,31 @@
         </div>
         <div class="modal-body">
 		<center>
-					 <div class="form-inline">
+					 <div class="form-inline" hidden="hidden">
 							<label for="surname" style="margin-left: 20px;">Item ID:</label> 
-                            <input type="text" class="form-control" id="surname" placeholder="ID" style="margin-right: 10px;" name = "txtItemID">
+                            <input type="text" class="form-control" id="surname" placeholder="ID" style="margin-right: 10px;" name = "txtItemID" readonly>
 					</div> <br>
+			<table style="border-spacing: 17px;border-collapse: separate;font-size: 14px">
+                <tbody style="text-align: right">
+
+					<tr>
+						<td>	<label for="givenname">Description* </label>	</td>
+                        <td>    <input type="text" class="form-control" id="givenname" placeholder="Description" style="margin-right: 10px;" name = "txtItemDescription" REQUIRED> </td>
+					</tr>
 					
-					 <div class="form-inline">
-							<label for="givenname">Item Description:</label>	
-                            <input type="text" class="form-control" id="givenname" placeholder="Description" style="margin-right: 10px;" name = "txtItemDescription" REQUIRED>
-					</div> <br>
-					
-					<div class="form-inline">
-							<label for="givenname">Quantity:</label>	
-                            <input min = "0" type="number" class="form-control" id="givenname" placeholder="Quantity" style="margin-right: 10px;" name = "txtQuantity">
-					</div> <br>
-					<div class="form-inline">
-							<label for="givenname">Available Stock:</label>	
-                            <input min = "0" type="number" class="form-control" id="givenname" placeholder="Available Stock" style="margin-right: 10px;" name = "txtStock">
-					</div> <br>
+					<tr>
+						<td>	<label for="givenname">Quantity</label>	</td>
+                        <td>    <input min = "0" type="number" class="form-control" id="givenname" value=0 style="margin-right: 10px;" name = "txtQuantity" readonly></td>
+                    </tr>
+					<tr>
+						<td>	<label for="givenname">Available Stock</label>	</td>
+                        <td>    <input min = "0" type="number" class="form-control" id="givenname" value=0 style="margin-right: 10px;" name = "txtStock" readonly> </td>
+				    </tr>
+                </tbody>
+            </table>	
 		</center>
 		
 			  <div class="modal-footer">
-          <button type="reset" class="btn btn-default">Cancel</button>
         <button type="submit" class="btn btn-primary" name = btnSubmit>Submit</button>
         </div>
 		
@@ -441,7 +456,7 @@
    <!-- Modal -->
    <form method = POST action = "mItems.php" onsubmit="return myFunction2(this)">
   <div class="modal fade" id="itemEdit" role="dialog">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog modal-sm" style="width:600px">
     
       <!-- Modal content-->
 
@@ -452,30 +467,34 @@
         </div>
         <div class="modal-body">
         <center>
-                     <div class="form-inline" >
+                     <div class="form-inline" hidden="hidden" >
                             <label for="surname" style="margin-left: 20px;">Item ID:</label> 
-                            <input readonly="readonly" type="text" class="form-control" placeholder="ID" style="margin-right: 10px;" name = "EtxtItemID" id ="EtxtItemID" >
+                            <input readonly="readonly" type="text" class="form-control" placeholder="ID" style="margin-right: 10px;" name = "EtxtItemID" id ="EtxtItemID" readonly>
                     </div> <br>
                     
-                     <div class="form-inline">
-                            <label for="givenname">Item Description:</label>    
-                            <input type="text" class="form-control" id="EtxtItemName" name="EtxtItemName" placeholder="Description" style="margin-right: 10px;" REQUIRED>
-                    </div> <br>
-                    
-                    <div class="form-inline">
-                            <label for="givenname">Quantity:</label>    
-                            <input min = "0" type="number" class="form-control" id="EtxtItemQty" name="EtxtItemQty" placeholder="Quantity" style="margin-right: 10px;" >
-                    </div> <br>
-                    <div class="form-inline">
-                            <label for="givenname">Available Stock:</label> 
-                            <input min = "0" type="number" class="form-control" id="EtxtItemStock"  name="EtxtItemStock" placeholder="Available Stock" style="margin-right: 10px;" >
-                    </div> <br>
+            <table style="border-spacing: 17px;border-collapse: separate;font-size: 14px">
+                <tbody style="text-align: right">
 
+                    <tr>
+                        <td>    <label for="givenname">Description* </label>    </td>
+                        <td>    <input type="text" class="form-control" id="EtxtItemName" name="EtxtItemName"placeholder="Description" style="margin-right: 10px;"  REQUIRED> </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>    <label for="givenname">Quantity</label> </td>
+                        <td>    <input min = "0" type="number" class="form-control" id="EtxtItemQty" value=0 style="margin-right: 10px;" name = "EtxtItemQty" readonly></td>
+                    </tr>
+                    <tr>
+                        <td>    <label for="givenname">Available Stock</label>  </td>
+                        <td>    <input min = "0" type="number" class="form-control" id="EtxtItemStock" value=0 style="margin-right: 10px;" name = "EtxtItemStock" readonly> </td>
+                    </tr>
+                </tbody>
+            </table>    
 
         </center>
         
               <div class="modal-footer">
-          <button type="reset" class="btn btn-default">Cancel</button>
+          
         <button type="submit" class="btn btn-primary" name = btnSubmitEdit >Submit</button>
         </div>
         
@@ -492,7 +511,7 @@
   <!-- Modal -->
    <form method = POST action = "mItems.php" onsubmit="return myFunction2(this)">
   <div class="modal fade" id="itemDelete" role="dialog">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog modal-lg" style="width:600px">
     
       <!-- Modal content-->
 
@@ -504,28 +523,32 @@
         <div class="modal-body">
         <center>
 
-                     <div class="form-inline" >
+                     <div class="form-inline" hidden="hidden">
                             <label for="surname" style="margin-left: 20px;">Item ID:</label> 
                             <input readonly="readonly" type="text" class="form-control" placeholder="ID" style="margin-right: 10px;" name = "DtxtItemID" id ="DtxtItemID"  readonly="readonly">
                     </div> <br>
                     
-                     <div class="form-inline">
-                            <label for="givenname">Item Description:</label>    
-                            <input readonly="readonly" type="text" class="form-control" id="DtxtItemName" name="DtxtItemName" placeholder="Description" style="margin-right: 10px;" REQUIRED readonly="readonly">
-                    </div> <br>
+                    <table style="border-spacing: 17px;border-collapse: separate;font-size: 14px">
+                <tbody style="text-align: right">
+
+                    <tr>
+                        <td>    <label for="givenname">Description* </label>    </td>
+                        <td>    <input type="text" class="form-control" id="DtxtItemName" name="DtxtItemName"placeholder="Description" style="margin-right: 10px;"  REQUIRED> </td>
+                    </tr>
                     
-                    <div class="form-inline">
-                            <label for="givenname">Quantity:</label>    
-                            <input readonly="readonly" min = "0" type="number" class="form-control" id="DtxtItemQty" name="DtxtItemQty" placeholder="Quantity" style="margin-right: 10px;" readonly="readonly">
-                    </div> <br>
-                    <div class="form-inline">
-                            <label for="givenname">Available Stock:</label> 
-                            <input readonly="readonly" min = "0" type="number" class="form-control" id="DtxtItemStock"  name="DtxtItemStock" placeholder="Available Stock" style="margin-right: 10px;" readonly="readonly">
-                    </div> <br>
+                    <tr>
+                        <td>    <label for="givenname">Quantity</label> </td>
+                        <td>    <input min = "0" type="number" class="form-control" id="DtxtItemQty" value=0 style="margin-right: 10px;" name = "DtxtItemQty" readonly></td>
+                    </tr>
+                    <tr>
+                        <td>    <label for="givenname">Available Stock</label>  </td>
+                        <td>    <input min = "0" type="number" class="form-control" id="DtxtItemStock" value=0 style="margin-right: 10px;" name = "DtxtItemStock" readonly> </td>
+                    </tr>
+                </tbody>
+            </table>    
         </center>
         
               <div class="modal-footer">
-          <button type="reset" class="btn btn-default">Cancel</button>
         <button type="submit" class="btn btn-primary" name = btnSubmitDelete>Submit</button>
         </div>
         

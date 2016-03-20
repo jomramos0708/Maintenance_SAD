@@ -3,34 +3,27 @@
 
             if(isset($_POST['btnSubmit']))
             {
-                if(empty($_POST['txtOID']) || empty($_POST['txtRID']) || empty($_POST['txtPosition']) )
-        {
-?>
-
-        <script> alert ("Fill in the textfields");
-        </script>
-
-<?php
-
-        }
-        else{
+              
                 $oid = $_POST['txtOID'];
                 $rid = $_POST['txtRID'];
                 $cate = $_POST['txtCategory'];
                 $pos = $_POST['txtPosition'];
 
-                $query = "insert into personnel values ('$oid', '$rid','$cate', '$pos', 'active')";
+                $query = "insert into personnel(PersonnelID, ResidentID, Category, Position, Status) values ('$rid','$cate', '$pos', 'active')";
 
                //$query = "insert into personnel values ('o006', 'r001', 'treasurer', 'active')";
 
                 $res = mysqli_query($con, $query);
                 if(!$res){
-                    die("query failed " . mysqli_error($con));
+      ?>
+
+                    <script type=text/javascript>window.prompt("RESIDENT ID DOES NOT EXIST!"); </script>
+      <?php
                 }
                 else{
                     echo "data updated";
                 }
-            }
+            
         }
         
 

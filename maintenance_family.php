@@ -40,8 +40,6 @@
 
 
 
-
-
 </script>
 
 
@@ -58,7 +56,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Barangay Information System</title>
+    <title>BREMS</title>
 
     <!-- Bootstrap core CSS -->
 
@@ -98,7 +96,7 @@
                 <div class="left_col scroll-view">
 
                     <div class="navbar nav_title" style="border: 0;">
-                        <a href="#" class="site_title"><i class="fa fa-institution"></i> <span style="font-size:13px">Barangay Information System</span></a>
+                        <a href="#" class="site_title"><i class="fa fa-institution"></i> <span style="font-size:13px">BREMS</span></a>
                     </div>
                     <div class="clearfix"></div>
 
@@ -110,27 +108,44 @@
                         <div class="menu_section">
                             <h3>General</h3>
                             <ul class="nav side-menu">
-                                <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
+                                <li><a href="home.html"><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
                                 </li>
                                 <li><a><i class="fa fa-gears"></i> Maintenance <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu" style="display: none">
-                                        <li><a href="maintenance_household.php">Household</a>
+                                        <li><a href="#">Request Monitoring Module</a>
+                                            <ul class="nav child_menu" style="display: none">
+                                                <li><a href="maintenance_official.php">Barangay Personnel</a>
+                                                </li> 
+
+                                                <li><a href="maintenance_docu.php">Document</a>
+                                                </li>
+
+                                                <li><a href="maintenance_items.php">Item</a>
+                                                </li>
+
+                                                <li><a href="maintenance_facility.php">Facility</a>
+                                                </li>
+
+                                             </ul>
                                         </li>
-                                        <li><a href="maintenance_family.php">Family</a>
-                                        </li>
-                                         <li><a href="maintenance_resident.php">Resident</a>
-                                        </li>
-                                        <li><a href="maintenance_official.php">Barangay Personnel</a>
-                                        </li> 
-                                        <li><a href="maintenance_event.php">Event</a>
-                                        </li>
-                                        <li><a href="maintenance_docu.php">Document</a>
-                                        </li>
-                                        <li><a href="maintenance_items.php">Item</a>
-                                        </li>
-                                        <li><a href="maintenance_facility.php">Facility</a>
-                                        </li>
+
+                                         <li><a href="#">Event Monitoring Module</a>
+                                            <ul class="nav child_menu" style="display: none">
+                                                <li><a href="maintenance_resident.php">Resident</a>
+                                                </li>
+
+                                                <li><a href="maintenance_household.php">Household</a>
+                                                </li>
+
+                                                <li><a href="maintenance_family.php">Family</a>
+                                                </li>
+
+                                                 
+                                            </ul>
+                                        </li>    
+                                            
                                     </ul>
+                                        
                                 </li>
                                <li><a><i class="fa fa-desktop"></i> Transaction <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu" style="display: none">
@@ -251,10 +266,12 @@
                                 <div class="x_title">
                                     <h2>Family </h2>
                                     
+
+                                    <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#family" style="float:right"><span class='glyphicon glyphicon-plus' aria-hidden='true' style="color:white"></span>   Add Family</button>
                                     <div class="clearfix"></div>
                                 </div>
                                 <div class="x_content">
-                                    <table id="example" class="table table-striped responsive-utilities jambo_table" style="font-size:12px">
+                                    <table id="example" class="table table-striped responsive-utilities jambo_table" style="font-size:14px; text-align: center">
                                         <?php
                                             require("connection.php");
                                             $q = mysqli_query($con,"select FamilyID, FamilyType, FamilyHeadID, LastName, FirstName, MidName, FamilyStatus from family, resident_personaldata where FamilyHeadID = ResidentID and FamilyStatus != 'inactive' order by FamilyID asc;");
@@ -265,11 +282,10 @@
                                                 
                                                 <th>ID</th>
                                                 <th>Family Type</th>
-                                                <th>Family Head ID</th>
-
                                                 <th>Head</th> 
-                                                <th>Members</th>
+                                            
                                                 <th>Action</th>
+                                                <th></th>
                                                
 												
                                             </tr>
@@ -294,9 +310,8 @@
 
                                                 <td>$famID</td>
                                                 <td>$famCate</td>
-                                                <td>$famHeadID</td>
                                                 <td>$name</td>  
-
+                                                
                                                 <td>
                                                     <Button class='btn btn-success' name='btnEdit' id='btnEdit' value = '$famID' data-target=#familyEdit data-toggle=modal onclick = 'modalEdit(this);' >  Edit </button>
                                                     <Button class='btn btn-danger' name='btnDelete' id='btnDelete' value = '$famID' data-target=#familyDelete data-toggle=modal onclick = 'modalDelete(this);' >  Delete </button>
@@ -323,14 +338,6 @@
                                    
                                     
                                 </div>
-                                <br>  
-                                <center>
-                                    
-                                    <button type="submit" class="btn btn-success" data-toggle="modal" data-target="#family">Add</button>
-                                
-                                </center>
-                                
-                                
                                     
                             </div>
                         </div>
@@ -344,8 +351,8 @@
                     <!-- footer content -->
                 <footer>
                     <div class="">
-                        <p class="pull-right">Developed by PUP 2016 | Gentelella Alela! a Bootstrap 3 template by <a>Kimlabs</a>. |
-                            <span class="lead"> <i class="fa fa-institution"></i> Barangay Information System</span>
+                        <p class="pull-right">Developed by PUP 2016 |
+                            <span class="lead"> <i class="fa fa-institution"></i> Barangay Requesting and Event Monitoring System</span>
                         </p>
                     </div>
                     <div class="clearfix"></div>
@@ -362,16 +369,17 @@
    <!-- Modal -->
    <form method = POST action = "mfamily.php">
   <div class="modal fade" id="family" role="dialog">
-    <div class="modal-dialog modal-sm">
+    <div class="modal-dialog modal-sm" style="width:700px">
     
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Items</h4>
+          <h4 class="modal-title">Family</h4>
         </div>
         <div class="modal-body">
-		            <div class="form-inline">
+        <center>
+		            <div class="form-inline" hidden="hidden">
                         <div style = "float:right">
                         <label class="control-label"> Family ID:</label> 
                             <input  type="text" 
@@ -379,13 +387,10 @@
                                 class="form-control"
                                 id="txtFamID"
                                 name="txtFamID"
-
+                                readonly 
                                 >
                         </div>   
                     </div>
-                    <br>
-                    <br>
-                    <br>
                     
                     <div class="form-inline">
                         <label class="control-label"> Family Type:</label> 
@@ -394,9 +399,14 @@
                                 class="form-control"
                                 id="txtFamCate"
                                 name="txtFamCate"
-                                required="required">
-                                    <option>Married Couple</option>
-                                    <option>Single Parent</option>
+                                >
+                                    <option>Married Couple w/ Child(ren)</option>
+                                    <option>Married Couple w/o Child(ren)</option>
+                                    <option>Single Parent w/ Child(ren)</option>
+                                    <option>Single Parent w/ Child(ren)</option>
+                                    <option>Single Parent w/o Child(ren)</option>
+                                    <option>Family living with relatives</option>
+                                    <option>Family living with non-relatives</option>
                             </select>
                     </div>
                     <br>
@@ -413,17 +423,10 @@
 
                                 >
                     </div><br>
-                    <div class="form-inline">
-                        <label class="control-label"> Head Name</label> 
-                            <input type="text" 
-                                style="margin-left:10px"
-                                class="form-control"
-                                id="surname"
-                                readonly="readonly">
-                    </div>
+                    
                     <br>
             </div>
-		
+		</center>
 			  <div class="modal-footer">
         <button type="submit" class="btn btn-primary" name = btnSubmit>Submit</button>
         </div>
@@ -446,15 +449,16 @@
 <!-- Modal -->
    <form method = POST action = "mfamily.php">
   <div class="modal fade" id="familyEdit" role="dialog">
-    <div class="modal-dialog modal-sm">
+    <div class="modal-dialog modal-sm" style="width:700px">
     
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Items</h4>
+          <h4 class="modal-title">Family</h4>
         </div>
         <div class="modal-body">
+        <center>
                     <div class="form-inline">
                         <div style = "float:right">
                         <label class="control-label"> Family ID:</label> 
@@ -463,6 +467,7 @@
                                 class="form-control"
                                 id="EtxtFamID"
                                 name="EtxtFamID"
+                                readonly 
 
                                 >
                         </div>   
@@ -478,9 +483,14 @@
                                 class="form-control"
                                 id="EtxtFamCate"
                                 name="EtxtFamCate"
-                                required="required">
-                                    <option>Married Couple</option>
-                                    <option>Single Parent</option>
+                               >
+                                     <option>Married Couple w/ Child(ren)</option>
+                                    <option>Married Couple w/o Child(ren)</option>
+                                    <option>Single Parent w/ Child(ren)</option>
+                                    <option>Single Parent w/ Child(ren)</option>
+                                    <option>Single Parent w/o Child(ren)</option>
+                                    <option>Family living with relatives</option>
+                                    <option>Family living with non-relatives</option>
                             </select>
                     </div>
                     <br>
@@ -497,17 +507,8 @@
 
                                 >
                     </div><br>
-                    <div class="form-inline">
-                        <label class="control-label"> Head Name</label> 
-                            <input type="text" 
-                                style="margin-left:10px"
-                                class="form-control"
-                                id="EtxtFamHead"
-                                name="EtxtFamHead"
-
-                                readonly="readonly">
-                    </div>
-                    <br>
+        
+            </center>            <br>
             </div>
         
               <div class="modal-footer">
@@ -537,9 +538,10 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Items</h4>
+          <h4 class="modal-title">Family</h4>
         </div>
         <div class="modal-body">
+        <center>
                     <div class="form-inline">
                         <div style = "float:right">
                         <label class="control-label"> Family ID:</label> 
@@ -548,6 +550,7 @@
                                 class="form-control"
                                 id="DtxtFamID"
                                 name="DtxtFamID"
+                                readonly 
 
                                 >
                         </div>   
@@ -563,9 +566,14 @@
                                 class="form-control"
                                 id="DtxtFamCate"
                                 name="DtxtFamCate"
-                                required="required">
-                                    <option>Married Couple</option>
-                                    <option>Single Parent</option>
+                                readonly>
+                                    <option>Married Couple w/ Child(ren)</option>
+                                    <option>Married Couple w/o Child(ren)</option>
+                                    <option>Single Parent w/ Child(ren)</option>
+                                    <option>Single Parent w/ Child(ren)</option>
+                                    <option>Single Parent w/o Child(ren)</option>
+                                    <option>Family living with relatives</option>
+                                    <option>Family living with non-relatives</option>
                             </select>
                     </div>
                     <br>
@@ -576,23 +584,14 @@
                                 
                                 class="form-control"
                                 
-                                required="required"
+                                readonly 
                                 id="DtxtFamHeadID"
                                 name="DtxtFamHeadID"
 
                                 >
                     </div><br>
-                    <div class="form-inline">
-                        <label class="control-label"> Head Name</label> 
-                            <input type="text" 
-                                style="margin-left:10px"
-                                class="form-control"
-                                id="DtxtFamHead"
-                                name="DtxtFamHead"
-
-                                readonly="readonly">
-                    </div>
-                    <br>
+        
+            </center>            <br>
             </div>
         
               <div class="modal-footer">
@@ -613,10 +612,6 @@
 </form>
 
 
-      </div>
-      
-    </div>
-  </div>
 
         <div id="custom_notifications" class="custom-notifications dsp_none">
             <ul class="list-unstyled notifications clearfix" data-tabbed_notifications="notif-group">

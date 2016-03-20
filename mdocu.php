@@ -3,16 +3,7 @@
 
             if(isset($_POST['btnSubmit']))
             {
-                if(empty($_POST['txtDocID']) || empty($_POST['txtDocDesc']) || empty($_POST['txtFee']))
-        {
-?>
-
-        <script> alert ("Fill in the textfields");
-        </script>
-<?php
-
-        }
-        else{
+               
                 $docID = $_POST['txtDocID'];
                 $docDesc = $_POST['txtDocDesc'];
                 $fee = $_POST['txtFee'];
@@ -28,7 +19,7 @@
                 else{
                     echo "data updated";
                 }
-            }
+            
         }
 
         else if(isset($_POST['btnSubmitEdit']))

@@ -41,7 +41,7 @@
 
                 
 
-                $query = "update family set FamilyType ='$famCate', FamilyHeadID = '$famHeadID' where FamilyyID = '$famID'";
+                $query = "update family set FamilyType ='$famCate', FamilyHeadID = '$famHeadID' where FamilyID = '$famID'";
 
                 $res = mysqli_query($con, $query);
 
@@ -61,7 +61,7 @@
 
                 
 
-                $query = "update family set FamilyStatus = 'inactive' where FamilyyID = '$famID'";
+                $query = "update family set FamilyStatus = 'inactive' where FamilyID = '$famID'";
 
                 $res = mysqli_query($con, $query);
 

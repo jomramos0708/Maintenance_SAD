@@ -4,7 +4,6 @@
         var hidden_desc = "hidden_desc_"+x.value;
         var hidden_fee = "hidden_fee_"+x.value;
                                                             
-        alert(x.value);
 
         var id =document.getElementById(hidden_id).value;
         var desc =document.getElementById(hidden_desc).value;
@@ -36,6 +35,7 @@
                                                             
                                                             
     }
+
                                                             
                                                             
  </script>
@@ -49,7 +49,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Barangay Information System</title>
+    <title>BREMS</title>
 
     <!-- Bootstrap core CSS -->
 
@@ -89,7 +89,7 @@
                 <div class="left_col scroll-view">
 
                     <div class="navbar nav_title" style="border: 0;">
-                        <a href="#" class="site_title"><i class="fa fa-institution"></i> <span style="font-size:13px">Barangay Information System</span></a>
+                        <a href="#" class="site_title"><i class="fa fa-institution"></i> <span style="font-size:13px">BREMS</span></a>
                     </div>
                     <div class="clearfix"></div>
 
@@ -101,27 +101,44 @@
                         <div class="menu_section">
                             <h3>General</h3>
                             <ul class="nav side-menu">
-                                <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
+                                <li><a href ="home.html"><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
                                 </li>
                                 <li><a><i class="fa fa-gears"></i> Maintenance <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu" style="display: none">
-                                       <li><a href="maintenance_household.php">Household</a>
+                                        <li><a href="#">Request Monitoring Module</a>
+                                            <ul class="nav child_menu" style="display: none">
+                                                <li><a href="maintenance_official.php">Barangay Personnel</a>
+                                                </li> 
+
+                                                <li><a href="maintenance_docu.php">Document</a>
+                                                </li>
+
+                                                <li><a href="maintenance_items.php">Item</a>
+                                                </li>
+
+                                                <li><a href="maintenance_facility.php">Facility</a>
+                                                </li>
+
+                                             </ul>
                                         </li>
-                                        <li><a href="maintenance_family.php">Family</a>
-                                        </li>
-                                         <li><a href="maintenance_resident.php">Resident</a>
-                                        </li>
-                                        <li><a href="maintenance_official.php">Barangay Personnel</a>
-                                        </li> 
-                                        <li><a href="maintenance_event.php">Event</a>
-                                        </li>
-                                        <li><a href="maintenance_docu.php">Document</a>
-                                        </li>
-                                        <li><a href="maintenance_items.php">Item</a>
-                                        </li>
-                                        <li><a href="maintenance_facility.php">Facility</a>
-                                        </li>
+
+                                         <li><a href="#">Event Monitoring Module</a>
+                                            <ul class="nav child_menu" style="display: none">
+                                                <li><a href="maintenance_resident.php">Resident</a>
+                                                </li>
+
+                                                <li><a href="maintenance_household.php">Household</a>
+                                                </li>
+
+                                                <li><a href="maintenance_family.php">Family</a>
+                                                </li>
+
+                                                 
+                                            </ul>
+                                        </li>    
+                                            
                                     </ul>
+                                        
                                 </li>
                                 <li><a><i class="fa fa-desktop"></i> Transaction <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu" style="display: none">
@@ -241,11 +258,13 @@
                             <div class="x_panel">
                                 <div class="x_title">
                                     <h2>Documents </h2>
-                                    
+                                    <button type="submit" class="btn btn-success" data-toggle="modal" data-target="#documents" style="float:right"><span class='glyphicon glyphicon-plus' aria-hidden='true' style="color:white"></span>     Add Documents</button>
+
                                     <div class="clearfix"></div>
                                 </div>
-                                <div class="x_content">
-                                    <table id="example" class="table table-striped responsive-utilities jambo_table" style="font-size:12px">
+                                <div class="x_content" >
+                                    <table id="example" class="table table-striped responsive-utilities jambo_table" style="font-size:14px; text-align: center">
+                                        
                                         <?php
                                             require("connection.php");
                                             $q = mysqli_query($con,"Select * from document where DocStatus != 'inactive'");
@@ -256,7 +275,7 @@
                                                 <th>ID</th>
                                                 <th>Description </th>
                                                 <th>Fee</th>
-                                                <th>edit</th>
+                                                <th>Action</th>
                                                 <th></th>
                                                 
                                             </tr>
@@ -278,8 +297,9 @@
                                                 <td>$fee</td>
                                                
                                                 <td>
-                                                            <Button class='btn btn-success' name='btnEdit' id='btnEdit' value = '$id' data-target=#documentsEdit data-toggle=modal onclick ='valueModal(this);'>  Edit </button>
-                                                            <button class='btn btn-danger' data-toggle='modal' data-target='#documentsDelete' value = '$id' name = 'btnDelete' onclick='valueDelete(this)'>Delete</button>
+                                                            <span data-toggle='tooltip' title='Edit' data-placement='left'><Button class='btn btn-success' name='btnEdit' id='btnEdit' value = '$id' data-target=#documentsEdit data-toggle=modal onclick ='valueModal(this);'>  <i class='glyphicon glyphicon-pencil' aria-hidden='true'> </i> </button></span>
+
+                                                            <span data-toggle='tooltip' title='Delete' data-placement='left'><button class='btn btn-danger' data-toggle='modal' data-target='#documentsDelete' value = '$id' name = 'btnDelete' onclick='valueDelete(this)'><i class='glyphicon glyphicon-remove' aria-hidden='true'> </i></button></span>
                                                     </td>
 
                                                     <td>
@@ -299,16 +319,6 @@
                                    
                                     
                                 </div>
-                                <br>  
-                                <center>
-                                    
-                                    <button type="submit" class="btn btn-success" data-toggle="modal" data-target="#documents">Add</button>
-                                
-                                
-                                
-                                </center>
-                                
-                                
                                     
                             </div>
                         </div>
@@ -322,8 +332,8 @@
                     <!-- footer content -->
                 <footer>
                     <div class="">
-                        <p class="pull-right">Developed by PUP 2016 | Gentelella Alela! a Bootstrap 3 template by <a>Kimlabs</a>. |
-                            <span class="lead"> <i class="fa fa-institution"></i> Barangay Information System</span>
+                        <p class="pull-right">Developed by PUP 2016 |
+                            <span class="lead"> <i class="fa fa-institution"></i> Barangay Requesting and Event Monitoring System</span>
                         </p>
                     </div>
                     <div class="clearfix"></div>
@@ -336,10 +346,15 @@
 
         </div>
     
+
+
+
+
  <!-- Modal -->
  <form method = POST action = "mdocu.php">
-  <div class="modal fade" id="documents" role="dialog">
-    <div class="modal-dialog modal-lg">
+
+  <div class="modal fade" id="documents" role="dialog" >
+    <div class="modal-dialog modal-sm" style="width:600px">
     
       <!-- Modal content-->
       <div class="modal-content">
@@ -349,24 +364,31 @@
         </div>
         <div class="modal-body">
 		<center>
-					 <div class="form-inline">
-							<label for="surname" style="margin-left: 20px;">Document ID:</label> 
-                            <input type="text" class="form-control" id="surname" placeholder="ID" style="margin-right: 10px;" name = txtDocID>
-					</div> <br>
-					
-					 <div class="form-inline">
-							<label for="givenname">Document Description:</label>	
-                            <input type="text" class="form-control" id="givenname" placeholder="Description" style="margin-right: 10px;" name = txtDocDesc>
-					</div> <br>
-					
-					<div class="form-inline">
-							<label for="givenname">Fee:</label>	
-                            <input type="text" class="form-control" id="givenname" placeholder="Fee" style="margin-right: 10px;" name = txtFee>
-					</div> <br>
+
+    					 <div class="form-inline" hidden="hidden">
+    							<label for="surname" >Document ID:</label> 
+                                <input type="text" class="form-control" id="txtDocID" placeholder="ID" name = txtDocID readonly>
+    					</div> <br>
+             <table  style="border-spacing: 17px;border-collapse: separate;font-size: 14px">
+                <tbody  style="text-align: right">
+    				<tr>
+    					 
+    							<td><label for="givenname">Description* </label></td>	
+                                <td><input type="text" class="form-control" id="givenname" placeholder="Description" name = txtDocDesc required></td>
+    					
+    				</tr>
+                    <tr>
+    					
+    							<td><label for="givenname">Fee* </label>	</td>
+                                <td><input type="text" class="form-control" id="givenname" placeholder="Fee"  name = txtFee required></td>
+    					
+                    </tr>
+                </tbody>
+                </table>
 		</center>
 		
 			  <div class="modal-footer">
-          <button type="reset" class="btn btn-default">Cancel</button>
+       
         <button type="submit" class="btn btn-primary" name = btnSubmit>Submit</button>
         </div>
 		
@@ -382,7 +404,7 @@
        <!-- Modal -->
  <form method = POST action = "mdocu.php">
   <div class="modal fade" id="documentsEdit" role="dialog">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog modal-lg" style="width:600px">
     
       <!-- Modal content-->
       <div class="modal-content">
@@ -392,24 +414,28 @@
         </div>
         <div class="modal-body">
         <center>
-                     <div class="form-inline">
+                     <div class="form-inline" hidden="hidden">
                             <label for="surname" style="margin-left: 20px;">Document ID:</label> 
-                            <input readonly="readonly" type="text" class="form-control" id="EtxtDocID" placeholder="ID" style="margin-right: 10px;" name = "EtxtDocID">
+                            <input readonly="readonly" type="text" class="form-control" id="EtxtDocID" placeholder="ID" style="margin-right: 10px;" name = "EtxtDocID" >
                     </div> <br>
                     
-                     <div class="form-inline">
-                            <label for="givenname">Document Description:</label>    
-                            <input type="text" class="form-control" id="EtxtDocDesc" placeholder="Description" style="margin-right: 10px;" name = "EtxtDocDesc">
-                    </div> <br>
+            <table style="border-spacing: 17px;border-collapse: separate;font-size: 14px">
+                <tbody style="text-align: right">
+                    <tr>
+                        <td>    <label for="givenname">Description* </label>  </td>
+                        <td>   <input type="text" class="form-control" id="EtxtDocDesc" placeholder="Description"  name = "EtxtDocDesc" required> </td>
                     
-                    <div class="form-inline">
-                            <label for="givenname">Fee:</label> 
-                            <input type="text" class="form-control" id="EtxtFee" placeholder="Fee" style="margin-right: 10px;" name = "EtxtFee">
-                    </div> <br>
+                    </tr>
+                    <tr>
+                        <td>    <label for="givenname">Fee* </label> </td>
+                        <td>   <input type="text" class="form-control" id="EtxtFee" placeholder="Fee" name = "EtxtFee" required> </td>
+                    </tr>
+                </tbody>
+            </table>       
         </center>
         
               <div class="modal-footer">
-          <button type="reset" class="btn btn-default">Cancel</button>
+          
         <button type="submit" class="btn btn-primary" name = btnSubmitEdit>Submit</button>
         </div>
         
@@ -424,7 +450,7 @@
 
        <form method = POST action = "mdocu.php">
   <div class="modal fade" id="documentsDelete" role="dialog">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog modal-lg" style="width:600px">
     
       <!-- Modal content-->
       <div class="modal-content">
@@ -434,24 +460,29 @@
         </div>
         <div class="modal-body">
         <center>
-                     <div class="form-inline">
+                     <div class="form-inline" hidden="hidden">
                             <label for="surname" style="margin-left: 20px;">Document ID:</label> 
                             <input readonly="readonly" type="text" class="form-control" id="DtxtDocID" placeholder="ID" style="margin-right: 10px;" name = "DtxtDocID">
                     </div> <br>
                     
-                     <div class="form-inline">
-                            <label for="givenname">Document Description:</label>    
-                            <input readonly="readonly" type="text" class="form-control" id="DtxtDocDesc" placeholder="Description" style="margin-right: 10px;" name = "DtxtDocDesc">
-                    </div> <br>
+                            
+            <table style="border-spacing: 17px;border-collapse: separate;font-size: 14px">
+                <tbody style="text-align: right">
+                    <tr>
+                        <td>    <label for="givenname">Description* </label>  </td>
+                        <td>   <input type="text" class="form-control" id="DtxtDocDesc" placeholder="Description"  name = "EtxtDocDesc" readonly> </td>
                     
-                    <div class="form-inline">
-                            <label for="givenname">Fee:</label> 
-                            <input readonly="readonly" type="text" class="form-control" id="DtxtFee" placeholder="Fee" style="margin-right: 10px;" name = "DtxtFee">
-                    </div> <br>
+                    </tr>
+                    <tr>
+                        <td>    <label for="givenname">Fee* </label> </td>
+                        <td>   <input type="text" class="form-control" id="DtxtFee" placeholder="Fee" name = "EtxtFee" readonly> </td>
+                    </tr>
+                </tbody>
+            </table>       
         </center>
         
               <div class="modal-footer">
-          <button type="reset" class="btn btn-default">Cancel</button>
+          
         <button type="submit" class="btn btn-primary" name = btnSubmitDelete>Submit</button>
         </div>
         
